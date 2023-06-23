@@ -6,6 +6,12 @@ export const CarritoProvider = ({ children }) => {
 
     const [contar, setContar] = useState(0);
 
+    const [productosCarrito, setProductosCarrito] = useState([])
+
+    const [isCheckOutMenuOpen, setCheckOutMenu] = useState(false)
+    const openCheckOutMenu = () => setCheckOutMenu(true)
+    const closeCheckOutMenu = () => setCheckOutMenu(false)
+
 
 
 
@@ -16,6 +22,14 @@ export const CarritoProvider = ({ children }) => {
             value={{
                 contar,
                 setContar,
+
+                productosCarrito,
+                setProductosCarrito,
+
+                isCheckOutMenuOpen,
+                openCheckOutMenu,
+                closeCheckOutMenu
+
             
             }}>
 

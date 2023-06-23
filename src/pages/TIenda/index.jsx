@@ -31,7 +31,7 @@ const Tienda = () => {
   const getProducts = () => {
     if (productos && imagenes && categorias) {
       return productos.map((producto) => {
-      
+
         const imagen = imagenes.find((img) => img.id === producto.imagen);
         const imagenURL = imagen ? imagen.nombre : '';
 
@@ -53,7 +53,7 @@ const Tienda = () => {
   return (
     <Layout>
       <h1>Tienda</h1>
-      <div className="grid gap-5 grid-cols-3 w-full max-w-screen-lg">
+      <div className="grid gap-5 grid-cols-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 w-full max-w-screen-lg">
         {productosCard.map((producto) => (
           <div key={producto.id}>
             <Card

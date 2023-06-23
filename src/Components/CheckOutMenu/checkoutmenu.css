@@ -1,0 +1,10 @@
+.checkout-menu{
+    width: 350px;
+    height: calc(100vh - 68px);
+    top: 68px;
+    right: 0;
+    position: fixed;
+    background-color: #fff;
+    z-index: 100;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}

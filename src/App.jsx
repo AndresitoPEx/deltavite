@@ -12,6 +12,7 @@ import UltimoPedido from './pages/UltimoPedido'
 import Login from './pages/Login'
 import Navbar from './Components/NavBar'
 import DetalleProducto from './Components/DetalleProducto'
+import CheckOutMenu from './Components/CheckOutMenu'
 
 import './App.css'
 
@@ -43,6 +44,7 @@ const App = () => {
       <BrowserRouter>
         <AppRoutes />
         <Navbar />
+        <CheckOutMenu />  
       </BrowserRouter>
     </CarritoProvider>
   )

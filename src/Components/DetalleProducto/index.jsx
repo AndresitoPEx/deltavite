@@ -4,10 +4,13 @@ import { GetImagenes } from "../../apis/apiImagenes";
 import { GetCategorias } from "../../apis/apiCategorias";
 import { useParams } from "react-router-dom";
 import Layout from "../../Components/Layout";
+import { useContext } from "react";
+import { CarritoDeCompras } from "../../Context";
 
 const DetalleProducto = () => {
 
-
+    const context = useContext(CarritoDeCompras) 
+    const { contar } = useContext(CarritoDeCompras)
 
     const { codigo } = useParams();
 
@@ -52,6 +55,14 @@ const DetalleProducto = () => {
         return null;
     };
 
+    const agregarProductoACarrito = (Card) => {
+        context.setContar(contar + 1)
+        context.setProductosCarrito([...context.productosCarrito, Card])
+        context.openCheckOutMenu()
+
+        console.log(context.productosCarrito);
+    }
+
 
 
     const producto = getProductById(codigo);
@@ -61,7 +72,7 @@ const DetalleProducto = () => {
     return (
         <Layout>
             <div className="container mx-auto py-10">
-                <h1 className="text-3xl font-bold mb-6">Detalle del Producto {producto.codigo}</h1>
+                <h1 className="text-3xl font-bold mb-6 item text-center">{producto.nombre}</h1>
                 <div className="flex flex-wrap">
                     <div className="w-full md:w-1/2 flex justify-end items-center">
                         <div className="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden mb-6">
@@ -69,18 +80,23 @@ const DetalleProducto = () => {
                         </div>
                     </div>
                     <div className="w-full md:w-1/2 md:pl-6">
-                        <h2 className="text-2xl font-bold mb-4">{producto.nombre}</h2>
+                        <h2 className="text-2xl font-bold mb-4">{producto.codigo}</h2>
                         <p className="text-lg mb-2"><span className="font-bold text-5xl">S/.{producto.precio}</span></p>
                         <p className="text-lg mb-2">Categoría: {producto.categoria}</p>
                         <p className="text-lg mb-2">Color: {producto.color}</p>
                         <p className="text-lg mb-2">Descripción: {producto.descripcion}</p>
                         <p className="text-lg mb-2">Modelo: {producto.modelo}</p>
-                        <button className="bg-blue-500 text-white px-4 py-2 rounded-md mt-50 hover:bg-blue-600">Agregar al carrito</button>
+                        <button
+                            className="bg-blue-500 text-white px-4 py-2 rounded-md mt-50 hover:bg-blue-600"
+                            onClick={() => agregarProductoACarrito(producto)}
+                        >
+                            Agregar al carrito
+                        </button>
                     </div>
                 </div>
             </div>
         </Layout>
-    
+
     );
 };
 
