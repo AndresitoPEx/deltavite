@@ -5,7 +5,7 @@ import { CarritoDeCompras } from '../../Context';
 import OrderCard from '../OrderCard';
 import { PrecioTotal } from '../../utils';
 
-import './checkoutMenu.css';
+import './checkoutmenu.css';
 
 const CheckOutMenu = () => {
     const context = useContext(CarritoDeCompras);
