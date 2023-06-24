@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { XMarkIcon } from '@heroicons/react/24/solid';
 import { CarritoDeCompras } from '../../Context';
+import { Link } from 'react-router-dom';
 
 import OrderCard from '../OrderCard';
 import { PrecioTotal } from '../../utils';
@@ -14,6 +15,22 @@ const CheckOutMenu = () => {
         const newProducts = context.productosCarrito.filter(producto => producto.codigo !== codigo)
         context.setProductosCarrito(newProducts)
 
+    }
+
+    const handleCheckOut = () => {
+        const newOrder = {
+            productos: context.productosCarrito,
+            totalPrice: PrecioTotal(context.productosCarrito),
+            totalProductos: context.productosCarrito.length,
+            fecha: new Date().toLocaleDateString(),
+            hora: new Date().toLocaleTimeString(),
+            estado: 'pendiente',
+            id: Math.random().toString(36).substr(2, 9),
+
+        }
+        context.setOrder([...context.order, newOrder])
+        context.setProductosCarrito([])
+        context.closeCheckOutMenu()
     }
 
     return (
@@ -30,7 +47,7 @@ const CheckOutMenu = () => {
                     </XMarkIcon>
                 </button>
             </div>
-            <div className='px-6 overflow-y-scroll'>
+            <div className='px-6 overflow-y-scroll flex-1'>
                 {
                     context.productosCarrito.map(producto => {
                         return (
@@ -48,10 +65,21 @@ const CheckOutMenu = () => {
 
                 }
             </div>
-            <div className='flex justify-between items-center p-5'>
-                <span className='font-light'>Total: </span>
-                <span className='font-medium text-2xl'>S/.{PrecioTotal(context.productosCarrito)}</span>
+            <div className='px-6 mb-24'>
+                <div className='flex justify-between items-center p-5 mb-3'>
+                    <span className='font-light'>Total: </span>
+                    <span className='font-medium text-2xl'>S/.{PrecioTotal(context.productosCarrito)}</span>
+                </div>
+                <Link to="/mis-pedidos/last">
+                    <button
+                        className='bg-black text-white w-full h-12 font-medium text-xl hover:bg-gray-800 transition-all duration-300 ease-in-out rounded-md '
+                        onClick={() => handleCheckOut()}
+                    >
+                        Continuar Compra
+                    </button>
+                </Link>
             </div>
+
         </aside>
     )
 }

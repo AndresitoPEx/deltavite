@@ -3,11 +3,16 @@ import { useContext } from "react"
 import { CarritoDeCompras } from "../../Context"
 import { ShoppingBagIcon } from '@heroicons/react/24/outline'
 
+
 const Navbar = () => {
+    const context = useContext(CarritoDeCompras)
 
     const { contar } = useContext(CarritoDeCompras)
 
     const activeStyle = "text-[#f5821f] border-b-2 border-[#f5821f] pb-1 transition duration-500 ease-in-out font-semibold "
+
+
+
 
     return (
         <nav className="bg-black text-white flex justify-between items-center w-full fixed top-0 py-5 px-8 text-xl font-thin z-10">
@@ -67,11 +72,15 @@ const Navbar = () => {
                     </NavLink>
                 </li>
                 <li className="flex items-center justify-center">
-                    <ShoppingBagIcon className="h-6 w-6" />
-                    <span
-                        className="text-white rounded-full w-6 h-6 p-1 text-sm font-semibold">
-                        {contar}
-                    </span>
+                    <button className="flex items-center justify-center"
+                        onClick={() => context.openCheckOutMenu()}
+                    >
+                        <ShoppingBagIcon className="h-6 w-6" />
+                        <span
+                            className="text-white rounded-full w-6 h-6 p-1 text-sm font-semibold">
+                            {contar}
+                        </span>
+                    </button>
 
                 </li>
 

@@ -6,11 +6,11 @@ import { useParams } from "react-router-dom";
 import Layout from "../../Components/Layout";
 import { useContext } from "react";
 import { CarritoDeCompras } from "../../Context";
+import { PlusIcon, CheckIcon } from "@heroicons/react/24/solid";
 
 const DetalleProducto = () => {
-
-    const context = useContext(CarritoDeCompras) 
-    const { contar } = useContext(CarritoDeCompras)
+    const context = useContext(CarritoDeCompras);
+    const { contar } = useContext(CarritoDeCompras);
 
     const { codigo } = useParams();
 
@@ -30,9 +30,18 @@ const DetalleProducto = () => {
     });
 
     if (isLoading || isLoading2 || isLoading3) return <h1>Cargando...</h1>;
-    if (isError) return <h1>Error al obtener los datos de productos: {error.message}</h1>;
-    if (isError2) return <h1>Error al obtener los datos de imágenes: {error2.message}</h1>;
-    if (isError3) return <h1>Error al obtener los datos de categorías: {error3.message}</h1>;
+    if (isError)
+        return (
+            <h1>Error al obtener los datos de productos: {error.message}</h1>
+        );
+    if (isError2)
+        return (
+            <h1>Error al obtener los datos de imágenes: {error2.message}</h1>
+        );
+    if (isError3)
+        return (
+            <h1>Error al obtener los datos de categorías: {error3.message}</h1>
+        );
 
     const getProductById = (id) => {
         if (productos && imagenes && categorias) {
@@ -42,7 +51,9 @@ const DetalleProducto = () => {
                 const imagen = imagenes.find((img) => img.id === producto.imagen);
                 const imagenURL = imagen ? imagen.nombre : "";
 
-                const categoria = categorias.find((cat) => cat.id === producto.categoria);
+                const categoria = categorias.find(
+                    (cat) => cat.id === producto.categoria
+                );
                 const categoriaNombre = categoria ? categoria.nombre : "";
 
                 return {
@@ -55,15 +66,50 @@ const DetalleProducto = () => {
         return null;
     };
 
-    const agregarProductoACarrito = (Card) => {
-        context.setContar(contar + 1)
-        context.setProductosCarrito([...context.productosCarrito, Card])
-        context.openCheckOutMenu()
+    const agregarProductoACarrito = (producto) => {
+        const { categoria, nombre, precio, imagen } = producto;
+
+        context.setContar(contar + 1);
+        context.setProductosCarrito([
+            ...context.productosCarrito,
+            {
+                codigo: producto.codigo,
+                categoria,
+                nombre,
+                precio,
+                imagen,
+            },
+        ]);
+        context.openCheckOutMenu();
 
         console.log(context.productosCarrito);
-    }
+    };
 
+    const renderIcon = (codigo) => {
+        const productoEnCarrito =
+            context.productosCarrito.filter(
+                (producto) => producto.codigo === codigo
+            ).length > 0;
 
+        if (productoEnCarrito) {
+            return (
+                <button className="bg-green-700 p-2 flex items-center justify-center rounded-md text-white hover:bg-green-600 focus:outline-none">
+                    <CheckIcon className="h-5 w-5 mr-1" />
+                    <span>Producto Agregado</span>
+                </button>
+            );
+        } else {
+            return (
+                <button
+                    className="bg-[#f5821f] p-2 flex items-center justify-center rounded-md text-white hover:bg-[#e3661d] focus:outline-none"
+                    onClick={() => agregarProductoACarrito(producto)}
+                >
+                    <PlusIcon className="h-5 w-5 mr-1" />
+                    <span>Agregar producto</span>
+                </button>
+            );
+        }
+    };
 
     const producto = getProductById(codigo);
 
@@ -72,31 +118,33 @@ const DetalleProducto = () => {
     return (
         <Layout>
             <div className="container mx-auto py-10">
-                <h1 className="text-3xl font-bold mb-6 item text-center">{producto.nombre}</h1>
+                <h1 className="text-3xl font-bold mb-6 item text-center">
+                    {producto.nombre}
+                </h1>
                 <div className="flex flex-wrap">
                     <div className="w-full md:w-1/2 flex justify-end items-center">
                         <div className="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden mb-6">
-                            <img src={producto.imagen} alt={producto.nombre} className="object-cover w-full h-full max-w-lg max-h-lg" />
+                            <img
+                                src={producto.imagen}
+                                alt={producto.nombre}
+                                className="object-cover w-full h-full max-w-lg max-h-lg"
+                            />
                         </div>
                     </div>
                     <div className="w-full md:w-1/2 md:pl-6">
                         <h2 className="text-2xl font-bold mb-4">{producto.codigo}</h2>
-                        <p className="text-lg mb-2"><span className="font-bold text-5xl">S/.{producto.precio}</span></p>
+                        <p className="text-lg mb-2">
+                            <span className="font-bold text-5xl">S/.{producto.precio}</span>
+                        </p>
                         <p className="text-lg mb-2">Categoría: {producto.categoria}</p>
                         <p className="text-lg mb-2">Color: {producto.color}</p>
                         <p className="text-lg mb-2">Descripción: {producto.descripcion}</p>
                         <p className="text-lg mb-2">Modelo: {producto.modelo}</p>
-                        <button
-                            className="bg-blue-500 text-white px-4 py-2 rounded-md mt-50 hover:bg-blue-600"
-                            onClick={() => agregarProductoACarrito(producto)}
-                        >
-                            Agregar al carrito
-                        </button>
+                        {renderIcon(producto.codigo)}
                     </div>
                 </div>
             </div>
         </Layout>
-
     );
 };
 

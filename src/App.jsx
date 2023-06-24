@@ -27,7 +27,7 @@ const AppRoutes = () => {
     { path: '/mi-cuenta', element: <CuentaCliente /> },
     { path: '/nosotros', element: <Nosotros /> },
     { path: '/mis-pedidos', element: <MisPedidos /> },
-    { path: '/ultimo-pedido', element: <UltimoPedido /> },
+    { path: '/mis-pedidos/last', element: <UltimoPedido /> },
     { path: '/login', element: <Login /> },
     { path: '*', element: <NotFound /> },
 

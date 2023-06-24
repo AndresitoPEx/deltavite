@@ -12,7 +12,7 @@ export const CarritoProvider = ({ children }) => {
     const openCheckOutMenu = () => setCheckOutMenu(true)
     const closeCheckOutMenu = () => setCheckOutMenu(false)
 
-
+    const [order, setOrder] = useState([])
 
 
 
@@ -28,7 +28,10 @@ export const CarritoProvider = ({ children }) => {
 
                 isCheckOutMenuOpen,
                 openCheckOutMenu,
-                closeCheckOutMenu
+                closeCheckOutMenu,
+
+                order,
+                setOrder
 
             
             }}>
