@@ -34,9 +34,7 @@ const CheckOutMenu = () => {
     }
 
     return (
-        <aside
-            className={`${context.isCheckOutMenuOpen ? 'flex' : 'hidden'} checkout-menu flex-col fixed right-0 w-80 h-screen bg-white z-50 transition-all duration-300 ease-in-out  `}
-        >
+        <aside className={`${context.isCheckOutMenuOpen ? 'flex' : 'hidden'} checkout-menu`}>
             <div className='flex justify-between m-5 items-center '>
                 <h2 className='font-medium text-xl'>Mi Orden</h2>
                 <button className=''>
@@ -70,12 +68,12 @@ const CheckOutMenu = () => {
                     <span className='font-light'>Total: </span>
                     <span className='font-medium text-2xl'>S/.{PrecioTotal(context.productosCarrito)}</span>
                 </div>
-                <Link to="/mis-pedidos/last">
+                <Link to="/mi-pedido">
                     <button
                         className='bg-black text-white w-full h-12 font-medium text-xl hover:bg-gray-800 transition-all duration-300 ease-in-out rounded-md '
                         onClick={() => handleCheckOut()}
                     >
-                        Continuar Compra
+                        Continuar
                     </button>
                 </Link>
             </div>

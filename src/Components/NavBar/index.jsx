@@ -15,7 +15,7 @@ const Navbar = () => {
 
 
     return (
-        <nav className="bg-black text-white flex justify-between items-center w-full fixed top-0 py-5 px-8 text-xl font-thin z-10">
+        <nav className="bg-black text-white flex justify-between items-center w-full py-5 px-40 text-xl font-thin z-10 border-b-2">
             <ul className="flex items-center gap-3">
                 <li>
                     <NavLink
@@ -45,13 +45,7 @@ const Navbar = () => {
                         Nosotros
                     </NavLink>
                 </li>
-                <li>
-                    <NavLink
-                        className={({ isActive }) => isActive ? activeStyle : undefined}
-                        to="/login">
-                        Login
-                    </NavLink>
-                </li>
+
             </ul>
             <ul className="flex items-center gap-3">
                 <li className="text-base font-medium text-gray-500">
@@ -60,17 +54,18 @@ const Navbar = () => {
                 <li>
                     <NavLink
                         className={({ isActive }) => isActive ? activeStyle : undefined}
-                        to="/mis-pedidos">
-                        Mis Pedidos
+                        to="/mi-pedido">
+                        Mi Pedido
                     </NavLink>
                 </li>
                 <li>
                     <NavLink
                         className={({ isActive }) => isActive ? activeStyle : undefined}
-                        to="/mi-cuenta">
-                        Mi Cuenta
+                        to="/login">
+                        Sing in
                     </NavLink>
                 </li>
+    
                 <li className="flex items-center justify-center">
                     <button className="flex items-center justify-center"
                         onClick={() => context.openCheckOutMenu()}

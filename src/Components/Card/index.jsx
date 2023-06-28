@@ -52,7 +52,7 @@ const Card = ({ codigo, categoria, nombre, precio, imagen }) => {
 
             return (
                 <button
-                    className="bg-[#f5821f] p-1.5 w-8 h-8 items-center justify-center rounded-md"
+                    className="bg-[#f5821f] p-1.5 w-8 h-8 items-center justify-center rounded-md hover:bg-[#e26611]"
                     onClick={() => agregarProductoACarrito(
                         {
                             codigo: codigo,

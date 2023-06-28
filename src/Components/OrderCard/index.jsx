@@ -1,5 +1,5 @@
 import { XMarkIcon } from "@heroicons/react/24/solid";
-import { render } from "react-dom";
+
 
 
 const OrderCard = props => {
@@ -16,9 +16,9 @@ const OrderCard = props => {
 
 
     return (
-        <div className="flex justify-between items-center mb-5">
+        <div className="flex justify-evenly items-center mb-5 border-b-2 p-5">
 
-            <div className="items-center gap-2">
+            <div className=" items-center gap-2">
 
                 <figure className="w-20 h-20">
                     <img src={imagen} alt={nombre} className="w-full h-full rounded-md object-cover" />
@@ -28,11 +28,11 @@ const OrderCard = props => {
                 </p>
             </div>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-5">
 
-                <p className="text-xl font-semibold">
+                <p className="text-lg font-semibold">
                     S/. {precio}
-                </p>
+                </p>    
                 {
                     renderIcon
                 }

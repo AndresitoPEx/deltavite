@@ -132,15 +132,19 @@ const DetalleProducto = () => {
                         </div>
                     </div>
                     <div className="w-full md:w-1/2 md:pl-6">
-                        <h2 className="text-2xl font-bold mb-4">{producto.codigo}</h2>
-                        <p className="text-lg mb-2">
-                            <span className="font-bold text-5xl">S/.{producto.precio}</span>
-                        </p>
-                        <p className="text-lg mb-2">Categoría: {producto.categoria}</p>
-                        <p className="text-lg mb-2">Color: {producto.color}</p>
-                        <p className="text-lg mb-2">Descripción: {producto.descripcion}</p>
-                        <p className="text-lg mb-2">Modelo: {producto.modelo}</p>
-                        {renderIcon(producto.codigo)}
+                        <div className="flex-1 mb-10">
+                            <h2 className="text-2xl font-bold mb-4">{producto.codigo}</h2>
+                            <p className="text-lg mb-2">
+                                <span className="font-bold text-5xl">S/.{producto.precio}</span>
+                            </p>
+                            <p className="text-lg mb-2">Categoría: {producto.categoria}</p>
+                            <p className="text-lg mb-2">Color: {producto.color}</p>
+                            <p className="text-lg mb-2">Descripción: {producto.descripcion}</p>
+                            <p className="text-lg mb-2">Modelo: {producto.modelo}</p>
+                        </div>
+                        <div>
+                            {renderIcon(producto.codigo)}
+                        </div>
                     </div>
                 </div>
             </div>
