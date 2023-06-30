@@ -12,3 +12,8 @@ export const GetProductos = async () => {
     
 }
 
+
+export const createProducto = async (producto) => {
+    const response = await apiProductos.post('/producto', producto)
+    return response.data
+}
