@@ -43,7 +43,7 @@ const UltimoPedido = () => {
                             </span>
                         </h3>
                     </div>
-                    <Link to="/mis-pedidos">
+                    <Link to="/checkout">
                         <button className="flex bg-[#f5821f] p-5 w-auto h-8 items-center justify-center rounded-md text-white font-semibold hover:bg-[#e26611]">
                             Continuar Pedido
                             <ChevronRightIcon className="h-6 w-6 cursor-pointer ml-2" />

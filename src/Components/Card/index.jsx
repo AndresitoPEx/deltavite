@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 import './card.css'
 
-const Card = ({ codigo, categoria, nombre, precio, imagen }) => {
+const Card = ({ codigo, categoria, nombre, precio, imagen, color }) => {
 
     const context = useContext(CarritoDeCompras)
 
@@ -59,7 +59,8 @@ const Card = ({ codigo, categoria, nombre, precio, imagen }) => {
                             categoria: categoria,
                             nombre: nombre,
                             precio: precio,
-                            imagen: imagen
+                            imagen: imagen,
+                            color: color
                         }
                     )}
                 >
@@ -95,6 +96,10 @@ const Card = ({ codigo, categoria, nombre, precio, imagen }) => {
                         renderIcon(codigo)
                     }
                 </div>
+                {/* <div>
+                    <span>{color}</span>
+                </div> */}
+
             </div>
         </div>
     );

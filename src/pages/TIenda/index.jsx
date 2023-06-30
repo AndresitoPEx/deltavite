@@ -61,6 +61,7 @@ const Tienda = () => {
               precio={producto.precio}
               imagen={producto.imagen}
               codigo={producto.codigo}
+              color={producto.color}
             />
           </div>
         ))}
