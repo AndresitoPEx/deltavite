@@ -5,12 +5,16 @@ import { GetCategorias } from "../../apis/apiCategorias"; // Importa la función
 import Layout from "../../Components/Layout";
 import Card from "../../Components/Card";
 
+//materialUI
+import Container from "@mui/material/Container";
+
 
 const Tienda = () => {
 
   const { data: productos, isLoading, error, isError } = useQuery({
     queryKey: ["productos"],
     queryFn: GetProductos, // Llama a la función para obtener los productos
+    select: productos => productos.sort((a, b) => b.id - a.id)
   });
 
   const { data: imagenes, isLoading2, error2, isError2 } = useQuery({
@@ -52,20 +56,22 @@ const Tienda = () => {
 
   return (
     <Layout>
-      <div className="grid gap-5 grid-cols-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 w-full max-w-screen-lg py-20">
-        {productosCard.map((producto) => (
-          <div key={producto.id}>
-            <Card
-              categoria={producto.categoria}
-              nombre={producto.nombre}
-              precio={producto.precio}
-              imagen={producto.imagen}
-              codigo={producto.codigo}
-              color={producto.color}
-            />
-          </div>
-        ))}
-      </div>
+      <Container maxWidth="xl">
+        <div className="grid gap-5 grid-cols-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-full py-20">
+          {productosCard.map((producto) => (
+            <div key={producto.id}>
+              <Card
+                categoria={producto.categoria}
+                nombre={producto.nombre}
+                precio={producto.precio}
+                imagen={producto.imagen}
+                codigo={producto.codigo}
+                color={producto.color}
+              />
+            </div>
+          ))}
+        </div>
+      </Container>
     </Layout>
   );
 };

@@ -12,8 +12,6 @@ const Navbar = () => {
     const activeStyle = "text-[#f5821f] border-b-2 border-[#f5821f] pb-1 transition duration-500 ease-in-out font-semibold "
 
 
-
-
     return (
         <nav className="bg-black text-white flex justify-between items-center w-full py-5 px-40 text-xl font-thin z-10 border-b-2">
             <ul className="flex items-center gap-3">

@@ -2,7 +2,8 @@
 import axios from 'axios';
 
 export const apiCategorias = axios.create({
-    baseURL: "https://apisdelta.azurewebsites.net/api/"
+    baseURL: "http://localhost:3001/"
+    // baseURL: "https://apisdelta.azurewebsites.net/api/"
 })
 
 
@@ -11,4 +12,6 @@ export const GetCategorias = async () => {
     return response.data
     
 }
+
+export const PostCategoria = async (categoria) => apiCategorias.post('/categorias', categoria)
 

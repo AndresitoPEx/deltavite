@@ -12,15 +12,17 @@ import Login from './pages/Login'
 
 
 //Area Backend
-import RegistrarProductos from './pages/RegistrarProductos'
-
+import RegistrarProductos from './Admin/RegistrarProductos'
+import VerProductos from './Admin/VerProductos'
+import AdminHome from './Admin/AdminHome'
+import VerUsuarios from './Admin/VerUsuarios'
+import VerVentas from './Admin/VerVentas'
+import EditarProducto from './Admin/EditarProducto'
 
 
 //Components
 import DetalleProducto from './Components/DetalleProducto'
 import CheckOutMenu from './Components/CheckOutMenu'
-import HeaderDelta from './Components/HeaderDelta'
-import Footer from './Components/Footer'
 
 
 
@@ -42,7 +44,13 @@ const AppRoutes = () => {
     { path: '/SingOut', element: <Login /> },
     { path: '*', element: <NotFound /> },
     //Area Backend
+    { path: '/admin-home/*', element: <AdminHome /> },
+    { path: '/lista-productos', element: <VerProductos /> },
     { path: '/registrar-productos', element: <RegistrarProductos /> },
+    { path: '/editar-producto/:codigo', element: <EditarProducto /> },
+    { path: '/lista-usuarios', element: <VerUsuarios /> },
+    { path: '/lista-ventas', element: <VerVentas /> },
+
 
   ])
 
@@ -56,8 +64,7 @@ const App = () => {
     <CarritoProvider>
       <BrowserRouter>
         <AppRoutes />
-        <HeaderDelta />
-        <Footer />
+      
         <CheckOutMenu />
       </BrowserRouter>
     </CarritoProvider>

@@ -2,7 +2,8 @@
 import axios from 'axios';
 
 export const apiImagenes = axios.create({
-    baseURL: "https://apisdelta.azurewebsites.net/api/"
+    baseURL: "http://localhost:3001/"
+    // baseURL: "https://apisdelta.azurewebsites.net/api/"
 })
 
 
@@ -12,3 +13,7 @@ export const GetImagenes = async () => {
     
 }
 
+export const PostImagen = async (imagen) => {
+    
+    return apiImagenes.post('/imagenes', imagen)
+}

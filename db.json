@@ -1,0 +1,212 @@
+{
+  "producto": [
+    {
+      "id": 2,
+      "nombre": "Alfa Tipo B",
+      "categoria": 1,
+      "codigo": "CHALB",
+      "modelo": "Alfa",
+      "color": "Militar",
+      "descripcion": "Chaleco Alfa A pero lo cambiamos por B",
+      "precio": 38,
+      "imagen": 2
+    },
+    {
+      "id": 3,
+      "nombre": "Alfa Tipo C",
+      "categoria": 1,
+      "codigo": "CHALC",
+      "modelo": "Alfa",
+      "color": "Militar",
+      "descripcion": "Un chaleco A pero para marketing es el C",
+      "precio": 138,
+      "imagen": 3
+    },
+    {
+      "id": 4,
+      "nombre": "Alfa Multicamp",
+      "categoria": 2,
+      "codigo": "CHALM",
+      "modelo": "Alfa",
+      "color": "Militar",
+      "descripcion": "Un chaleco de dureza fuerte",
+      "precio": 150,
+      "imagen": 4
+    },
+    {
+      "id": 5,
+      "nombre": "Delta Negro",
+      "categoria": 1,
+      "codigo": "CHALN",
+      "modelo": "Delta",
+      "color": "Negro",
+      "descripcion": "Un chaleco negro, para poder ser inclusivo",
+      "precio": 145,
+      "imagen": 5
+    },
+    {
+      "id": 6,
+      "nombre": "DNS Negro",
+      "categoria": 1,
+      "codigo": "CHALDNS",
+      "modelo": "DNS",
+      "color": "Negro",
+      "descripcion": "Una mochila de peso medio",
+      "precio": 152,
+      "imagen": 6
+    },
+    {
+      "id": 7,
+      "nombre": "DSC Verde",
+      "categoria": 1,
+      "codigo": "MOCHDSC",
+      "modelo": "DSC",
+      "color": "Verde",
+      "descripcion": "Una mochila verde de peso medio y de gran espacio",
+      "precio": 151,
+      "imagen": 7
+    },
+    {
+      "id": 8,
+      "nombre": "Mochila XD",
+      "categoria": 2,
+      "codigo": "zxcasd",
+      "modelo": "2023",
+      "color": "Camuflado",
+      "descripcion": "Mochila de asalto con camuflaje",
+      "precio": 250,
+      "imagen": 8
+    },
+    {
+      "id": 1,
+      "nombre": "Chaleco Alfa A",
+      "categoria": 1,
+      "codigo": "ERIHIZ",
+      "modelo": "2021",
+      "color": "Militar",
+      "descripcion": "AAAAAA",
+      "precio": 120.99,
+      "imagen": 5
+    },
+    {
+      "nombre": "Mochila xD",
+      "precio": 12.9,
+      "categoria": 2,
+      "imagen": 9,
+      "stock": 10,
+      "descripcion": "mochila de prueba",
+      "codigo": "qwerty",
+      "modelo": "2023",
+      "id": 9
+    },
+    {
+      "nombre": "Mochila de Viaje",
+      "precio": 10.9,
+      "categoria": 2,
+      "imagen": 10,
+      "stock": 100,
+      "descripcion": "mochila grande",
+      "codigo": "asdf",
+      "modelo": "2023",
+      "id": 10
+    },
+    {
+      "nombre": "Mochila de Viaje",
+      "precio": "10.90",
+      "categoria": 2,
+      "imagen": 11,
+      "stock": 100,
+      "descripcion": "mochila grande",
+      "codigo": "asdf",
+      "modelo": "2023",
+      "id": 11
+    },
+    {
+      "nombre": "Mochila xD",
+      "precio": "12.90",
+      "categoria": 2,
+      "imagen": 12,
+      "stock": 10,
+      "descripcion": "mochila de prueba",
+      "codigo": "qwerty",
+      "modelo": "2023",
+      "id": 12
+    },
+    {
+      "nombre": "Delta 7",
+      "precio": "20.00",
+      "categoria": 1,
+      "color": "Camuflaje",
+      "imagen": 13,
+      "stock": 10,
+      "descripcion": "mochila de prueba 2",
+      "codigo": "zxcv",
+      "modelo": "2023",
+      "id": 13
+    }
+  ],
+  "imagenes": [
+    {
+      "id": 1,
+      "nombre": "https://i.postimg.cc/CKyCN9yX/279346036-1416136565505166-6103999301921957049-n.jpg"
+    },
+    {
+      "id": 2,
+      "nombre": "https://i.postimg.cc/Wzrqh1z4/280495660-1424128804705942-6650563501364044328-n.jpg"
+    },
+    {
+      "id": 3,
+      "nombre": "https://i.postimg.cc/1Xxfh1B1/280650469-1424128824705940-7101218649321015789-n.jpg"
+    },
+    {
+      "id": 4,
+      "nombre": "https://i.postimg.cc/FKBYpLJR/290548362-1458141461304676-7719683501890285441-n.jpg"
+    },
+    {
+      "id": 5,
+      "nombre": "https://i.postimg.cc/zG35jPwC/322475247-1559586227861359-4888582581913463503-n.jpg"
+    },
+    {
+      "id": 6,
+      "nombre": "https://i.postimg.cc/FsHQrnBM/alfa-a.jpg"
+    },
+    {
+      "id": 7,
+      "nombre": "https://i.postimg.cc/DwKf2c1L/DELTA_21_MULTICAN.jpg"
+    },
+    {
+      "id": 8,
+      "nombre": "https://i.postimg.cc/TYnLq19j/DSC_1032.frente_4.jpg  "
+    },
+    {
+      "nombre": "https://i.postimg.cc/gkwbLtv1/mochila_coyote_2021.jpg",
+      "id": 9
+    },
+    {
+      "nombre": "https://i.postimg.cc/xjphyG5H/DSC_1032._A_NEGRO.jpg",
+      "id": 10
+    },
+    {
+      "nombre": "https://i.postimg.cc/xjphyG5H/DSC_1032._A_NEGRO.jpg",
+      "id": 11
+    },
+    {
+      "nombre": "https://i.postimg.cc/gkwbLtv1/mochila_coyote_2021.jpg",
+      "id": 12
+    },
+    {
+      "nombre": "https://i.postimg.cc/NfMWq2yY/CHALECO_DELTA_7_COLOR_CAMELLO.jpg",
+      "id": 13
+    }
+  ],
+  "categorias": [
+    {
+      "id": 1,
+      "nombre": "Chaleco Antibala"
+    },
+    {
+      "id": 2,
+      "nombre": "Mochila Táctica"
+    }
+  ]
+}

@@ -2,7 +2,8 @@
 import axios from 'axios';
 
 export const apiProductos = axios.create({
-    baseURL: "https://apisdelta.azurewebsites.net/api/"
+    baseURL: "http://localhost:3001/"
+    // baseURL: "https://apisdelta.azurewebsites.net/api/"
 })
 
 
@@ -13,7 +14,11 @@ export const GetProductos = async () => {
 }
 
 
-export const createProducto = async (producto) => {
-    const response = await apiProductos.post('/producto', producto)
-    return response.data
+export const PostProducto = async (producto) => {
+    console.log(producto);
+ return apiProductos.post('/producto', producto)
 }
+
+export const DeleteProducto = async (codigo) => apiProductos.delete(`/producto/${codigo}`)
+
+// export const PutProducto = async (producto) => apiProductos.put(`/producto/${producto.codigo}`, producto)
