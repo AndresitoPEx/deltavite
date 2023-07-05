@@ -4,6 +4,7 @@ import { useState } from "react";
 import LayoutAdmin from "../../Components/LayoutAdmin"
 import { PostProducto } from "../../apis/apiProductos";
 import { PostImagen } from "../../apis/apiImagenes";
+import { NavLink } from 'react-router-dom';
 
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
@@ -12,12 +13,14 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import Container from '@mui/material/Container';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import Typography from "@mui/material/Typography";
+
 import MenuItem from '@mui/material/MenuItem';
 import SendIcon from '@mui/icons-material/Send';
 
 
 const RegistrarProductos = () => {
+
+
 
     const [categoria, setCategoria] = useState("");
 
@@ -33,6 +36,7 @@ const RegistrarProductos = () => {
         mutationFn: PostProducto,
         onSuccess: () => {
             alert("Producto Registrado");
+
         },
         onError: (error) => {
             console.error(error);
@@ -44,6 +48,7 @@ const RegistrarProductos = () => {
         mutationFn: PostImagen,
         onSuccess: () => {
             alert("Imagen Registrada");
+
         },
         onError: (error) => {
             console.error(error);
@@ -105,9 +110,11 @@ const RegistrarProductos = () => {
 
     return (
         <LayoutAdmin>
-            <Container className="p-10">
+            <Container className="p-10" maxWidth="xl">
                 <form onSubmit={handleSubmit}>
-                    <Typography variant="h4" className="text-center">Registrar Productos</Typography>
+                    <div className="text-left mt-5 mb-5 p-5 bg-light-gray rounded-3 shadow-lg border border-gray-300 border-solid border-opacity-50">
+                        <h2 className="text-3xl font-bold text-gray-700">Registrar Producto</h2>
+                    </div>
                     <div className="flex gap-10">
                         <div className="flex flex-col w-1/2">
                             <TextField
@@ -201,7 +208,7 @@ const RegistrarProductos = () => {
                         </div>
                     </div>
 
-                    <div className='flex gap-10 mt-20'>
+                    <div className='flex gap-10 mt-10'>
                         <Button
                             variant="contained"
                             type="submit"
@@ -210,15 +217,16 @@ const RegistrarProductos = () => {
                         >
                             Registrar
                         </Button>
-                        <Button
-                            variant="outlined"
-                            type="button"
-                            size='large'
-                            endIcon={<SendIcon />}
-                            onClick={() => window.location.href = "/ver-productos"}
-                        >
-                            Ver Productos
-                        </Button>
+                        <NavLink to="/lista-productos">
+                            <Button
+                                variant="outlined"
+                                type="button"
+                                size='large'
+                                endIcon={<SendIcon />}
+                            >
+                                Ver Productos
+                            </Button>
+                        </NavLink>
 
                     </div>
                 </form>

@@ -13,7 +13,7 @@ const LayoutAdmin = ({ children }) => {
             <NavbarAdmin />
             <SideBar />
             <div className='layout-admin'>
-                <Container>
+                <Container maxWidth="xl">
                     <div className="flex flex-col items-center">
                         {children}
                     </div>

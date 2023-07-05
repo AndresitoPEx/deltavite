@@ -17,7 +17,7 @@ import VerProductos from './Admin/VerProductos'
 import AdminHome from './Admin/AdminHome'
 import VerUsuarios from './Admin/VerUsuarios'
 import VerVentas from './Admin/VerVentas'
-import EditarProducto from './Admin/EditarProducto'
+import EditarProductoByID from './Admin/EditarProducto'
 
 
 //Components
@@ -47,7 +47,7 @@ const AppRoutes = () => {
     { path: '/admin-home/*', element: <AdminHome /> },
     { path: '/lista-productos', element: <VerProductos /> },
     { path: '/registrar-productos', element: <RegistrarProductos /> },
-    { path: '/editar-producto/:codigo', element: <EditarProducto /> },
+    { path: '/editar-producto/:id', element: <EditarProductoByID /> },
     { path: '/lista-usuarios', element: <VerUsuarios /> },
     { path: '/lista-ventas', element: <VerVentas /> },
 

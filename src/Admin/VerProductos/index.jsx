@@ -1,17 +1,23 @@
 
 import LayoutAdmin from "../../Components/LayoutAdmin";
-import { useQuery, useMutation } from "@tanstack/react-query";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { GetProductos, DeleteProducto } from "../../apis/apiProductos";
 import { GetImagenes } from "../../apis/apiImagenes";
 import { GetCategorias } from "../../apis/apiCategorias";
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Container, Button } from '@mui/material';
+import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-import { NavLink } from "react-router-dom";
 
 const VerProductos = () => {
+
+    const navigate = useNavigate();
+
+    const queryClient = useQueryClient();
+
     const { data: productos, isLoading, error, isError } = useQuery({
         queryKey: ["productos"],
         queryFn: GetProductos,
@@ -28,20 +34,14 @@ const VerProductos = () => {
         queryFn: GetCategorias,
     });
 
-    const deleteMutation = useMutation(DeleteProducto,{
+    //ELIMINAR PRODUCTO
+    const deleteMutation = useMutation({
+        mutationFn: DeleteProducto,
         onSuccess: () => {
-            queryClient.invalidateQueries('productos');
-            alert('Producto eliminado con éxito');
-
-        },
-        onError: (error) => {
-            alert('Hubo un error al eliminar el producto' + error.message);
-            
+            alert("Producto Eliminado");
+            queryClient.invalidateQueries("productos");
         }
-        
     });
-
-
 
 
     if (isLoading || isLoading2 || isLoading3) return <h1>Cargando...</h1>;
@@ -70,11 +70,18 @@ const VerProductos = () => {
 
     const productosTable = getProducts();
 
+    const handleEdit = (id) => {
+
+        console.log("Editar producto con id: ", id);
+        navigate(`/editar-producto/${id}`);
+    }
+
+
     return (
         <LayoutAdmin>
             <Container maxWidth="xl">
-                <div className="text-center mt-5 mb-5 p-5 bg-light-gray rounded-3 shadow-lg border border-gray-300 border-solid border-opacity-50">
-                    <h1 className="text-3xl font-bold text-gray-700">Lista de Productos</h1>
+                <div className="text-left mt-5 mb-5 p-5 bg-light-gray rounded-3 shadow-lg border border-gray-300 border-solid border-opacity-50">
+                    <h2 className="text-3xl font-bold text-gray-700">Lista de Productos</h2>
                 </div>
                 <div className="mb-5">
                     <NavLink to="/registrar-productos">
@@ -85,7 +92,7 @@ const VerProductos = () => {
                     <Table>
                         <TableHead>
                             <TableRow className="shadow-lg">
-                            {/* transition duration-500 ease-in-out transform hover:scale-105 hover:bg-gray-800 hover:border-gray-800 hover:text-gray-100 */}
+                                {/* transition duration-500 ease-in-out transform hover:scale-105 hover:bg-gray-800 hover:border-gray-800 hover:text-gray-100 */}
                                 <TableCell>Nombre</TableCell>
                                 <TableCell>Precio</TableCell>
                                 <TableCell>Categoría</TableCell>
@@ -107,12 +114,17 @@ const VerProductos = () => {
                                     <TableCell>{producto.modelo}</TableCell>
                                     <TableCell>{producto.color}</TableCell>
                                     <TableCell>
-                                        <NavLink className="mx-10" to={`/editar-producto/${producto.codigo}`}>
+                                        {/* //para editar */}
+                                        <button className="mx-10"
+                                            onClick={() => handleEdit(producto.id)
+                                            }
+                                        >
                                             <EditIcon color="warning" />
-                                        </NavLink>
+                                        </button>
+                                        {/* //para eliminar */}
                                         <button
                                             onClick={() => {
-                                                deleteMutation.mutate(producto.codigo);
+                                                deleteMutation.mutate(producto.id);
                                             }}>
                                             <DeleteIcon color="error" />
                                         </button>

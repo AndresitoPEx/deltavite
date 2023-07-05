@@ -13,7 +13,18 @@ export const GetImagenes = async () => {
     
 }
 
+export const GetImagenById = async (id) => {
+    const response = await apiImagenes.get(`/imagenes/${id}`);
+    return response.data;
+};
+
 export const PostImagen = async (imagen) => {
     
     return apiImagenes.post('/imagenes', imagen)
 }
+
+export const PutImagen = async (id, imagen) => {
+    const response = await apiImagenes.put(`/imagenes/${id}`, imagen);
+    return response.data;
+}
+

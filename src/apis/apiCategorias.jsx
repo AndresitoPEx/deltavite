@@ -13,5 +13,14 @@ export const GetCategorias = async () => {
     
 }
 
+export const GetCategoriaById = async (id) => {
+    const response = await apiCategorias.get(`/categorias/${id}`);
+    return response.data;
+};
+
 export const PostCategoria = async (categoria) => apiCategorias.post('/categorias', categoria)
 
+export const PutCategoria = async (id, categoria) => {
+    const response = await apiCategorias.put(`/categorias/${id}`, categoria);
+    return response.data;
+}

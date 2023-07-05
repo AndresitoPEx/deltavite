@@ -1,31 +1,9 @@
 {
   "producto": [
     {
-      "id": 2,
-      "nombre": "Alfa Tipo B",
-      "categoria": 1,
-      "codigo": "CHALB",
-      "modelo": "Alfa",
-      "color": "Militar",
-      "descripcion": "Chaleco Alfa A pero lo cambiamos por B",
-      "precio": 38,
-      "imagen": 2
-    },
-    {
-      "id": 3,
-      "nombre": "Alfa Tipo C",
-      "categoria": 1,
-      "codigo": "CHALC",
-      "modelo": "Alfa",
-      "color": "Militar",
-      "descripcion": "Un chaleco A pero para marketing es el C",
-      "precio": 138,
-      "imagen": 3
-    },
-    {
       "id": 4,
       "nombre": "Alfa Multicamp",
-      "categoria": 2,
+      "categoria": 1,
       "codigo": "CHALM",
       "modelo": "Alfa",
       "color": "Militar",
@@ -34,115 +12,52 @@
       "imagen": 4
     },
     {
-      "id": 5,
-      "nombre": "Delta Negro",
+      "nombre": "Delta 20",
+      "precio": "20.90",
       "categoria": 1,
-      "codigo": "CHALN",
-      "modelo": "Delta",
       "color": "Negro",
-      "descripcion": "Un chaleco negro, para poder ser inclusivo",
-      "precio": 145,
-      "imagen": 5
+      "imagen": 14,
+      "stock": 10,
+      "descripcion": "Chaleco con accesorios",
+      "codigo": "de123",
+      "modelo": "2023",
+      "id": 5
     },
     {
-      "id": 6,
-      "nombre": "DNS Negro",
-      "categoria": 1,
-      "codigo": "CHALDNS",
-      "modelo": "DNS",
+      "nombre": "Mochila de Viaje",
+      "precio": "10.80",
+      "categoria": 2,
       "color": "Negro",
-      "descripcion": "Una mochila de peso medio",
-      "precio": 152,
-      "imagen": 6
+      "imagen": 15,
+      "stock": 10,
+      "descripcion": "mochila de prueba",
+      "codigo": "aksjd123",
+      "modelo": "2023",
+      "id": 6
     },
     {
-      "id": 7,
-      "nombre": "DSC Verde",
+      "nombre": "Chaleco especial",
+      "precio": "23.20",
       "categoria": 1,
-      "codigo": "MOCHDSC",
-      "modelo": "DSC",
       "color": "Verde",
-      "descripcion": "Una mochila verde de peso medio y de gran espacio",
-      "precio": 151,
-      "imagen": 7
+      "imagen": 2,
+      "stock": 12,
+      "descripcion": "Otro Chaleco",
+      "codigo": "123kjh",
+      "modelo": "2022",
+      "id": 7
     },
     {
-      "id": 8,
-      "nombre": "Mochila XD",
-      "categoria": 2,
-      "codigo": "zxcasd",
-      "modelo": "2023",
-      "color": "Camuflado",
-      "descripcion": "Mochila de asalto con camuflaje",
-      "precio": 250,
-      "imagen": 8
-    },
-    {
-      "id": 1,
-      "nombre": "Chaleco Alfa A",
+      "nombre": "Chaleco especial",
+      "precio": "23.20",
       "categoria": 1,
-      "codigo": "ERIHIZ",
-      "modelo": "2021",
-      "color": "Militar",
-      "descripcion": "AAAAAA",
-      "precio": 120.99,
-      "imagen": 5
-    },
-    {
-      "nombre": "Mochila xD",
-      "precio": 12.9,
-      "categoria": 2,
-      "imagen": 9,
-      "stock": 10,
-      "descripcion": "mochila de prueba",
-      "codigo": "qwerty",
-      "modelo": "2023",
-      "id": 9
-    },
-    {
-      "nombre": "Mochila de Viaje",
-      "precio": 10.9,
-      "categoria": 2,
-      "imagen": 10,
-      "stock": 100,
-      "descripcion": "mochila grande",
-      "codigo": "asdf",
-      "modelo": "2023",
-      "id": 10
-    },
-    {
-      "nombre": "Mochila de Viaje",
-      "precio": "10.90",
-      "categoria": 2,
-      "imagen": 11,
-      "stock": 100,
-      "descripcion": "mochila grande",
-      "codigo": "asdf",
-      "modelo": "2023",
-      "id": 11
-    },
-    {
-      "nombre": "Mochila xD",
-      "precio": "12.90",
-      "categoria": 2,
-      "imagen": 12,
-      "stock": 10,
-      "descripcion": "mochila de prueba",
-      "codigo": "qwerty",
-      "modelo": "2023",
-      "id": 12
-    },
-    {
-      "nombre": "Delta 7",
-      "precio": "20.00",
-      "categoria": 1,
-      "color": "Camuflaje",
-      "imagen": 13,
-      "stock": 10,
-      "descripcion": "mochila de prueba 2",
-      "codigo": "zxcv",
-      "modelo": "2023",
-      "id": 13
+      "color": "Verde",
+      "imagen": 1,
+      "stock": 12,
+      "descripcion": "Otro Chaleco",
+      "codigo": "123kjh",
+      "modelo": "2022",
+      "id": 7
     }
   ],
   "imagenes": [
@@ -197,6 +112,18 @@
     {
       "nombre": "https://i.postimg.cc/NfMWq2yY/CHALECO_DELTA_7_COLOR_CAMELLO.jpg",
       "id": 13
+    },
+    {
+      "nombre": "https://i.postimg.cc/DwKf2c1L/DELTA_21_MULTICAN.jpg",
+      "id": 14
+    },
+    {
+      "nombre": "https://i.postimg.cc/xjphyG5H/DSC_1032._A_NEGRO.jpg",
+      "id": 15
+    },
+    {
+      "nombre": "https://i.postimg.cc/85CMZG5p/tres_chalecos_alfa.jpg",
+      "id": 16
     }
   ],
   "categorias": [

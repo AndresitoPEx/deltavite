@@ -10,15 +10,22 @@ export const apiProductos = axios.create({
 export const GetProductos = async () => {
     const response = await apiProductos.get('/producto')
     return response.data
-    
+
 }
 
+export const GetProductoById = async (id) => {
+    const response = await apiProductos.get(`/producto/${id}`);
+    return response.data;
+};
 
 export const PostProducto = async (producto) => {
     console.log(producto);
- return apiProductos.post('/producto', producto)
+    return apiProductos.post('/producto', producto)
 }
 
-export const DeleteProducto = async (codigo) => apiProductos.delete(`/producto/${codigo}`)
+export const DeleteProducto = id => apiProductos.delete(`/producto/${id}`)
 
-// export const PutProducto = async (producto) => apiProductos.put(`/producto/${producto.codigo}`, producto)
+export const PutProducto = async (id, producto) => {
+    const response = await apiProductos.put(`/producto/${id}`, producto);
+    return response.data;
+};
