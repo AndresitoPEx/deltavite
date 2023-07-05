@@ -3,12 +3,12 @@
     {
       "id": 4,
       "nombre": "Alfa Multicamp",
-      "categoria": 1,
+      "categoria": 2,
       "codigo": "CHALM",
       "modelo": "Alfa",
       "color": "Militar",
       "descripcion": "Un chaleco de dureza fuerte",
-      "precio": 150,
+      "precio": "150.90",
       "imagen": 4
     },
     {
@@ -34,18 +34,6 @@
       "codigo": "aksjd123",
       "modelo": "2023",
       "id": 6
-    },
-    {
-      "nombre": "Chaleco especial",
-      "precio": "23.20",
-      "categoria": 1,
-      "color": "Verde",
-      "imagen": 2,
-      "stock": 12,
-      "descripcion": "Otro Chaleco",
-      "codigo": "123kjh",
-      "modelo": "2022",
-      "id": 7
     },
     {
       "nombre": "Chaleco especial",
