@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 export const apiImagenes = axios.create({
-    baseURL: "http://localhost:3001/"
+    baseURL: "https://tungsten-rustic-pewter.glitch.me/"
     // baseURL: "https://apisdelta.azurewebsites.net/api/"
 })
 

@@ -16,7 +16,7 @@ const OrderCard = props => {
 
 
     return (
-        <div className="flex justify-evenly items-center mb-5 border-b-2 p-5">
+        <div className="flex justify-between items-center mb-5 border-b-2 py-5">
 
             <div className=" items-center gap-2">
 

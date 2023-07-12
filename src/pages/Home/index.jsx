@@ -9,8 +9,8 @@ const Home = () => {
     return (
         <Layout>
             {/* Sección de banner promocional */}
-            <section className="py-10 bg-black w-full">
-                <div className="container mx-auto ">
+            <section className="w-full  ">
+                <div className="">
                     <img src="https://i.postimg.cc/90SwfqCK/294061075-553185146335372-2252448118094084959-n.jpg" alt="Banner promocional" className="w-full" />
                 </div>
             </section>
@@ -82,7 +82,7 @@ const Home = () => {
 
                     {/* Sección de banner con efecto parallax */}
 
-                    <section className="py-10">
+                    <section className="parallax-section">
                         <div className="parallax-container">
                             <div className="parallax-image" style={{ backgroundImage: "url(https://i.postimg.cc/TPZsntQ3/53364279-624005534718277-4547978364798894080-n.png)" }}></div>
                             <div className="container mx-auto">

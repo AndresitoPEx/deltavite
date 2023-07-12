@@ -2,12 +2,19 @@ import { NavLink } from "react-router-dom"
 import { useContext } from "react"
 import { CarritoDeCompras } from "../../Context"
 import { ShoppingBagIcon } from '@heroicons/react/24/outline'
+import LoginButton from "../LoginButton"
+import Profile from "../Profile"
+import LogOut from "../LogOut"
+import { useAuth0 } from "@auth0/auth0-react"
 
 
 const Navbar = () => {
     const context = useContext(CarritoDeCompras)
 
     const { contar } = useContext(CarritoDeCompras)
+
+    const { isAuthenticated } = useAuth0()
+
 
     const activeStyle = "text-[#f5821f] border-b-2 border-[#f5821f] pb-1 transition duration-500 ease-in-out font-semibold "
 
@@ -46,8 +53,11 @@ const Navbar = () => {
 
             </ul>
             <ul className="flex items-center gap-3">
-                <li className="text-base font-medium text-gray-500">
-                    andresrt952@gmail.com
+                <li>
+                    <Profile />
+                </li>    
+                <li>
+                    {isAuthenticated ? <LogOut /> : <LoginButton />}
                 </li>
                 <li>
                     <NavLink
@@ -56,14 +66,7 @@ const Navbar = () => {
                         Mi Pedido
                     </NavLink>
                 </li>
-                <li>
-                    <NavLink
-                        className={({ isActive }) => isActive ? activeStyle : undefined}
-                        to="/login">
-                        Sing in
-                    </NavLink>
-                </li>
-    
+
                 <li className="flex items-center justify-center">
                     <button className="flex items-center justify-center"
                         onClick={() => context.openCheckOutMenu()}
@@ -76,6 +79,7 @@ const Navbar = () => {
                     </button>
 
                 </li>
+
 
             </ul>
         </nav>

@@ -8,7 +8,7 @@ import CuentaCliente from './pages/MiCuenta'
 import Nosotros from './pages/Nosotros'
 import NotFound from './pages/NotFound'
 import UltimoPedido from './pages/UltimoPedido'
-import Login from './pages/Login'
+
 
 
 //Area Backend
@@ -40,8 +40,6 @@ const AppRoutes = () => {
     { path: '/mi-cuenta', element: <CuentaCliente /> },
     { path: '/nosotros', element: <Nosotros /> },
     { path: '/mi-pedido', element: <UltimoPedido /> },
-    { path: '/login', element: <Login /> },
-    { path: '/SingOut', element: <Login /> },
     { path: '*', element: <NotFound /> },
     //Area Backend
     { path: '/admin-home/*', element: <AdminHome /> },
@@ -64,7 +62,7 @@ const App = () => {
     <CarritoProvider>
       <BrowserRouter>
         <AppRoutes />
-      
+
         <CheckOutMenu />
       </BrowserRouter>
     </CarritoProvider>

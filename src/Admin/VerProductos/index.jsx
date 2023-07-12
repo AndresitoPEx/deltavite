@@ -99,7 +99,7 @@ const VerProductos = () => {
                                 <TableCell>Imagen</TableCell>
                                 <TableCell>Modelo</TableCell>
                                 <TableCell>Color</TableCell>
-                                <TableCell>Acciones</TableCell>
+                                <TableCell> Editar/Eliminar</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
