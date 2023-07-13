@@ -125,7 +125,7 @@ const EditarProductoByID = () => {
                             value={formData?.stock || ""}
                             onChange={handleInputChange}
                         />
-                        {/* Categoría */}
+                        {/* Categorías */}
                         <Select
                             name="categoria"
                             label="Categoría"

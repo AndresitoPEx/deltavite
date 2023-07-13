@@ -1,42 +1,30 @@
 import React from 'react';
+import { useMutation, useQueryClient, useQuery } from "@tanstack/react-query";
 import { useState } from "react";
+import { NavLink } from 'react-router-dom';
 
 import LayoutAdmin from "../../Components/LayoutAdmin"
 import { PostProducto } from "../../apis/apiProductos";
 import { PostImagen } from "../../apis/apiImagenes";
-import { NavLink } from 'react-router-dom';
+import { GetCategorias } from '../../apis/apiCategorias';
 
-
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-
-//materialUI
+// Material UI
 import Container from '@mui/material/Container';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-
 import MenuItem from '@mui/material/MenuItem';
 import SendIcon from '@mui/icons-material/Send';
+import Select from '@mui/material/Select';
+import FormControl from '@mui/material/FormControl';
+import InputLabel from '@mui/material/InputLabel';
+
 
 
 const RegistrarProductos = () => {
-
-
-
-    const [categoria, setCategoria] = useState("");
-
-    const opcionesCategoria = [
-        { id: 1, nombre: "Chaleco Antibala" },
-        { id: 2, nombre: "Mochila Táctica" },
-        // Agrega más opciones aquí si es necesario
-    ];
-
-
-
     const mutationProduct = useMutation({
         mutationFn: PostProducto,
         onSuccess: () => {
             alert("Producto Registrado");
-
         },
         onError: (error) => {
             console.error(error);
@@ -48,7 +36,6 @@ const RegistrarProductos = () => {
         mutationFn: PostImagen,
         onSuccess: () => {
             alert("Imagen Registrada");
-
         },
         onError: (error) => {
             console.error(error);
@@ -56,11 +43,26 @@ const RegistrarProductos = () => {
         },
     });
 
+    const queryClient = useQueryClient();
+
+    const { data: categorias } = useQuery(["categorias"], () => GetCategorias());
+
+    const [formData, setFormData] = useState({
+        nombre: "",
+        precio: "",
+        categoria: "",
+        color: "",
+        imagen: "",
+        stock: "",
+        descripcion: "",
+        codigo: "",
+        modelo: ""
+    });
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         const data = Object.fromEntries(new FormData(e.target).entries());
-        console.log(data);
 
         // Enviar la nueva imagen (si hay una)
         let imagenId;
@@ -103,10 +105,16 @@ const RegistrarProductos = () => {
 
         // Enviar el nuevo producto
         mutationProduct.mutate(data);
-        useQueryClient().invalidateQueries("productos");
+        queryClient.invalidateQueries("productos");
     };
 
-
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prevData) => ({
+            ...prevData,
+            [name]: value,
+        }));
+    };
 
     return (
         <LayoutAdmin>
@@ -123,7 +131,8 @@ const RegistrarProductos = () => {
                                 label="Nombre"
                                 variant="filled"
                                 margin="normal"
-
+                                value={formData.nombre}
+                                onChange={handleInputChange}
                             />
 
                             <TextField
@@ -132,25 +141,27 @@ const RegistrarProductos = () => {
                                 label="Precio"
                                 variant="filled"
                                 margin="normal"
+                                value={formData.precio}
+                                onChange={handleInputChange}
                             />
 
-                            <TextField
-                                id="categoria"
-                                name="categoria"
-                                label="Categoria"
-                                variant="filled"
-                                margin="normal"
-                                select
-                                fullWidth
-                                value={categoria} // Establece el valor seleccionado en el estado
-                                onChange={(e) => setCategoria(e.target.value)} // Actualiza el estado al seleccionar una opción
-                            >
-                                {opcionesCategoria.map((opcion) => (
-                                    <MenuItem key={opcion.id} value={opcion.id}>
-                                        {opcion.nombre}
-                                    </MenuItem>
-                                ))}
-                            </TextField>
+                            <FormControl variant="filled" margin="normal">
+                                <InputLabel id="categoria-label">Categoría</InputLabel>
+                                <Select
+                                    labelId="categoria-label"
+                                    id="categoria"
+                                    name="categoria"
+                                    value={formData.categoria}
+                                    onChange={handleInputChange}
+                                >
+                                    {categorias?.map((categoria) => (
+                                        <MenuItem key={categoria.id} value={categoria.id}>
+                                            {categoria.nombre}
+                                        </MenuItem>
+                                    ))}
+                                </Select>
+                            </FormControl>
+
 
                             <TextField
                                 id="color"
@@ -158,8 +169,9 @@ const RegistrarProductos = () => {
                                 label="Color"
                                 variant="filled"
                                 margin="normal"
+                                value={formData.color}
+                                onChange={handleInputChange}
                             />
-
 
                             <TextField
                                 id="imagen"
@@ -167,7 +179,8 @@ const RegistrarProductos = () => {
                                 label="Imagen"
                                 variant="filled"
                                 margin="normal"
-
+                                value={formData.imagen}
+                                onChange={handleInputChange}
                             />
 
                         </div>
@@ -179,6 +192,8 @@ const RegistrarProductos = () => {
                                 label="Stock"
                                 variant="filled"
                                 margin="normal"
+                                value={formData.stock}
+                                onChange={handleInputChange}
                             />
 
                             <TextField
@@ -187,6 +202,8 @@ const RegistrarProductos = () => {
                                 label="Descripcion"
                                 variant="filled"
                                 margin="normal"
+                                value={formData.descripcion}
+                                onChange={handleInputChange}
                             />
 
                             <TextField
@@ -195,6 +212,8 @@ const RegistrarProductos = () => {
                                 label="Codigo"
                                 variant="filled"
                                 margin="normal"
+                                value={formData.codigo}
+                                onChange={handleInputChange}
                             />
 
                             <TextField
@@ -203,6 +222,8 @@ const RegistrarProductos = () => {
                                 label="Modelo"
                                 variant="filled"
                                 margin="normal"
+                                value={formData.modelo}
+                                onChange={handleInputChange}
                             />
 
                         </div>
@@ -236,5 +257,3 @@ const RegistrarProductos = () => {
 };
 
 export default RegistrarProductos;
-
-

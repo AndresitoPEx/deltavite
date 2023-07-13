@@ -3,7 +3,10 @@ import axios from 'axios';
 
 export const apiProductos = axios.create({
     baseURL: "https://tungsten-rustic-pewter.glitch.me/"
-    // baseURL: "https://apisdelta.azurewebsites.net/api/"
+    // baseURL: "https://tungsten-rustic-pewter.glitch.me/"
+    
+    
+    
 })
 
 
