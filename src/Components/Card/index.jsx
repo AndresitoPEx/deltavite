@@ -15,6 +15,7 @@ const Card = ({ codigo, categoria, nombre, precio, imagen, color }) => {
     const { contar } = useContext(CarritoDeCompras)
 
     const handleVerDetalles = (codigo) => {
+    
         navigate(`/producto/${codigo}`)
     }
 

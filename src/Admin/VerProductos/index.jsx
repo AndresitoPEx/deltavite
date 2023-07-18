@@ -1,4 +1,3 @@
-
 import LayoutAdmin from "../../Components/LayoutAdmin";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { GetProductos, DeleteProducto } from "../../apis/apiProductos";
@@ -34,7 +33,6 @@ const VerProductos = () => {
         queryFn: GetCategorias,
     });
 
-    //ELIMINAR PRODUCTO
     const deleteMutation = useMutation({
         mutationFn: DeleteProducto,
         onSuccess: () => {
@@ -43,7 +41,6 @@ const VerProductos = () => {
         }
     });
 
-
     if (isLoading || isLoading2 || isLoading3) return <h1>Cargando...</h1>;
     if (isError) return <h1>Hubo un error al obtener los datos de productos: {error.message}</h1>;
     if (isError2) return <h1>Hubo un error al obtener los datos de imágenes: {error2.message}</h1>;
@@ -51,6 +48,7 @@ const VerProductos = () => {
 
     const getProducts = () => {
         if (productos && imagenes && categorias) {
+            console.log("Lista de productos: ", productos);
             return productos.map((producto) => {
                 const imagen = imagenes.find((img) => img.id === producto.imagen);
                 const imagenURL = imagen ? imagen.nombre : '';
@@ -70,12 +68,10 @@ const VerProductos = () => {
 
     const productosTable = getProducts();
 
-    const handleEdit = (id) => {
-
-        console.log("Editar producto con id: ", id);
-        navigate(`/editar-producto/${id}`);
+    const handleEdit = (codigo) => {
+        console.log("Editar producto con código: ", codigo);
+        navigate(`/editar-producto/${codigo}`);
     }
-
 
     return (
         <LayoutAdmin>
@@ -92,14 +88,13 @@ const VerProductos = () => {
                     <Table>
                         <TableHead>
                             <TableRow className="shadow-lg">
-                                {/* transition duration-500 ease-in-out transform hover:scale-105 hover:bg-gray-800 hover:border-gray-800 hover:text-gray-100 */}
                                 <TableCell>Nombre</TableCell>
                                 <TableCell>Precio</TableCell>
                                 <TableCell>Categoría</TableCell>
                                 <TableCell>Imagen</TableCell>
                                 <TableCell>Modelo</TableCell>
                                 <TableCell>Color</TableCell>
-                                <TableCell> Editar/Eliminar</TableCell>
+                                <TableCell>Editar/Eliminar</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -107,25 +102,17 @@ const VerProductos = () => {
                                 <TableRow key={producto.id}>
                                     <TableCell>{producto.nombre}</TableCell>
                                     <TableCell>{producto.precio}</TableCell>
-                                    <TableCell>{producto.categoria}</TableCell>
+                                    <TableCell>{producto.categoriaNombre}</TableCell>
                                     <TableCell>
-                                        <img src={producto.imagen} alt="Imagen del producto" className="w-20" />
+                                        <img src={producto.imagenNombre} alt="Imagen del producto" className="w-20" />
                                     </TableCell>
                                     <TableCell>{producto.modelo}</TableCell>
                                     <TableCell>{producto.color}</TableCell>
                                     <TableCell>
-                                        {/* //para editar */}
-                                        <button className="mx-10"
-                                            onClick={() => handleEdit(producto.id)
-                                            }
-                                        >
+                                        <button className="mx-10" onClick={() => handleEdit(producto.codigo)}>
                                             <EditIcon color="warning" />
                                         </button>
-                                        {/* //para eliminar */}
-                                        <button
-                                            onClick={() => {
-                                                deleteMutation.mutate(producto.id);
-                                            }}>
+                                        <button onClick={() => deleteMutation.mutate(producto.id)}>
                                             <DeleteIcon color="error" />
                                         </button>
                                     </TableCell>

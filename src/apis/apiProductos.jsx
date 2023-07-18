@@ -2,13 +2,10 @@
 import axios from 'axios';
 
 export const apiProductos = axios.create({
-    baseURL: "https://tungsten-rustic-pewter.glitch.me/"
+    baseURL: "http://ihiz062-001-site1.dtempurl.com/api/"
     // baseURL: "https://tungsten-rustic-pewter.glitch.me/"
-    
-    
-    
-})
 
+})
 
 export const GetProductos = async () => {
     const response = await apiProductos.get('/producto')
@@ -16,10 +13,16 @@ export const GetProductos = async () => {
 
 }
 
-export const GetProductoById = async (id) => {
-    const response = await apiProductos.get(`/producto/${id}`);
+// export const GetProductoById = async (id) => {
+//     const response = await apiProductos.get(`/producto/${id}`);
+//     return response.data;
+// };
+
+export const GetProductoByCodigo = async (codigo) => {
+    const response = await apiProductos.get(`/producto?codigo=${codigo}`);
     return response.data;
 };
+
 
 export const PostProducto = async (producto) => {
     console.log(producto);

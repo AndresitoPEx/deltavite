@@ -48,11 +48,11 @@ const DetalleProducto = () => {
             const producto = productos.find((producto) => producto.codigo === id);
 
             if (producto) {
-                const imagen = imagenes.find((img) => img.id === producto.imagen);
+                const imagen = imagenes.find((img) => img.nombre === producto.imagenNombre);
                 const imagenURL = imagen ? imagen.nombre : "";
 
                 const categoria = categorias.find(
-                    (cat) => cat.id === producto.categoria
+                    (cat) => cat.nombre === producto.categoriaNombre
                 );
                 const categoriaNombre = categoria ? categoria.nombre : "";
 
@@ -61,20 +61,22 @@ const DetalleProducto = () => {
                     imagen: imagenURL,
                     categoria: categoriaNombre,
                 };
+                
             }
+            
         }
         return null;
     };
 
     const agregarProductoACarrito = (producto) => {
-        const { categoria, nombre, precio, imagen } = producto;
+        const { categoriaNombre, nombre, precio, imagen } = producto;
 
         context.setContar(contar + 1);
         context.setProductosCarrito([
             ...context.productosCarrito,
             {
                 codigo: producto.codigo,
-                categoria,
+                categoria: categoriaNombre,
                 nombre,
                 precio,
                 imagen,
@@ -112,6 +114,7 @@ const DetalleProducto = () => {
     };
 
     const producto = getProductById(codigo);
+    console.log(producto);
 
     if (!producto) return <h1>No se encontró el producto</h1>;
 

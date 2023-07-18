@@ -8,14 +8,16 @@ const Profile = () => {
     }
 
     if (!isAuthenticated || !user) {
-        return <div></div>;
+        return <></>;
     }
+
+    console.log(user);
 
     return (
         <div>
-            <h3 className="
-            text-[#f5821f] mt-1 text-lg 
-            ">{user.email}</h3>
+            <h3 className="text-[#f5821f] mt-1 text-lg ">
+                {user.email}
+            </h3>
         </div>
     );
 };

@@ -52,13 +52,16 @@ const Navbar = () => {
                 </li>
 
             </ul>
+
             <ul className="flex items-center gap-3">
                 <li>
                     <Profile />
-                </li>    
+                </li>   
+
                 <li>
                     {isAuthenticated ? <LogOut /> : <LoginButton />}
                 </li>
+                
                 <li>
                     <NavLink
                         className={({ isActive }) => isActive ? activeStyle : undefined}

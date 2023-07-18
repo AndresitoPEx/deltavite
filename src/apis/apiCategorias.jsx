@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 export const apiCategorias = axios.create({
-    baseURL: "https://tungsten-rustic-pewter.glitch.me/"
+    baseURL: "http://ihiz062-001-site1.dtempurl.com/api/"
     // baseURL: "https://tungsten-rustic-pewter.glitch.me/"
 
 })
