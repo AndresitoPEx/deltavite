@@ -12,13 +12,14 @@ import UltimoPedido from './pages/UltimoPedido'
 
 
 //Area Backend
-import RegistrarProductos from './Admin/RegistrarProductos'
-import VerProductos from './Admin/VerProductos'
 import AdminHome from './Admin/AdminHome'
-import VerUsuarios from './Admin/VerUsuarios'
-import VerVentas from './Admin/VerVentas'
+import VerProductos from './Admin/VerProductos'
+import RegistrarProductos from './Admin/RegistrarProductos'
 import EditarProducto from './Admin/EditarProducto'
+import VerUsuarios from './Admin/VerUsuarios'
+import RegistrarUsuario from './Admin/RegistrarUsuario'
 
+import VerVentas from './Admin/VerVentas'
 
 //Components
 import DetalleProducto from './Components/DetalleProducto'
@@ -47,6 +48,7 @@ const AppRoutes = () => {
     { path: '/registrar-productos', element: <RegistrarProductos /> },
     { path: '/editar-producto/:codigo', element: <EditarProducto /> },
     { path: '/lista-usuarios', element: <VerUsuarios /> },
+    { path: '/registrar-usuario', element: <RegistrarUsuario /> },
     { path: '/lista-ventas', element: <VerVentas /> },
 
 

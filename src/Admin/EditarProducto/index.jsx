@@ -1,19 +1,23 @@
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { GetProductoByCodigo, PutProducto } from "../../apis/apiProductos";
 import { GetImagenes } from "../../apis/apiImagenes";
 import { GetCategorias } from "../../apis/apiCategorias";
-import { useParams } from "react-router-dom";
 import LayoutAdmin from "../../Components/LayoutAdmin";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import InputLabel from "@mui/material/InputLabel";
 
 const EditarProducto = () => {
   const { codigo } = useParams();
   const queryClient = useQueryClient();
+
+  const [categoriaNombre, setCategoriaNombre] = useState("");
 
   // Estado para almacenar los datos del producto a editar
   const [formData, setFormData] = useState(null);
@@ -36,8 +40,7 @@ const EditarProducto = () => {
   });
 
   // Mutación para actualizar los datos del producto
-  const updateMutation = useMutation({
-    mutationFn: (updatedData) => PutProducto(codigo, updatedData),
+  const updateMutation = useMutation((updatedData) => PutProducto(updatedData.id, updatedData), {
     onSuccess: () => {
       alert("Producto actualizado exitosamente");
       queryClient.invalidateQueries("productos");
@@ -48,23 +51,49 @@ const EditarProducto = () => {
   useEffect(() => {
     if (producto) {
       setFormData(producto);
+      setCategoriaNombre(producto.categoriaNombre);
     }
   }, [producto]);
 
   // Función para manejar los cambios en el formulario
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+
+    if (name === "categoria") {
+      const categoriaSeleccionada = categorias.find(
+        (categoria) => categoria.nombre === value
+      );
+
+      setFormData((prevData) => ({
+        ...prevData,
+        categoriaId: categoriaSeleccionada?.id || 0,
+      }));
+      setCategoriaNombre(value);
+    } else {
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: value,
+      }));
+    }
   };
 
   // Función para manejar el envío del formulario
   const handleSubmit = (e) => {
     e.preventDefault();
     if (formData) {
-      updateMutation.mutate(formData);
+      const updatedData = {
+        id: formData.id || 0,
+        nombre: formData.nombre || "",
+        categoriaId: formData.categoriaId || 0,
+        codigo: formData.codigo || "",
+        modelo: formData.modelo || "",
+        color: formData.color || "",
+        descripcion: formData.descripcion || "",
+        stock: formData.stock || 0,
+        precio: formData.precio || 0,
+        imagenUrl: formData.imagenUrl || "",
+      };
+      updateMutation.mutate(updatedData);
     }
   };
 
@@ -74,26 +103,14 @@ const EditarProducto = () => {
   // Manejar errores en la obtención del producto
   if (isError) return <h1>Error al obtener el producto: {error.message}</h1>;
 
-  // Lograr que el input de imagen se pueda editar ingresando un enlace externo
-  const handleImagenChange = (e) => {
-    const { value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      imagen: value,
-    }));
-  };
-
   // Renderizar las opciones de categoría
   const renderCategoriaOptions = () => {
     return categorias?.map((categoria) => (
-      <MenuItem key={categoria.id} value={categoria.id}>
+      <MenuItem key={categoria.id} value={categoria.nombre}>
         {categoria.nombre}
       </MenuItem>
     ));
   };
-
-
-
 
   return (
     <LayoutAdmin>
@@ -128,14 +145,17 @@ const EditarProducto = () => {
               onChange={handleInputChange}
             />
             {/* Categorías */}
-            <Select
-              name="categoria"
-              label="Categoría"
-              value={formData?.categoria || ""}
-              onChange={handleInputChange}
-            >
-              {renderCategoriaOptions()}
-            </Select>
+            <FormControl>
+              <InputLabel id="categoria-label">Categoría</InputLabel>
+              <Select
+                name="categoria"
+                labelId="categoria-label"
+                value={categoriaNombre || ""}
+                onChange={handleInputChange}
+              >
+                {renderCategoriaOptions()}
+              </Select>
+            </FormControl>
             <TextField
               name="modelo"
               label="Modelo"
@@ -149,15 +169,9 @@ const EditarProducto = () => {
               onChange={handleInputChange}
             />
             <TextField
-              name="imagen"
+              name="imagenUrl"
               label="Imagen"
-              value={formData?.imagen || ""}
-              onChange={handleImagenChange}
-            />
-            <TextField
-              name="codigo"
-              label="Codigo"
-              value={formData?.codigo || ""}
+              value={formData?.imagenUrl || ""}
               onChange={handleInputChange}
             />
           </div>

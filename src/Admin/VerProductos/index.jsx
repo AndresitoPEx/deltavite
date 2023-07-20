@@ -70,8 +70,10 @@ const VerProductos = () => {
 
     const handleEdit = (codigo) => {
         console.log("Editar producto con código: ", codigo);
+
         navigate(`/editar-producto/${codigo}`);
     }
+    
 
     return (
         <LayoutAdmin>
@@ -92,7 +94,7 @@ const VerProductos = () => {
                                 <TableCell>Precio</TableCell>
                                 <TableCell>Categoría</TableCell>
                                 <TableCell>Imagen</TableCell>
-                                <TableCell>Modelo</TableCell>
+                                <TableCell>Código</TableCell>
                                 <TableCell>Color</TableCell>
                                 <TableCell>Editar/Eliminar</TableCell>
                             </TableRow>
@@ -101,12 +103,12 @@ const VerProductos = () => {
                             {productosTable.map((producto) => (
                                 <TableRow key={producto.id}>
                                     <TableCell>{producto.nombre}</TableCell>
-                                    <TableCell>{producto.precio}</TableCell>
+                                    <TableCell>S/. {producto.precio.toFixed(2)}</TableCell>
                                     <TableCell>{producto.categoriaNombre}</TableCell>
                                     <TableCell>
                                         <img src={producto.imagenNombre} alt="Imagen del producto" className="w-20" />
                                     </TableCell>
-                                    <TableCell>{producto.modelo}</TableCell>
+                                    <TableCell>{producto.codigo}</TableCell>
                                     <TableCell>{producto.color}</TableCell>
                                     <TableCell>
                                         <button className="mx-10" onClick={() => handleEdit(producto.codigo)}>
@@ -115,7 +117,7 @@ const VerProductos = () => {
                                         <button onClick={() => deleteMutation.mutate(producto.id)}>
                                             <DeleteIcon color="error" />
                                         </button>
-                                    </TableCell>
+                                    </TableCell>    
                                 </TableRow>
                             ))}
                         </TableBody>

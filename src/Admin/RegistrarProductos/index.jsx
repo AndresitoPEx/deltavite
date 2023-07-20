@@ -17,6 +17,7 @@ import Select from '@mui/material/Select';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 
+
 const RegistrarProductos = () => {
   const mutationProduct = useMutation({
     mutationFn: PostProducto,
@@ -147,15 +148,6 @@ const RegistrarProductos = () => {
               </FormControl>
 
 
-              <TextField
-                id="color"
-                name="color"
-                label="Color"
-                variant="filled"
-                margin="normal"
-                value={formData.color}
-                onChange={handleInputChange}
-              />
 
               <TextField
                 id="imagen"
@@ -170,6 +162,17 @@ const RegistrarProductos = () => {
             </div>
 
             <div className="flex flex-col w-1/2">
+
+              <TextField
+                id="color"
+                name="color"
+                label="Color"
+                variant="filled"
+                margin="normal"
+                value={formData.color}
+                onChange={handleInputChange}
+              />
+
               <TextField
                 id="stock"
                 name="stock"
@@ -187,16 +190,6 @@ const RegistrarProductos = () => {
                 variant="filled"
                 margin="normal"
                 value={formData.descripcion}
-                onChange={handleInputChange}
-              />
-
-              <TextField
-                id="codigo"
-                name="codigo"
-                label="Codigo"
-                variant="filled"
-                margin="normal"
-                value={formData.codigo}
                 onChange={handleInputChange}
               />
 

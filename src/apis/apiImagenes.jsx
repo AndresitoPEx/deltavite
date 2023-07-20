@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 export const apiImagenes = axios.create({
-    baseURL: "http://ihiz062-001-site1.dtempurl.com/api/"
+    baseURL: "https://ihiz062-001-site1.dtempurl.com/api/"
     // baseURL: "https://tungsten-rustic-pewter.glitch.me/"
     
 })
