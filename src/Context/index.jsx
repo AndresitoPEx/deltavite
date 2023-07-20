@@ -15,8 +15,6 @@ export const CarritoProvider = ({ children }) => {
     const [order, setOrder] = useState([])
 
 
-
-
     return (
         <CarritoDeCompras.Provider
             value={{

@@ -31,6 +31,8 @@ const CheckOutMenu = () => {
         context.setOrder([...context.order, newOrder])
         context.setProductosCarrito([])
         context.closeCheckOutMenu()
+    
+        console.log("datos de la orden: ",newOrder);
     }
 
     return (
@@ -54,7 +56,7 @@ const CheckOutMenu = () => {
                                 codigo={producto.codigo}
                                 nombre={producto.nombre}
                                 imagen={producto.imagen}
-                                precio={producto.precio}
+                                precio={producto.precio.toFixed(2)}
                                 handleDelete={handleDelete}
                             />
                         )

@@ -77,7 +77,7 @@ const Navbar = () => {
                         <ShoppingBagIcon className="h-6 w-6" />
                         <span
                             className="text-white rounded-full w-6 h-6 p-1 text-sm font-semibold">
-                            {contar}
+                            {context.productosCarrito.length}
                         </span>
                     </button>
 

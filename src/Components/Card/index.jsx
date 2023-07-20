@@ -15,11 +15,9 @@ const Card = ({ codigo, categoria, nombre, precio, imagen, color }) => {
     const { contar } = useContext(CarritoDeCompras)
 
     const handleVerDetalles = (codigo) => {
-    
+
         navigate(`/producto/${codigo}`)
     }
-
-
 
     const imageStyle = {
         backgroundImage: `url(${imagen})`,
@@ -76,16 +74,20 @@ const Card = ({ codigo, categoria, nombre, precio, imagen, color }) => {
     const priceToShow = precio % 1 === 0 ? precio : formattedPrice;
 
     return (
-        <div className="bg-[#f5f5f5] rounded-sm hover-card" >
+        <div className="bg-[#f5f5f5] rounded-sm hover-card flex flex-col justify-between " >
             <div
                 className="relative mb-2 w-full cursor-pointer" style={imageStyle}
             ></div>
             <div className="flex flex-col p-3 ">
                 <div className="m-2">
-                    <span className="text-lg font-bold text-gray-500">{categoria}</span>
+                    <span className="text-md font-thin text-black bg-[#d1d1d1] py-1 px-2 rounded-md hover:bg-[#e26611] hover:text-white">
+                        {categoria}
+                    </span>
                 </div>
                 <div className="flex justify-between items-center m-2">
-                    <span className="text-md font-light">{nombre}</span>
+                    <span className="text-xl font-semibold text-gray-600">
+                        {nombre}
+                    </span>
                     <span className="text-lg font-semibold">S/. {priceToShow}</span>
                 </div>
                 <div className="flex justify-between items-center m-2 ">
