@@ -35,7 +35,7 @@ export const CarritoProvider = ({ children }) => {
 
 
     console.log("Valor de total desde el contexto:", total);
-    console.log("Productos en el carrito desde el contexto:", productosCarrito.length);
+    console.log("Productos en el carrito desde el contexto:", productosCarrito);
 
 
     return (

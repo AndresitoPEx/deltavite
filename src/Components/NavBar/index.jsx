@@ -12,7 +12,13 @@ import { ShoppingCart } from "@mui/icons-material"
 const Navbar = () => {
     const context = useContext(CarritoDeCompras)
 
-    console.log("Productos en el carrito desde el contexto Navbar:", context.productosCarrito.length);
+    // Calcular la cantidad total de productos en el carrito
+    const cantidadTotalProductos = context.productosCarrito.reduce(
+        (total, producto) => total + producto.cantidad, 0
+    );
+
+    console.log("Cantidad total de productos en el carrito desde el contexto Navbar:", cantidadTotalProductos);
+    //console.log("Productos en el carrito desde el contexto Navbar:", context.productosCarrito.length);
 
     const { isAuthenticated } = useAuth0()
 
@@ -76,7 +82,7 @@ const Navbar = () => {
                         onClick={() => context.openCheckOutMenu()}
                     >
                         <ShoppingCart className="h-6 w-6" />
-                        <Badge badgeContent={context.productosCarrito.length} color="error"/>
+                        <Badge badgeContent={cantidadTotalProductos} color="error"/>
                         
                     </button>
 
