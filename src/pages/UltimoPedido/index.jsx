@@ -1,12 +1,11 @@
-import Layout from "../../Components/Layout";
-import { useContext } from "react";
-import { CarritoDeCompras } from "../../Context";
-import OrderCard from "../../Components/OrderCard";
-import { Link } from "react-router-dom";
-import { ChevronRightIcon } from "@heroicons/react/24/solid";
-import { PrecioTotal } from "../../utils";
-import Container from "@mui/material/Container";
-
+import { useContext, useEffect } from 'react';
+import { ChevronRightIcon } from '@heroicons/react/24/solid';
+import { CarritoDeCompras } from '../../Context/carritoContext';
+import { Link } from 'react-router-dom';
+import OrderCard from '../../Components/OrderCard';
+import { PrecioTotal } from '../../utils';
+import Layout from '../../Components/Layout';
+import Container from '@mui/material/Container';
 
 const UltimoPedido = () => {
     const context = useContext(CarritoDeCompras);
@@ -27,11 +26,13 @@ const UltimoPedido = () => {
         ];
         context.setOrder(newOrderList);
     };
+    useEffect(() => {
+        context.setTotal(parseFloat(PrecioTotal(context.order?.[index]?.productos)));
+    }, [context.order?.[index]?.productos]);
 
     return (
         <Layout>
             <Container maxWidth="xl">
-
                 {context.order.length === 0 || context.order[index]?.productos?.length === 0 ? (
                     <div className="flex flex-col items-center justify-center h-screen">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-20 h-20">
@@ -40,7 +41,6 @@ const UltimoPedido = () => {
                         <p className="text-3xl font-semibold text-[#f5821f] mb-4">No hay pedidos aún.</p>
                         <p className="text-xl text-gray-600">¡Empieza agregando productos a tu carrito!</p>
                     </div>
-
                 ) : (
                     <div>
                         <h1 className="text-3xl font-semibold text-center mb-10 mt-5 text-[#f5821f]">
@@ -48,7 +48,6 @@ const UltimoPedido = () => {
                         </h1>
 
                         <div className="flex flex-col md:flex-row w-full md:px-40 py-10 h-screen">
-
                             <div className="flex flex-col md:w-3/5 px-5">
                                 {context.order?.[index]?.productos?.map((producto) => {
                                     return (
@@ -66,7 +65,7 @@ const UltimoPedido = () => {
                             <div className="flex flex-col md:border-l-2 md:pl-5">
                                 <div className="mb-20">
                                     <h3 className="text-lg font-semibold">
-                                        Precio Total:{" "}
+                                        Precio Total:{' '}
                                         <span className="font-bold text-2xl">
                                             S/. {PrecioTotal(context.order?.[index]?.productos)}
                                         </span>

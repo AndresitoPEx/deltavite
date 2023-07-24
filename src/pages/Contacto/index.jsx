@@ -1,50 +1,171 @@
+import { useState, useEffect } from "react";
 import Layout from "../../Components/Layout";
+import { Container, Grid, TextField, Button, Typography } from "@mui/material";
 
 const Contacto = () => {
+  const [nombre, setNombre] = useState("");
+  const [correo, setCorreo] = useState("");
+  const [mensaje, setMensaje] = useState("");
+  const [errores, setErrores] = useState({
+    nombre: "",
+    correo: "",
+    mensaje: "",
+  });
+
+  const validarNombre = () => {
+    if (nombre.trim() === "" || nombre.length < 3 || nombre.length > 30 || !/^[a-zA-Z\s]*$/.test(nombre)) {
+      return "El nombre es obligatorio";
+    }
+    return null;
+  };
+
+  const validarCorreo = () => {
+    if (correo.trim() === "") {
+      return "El correo electrónico es obligatorio";
+    } else if (!/\S+@\S+\.\S+/.test(correo)) {
+      return "El correo electrónico no es válido";
+    }
+    return null;
+  };
+
+  const validarMensaje = () => {
+    if (mensaje.trim() === "" || mensaje.length < 10 || mensaje.length > 500) {
+      return "El mensaje es obligatorio";
+    }
+    return null;
+  };
+
+  const enviarMensaje = async () => {
+    const errores = {
+      nombre: validarNombre(),
+      correo: validarCorreo(),
+      mensaje: validarMensaje(),
+    };
+    setErrores(errores);
+    const mensajeError = Object.values(errores).find((error) => error);
+    if (mensajeError) {
+      
+      return;
+    }
+
+    // Aqui enviamos el mensaje al servidor de formspree
+    try {
+      const response = await fetch("https://formspree.io/f/moqovnnq", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          nombre,
+          correo,
+          mensaje,
+        }),
+      });
+
+      if (response.ok) {
+        alert("Mensaje enviado correctamente");
+        setNombre("");
+        setCorreo("");
+        setMensaje("");
+      } else {
+        alert("Hubo un error al enviar el mensaje. Por favor, intenta nuevamente.");
+      }
+    } catch (error) {
+      alert("Hubo un error al enviar el mensaje. Por favor, intenta nuevamente.");
+    }
+  };
+
   return (
     <Layout>
       <div className="bg-gray-100">
         <section className="py-10">
-          <div className="container mx-auto">
-            <h1 className="text-3xl font-bold mb-6 text-center">Contacto</h1>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-              <div>
-                <h2 className="text-2xl font-bold mb-4">Información de Contacto</h2>
-                <p className="text-lg mb-2">
-                  <span className="font-bold">Dirección:</span> Av. Principal 123, Ciudad
-                </p>
-                <p className="text-lg mb-2">
-                  <span className="font-bold">Teléfono:</span> +1 234 567 890
-                </p>
-                <p className="text-lg mb-2">
-                  <span className="font-bold">Correo Electrónico:</span>{" "}
-                  info@tuempresa.com
-                </p>
-              </div>
-              <div>
-                <h2 className="text-2xl font-bold mb-4">Formulario de Contacto</h2>
-                <form className="flex flex-col">
-                  <input
-                    type="text"
-                    placeholder="Nombre"
-                    className="bg-white border border-gray-300 rounded-md p-2 mb-4"
-                  />
-                  <input
-                    type="email"
-                    placeholder="Correo Electrónico"
-                    className="bg-white border border-gray-300 rounded-md p-2 mb-4"
-                  />
-                  <textarea
-                    placeholder="Mensaje"
-                    className="bg-white border border-gray-300 rounded-md p-2 h-40 mb-4"
-                  ></textarea>
-                  <button className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">
-                    Enviar Mensaje
-                  </button>
-                </form>
-              </div>
-            </div>
-          </div>
+          <Container maxWidth="xl">
+            <Typography variant="h4" component="h1" align="center" gutterBottom>
+              <span className="text-3xl font-bold text-gray-800 block mb-14">
+                Hable con nosotros para cualquier consulta o cotización
+              </span>
+            </Typography>
+
+            <Grid container spacing={0} justifyContent="center">
+              <Grid item xs={12} md={6}>
+                <div className="mb-4">
+                  <Typography variant="h5" component="h2" gutterBottom>
+                    Información de Contacto
+                  </Typography>
+                  <Typography variant="body1" component="p" gutterBottom>
+                    <span className="font-bold">Dirección:</span> Psje. Sta. Elvira 234, Ate Vitarte
+                  </Typography>
+                  <Typography variant="body1" component="p" gutterBottom>
+                    <span className="font-bold">Teléfono:</span> +51 930172021
+                  </Typography>
+                  <Typography variant="body1" component="p" gutterBottom>
+                    <span className="font-bold">Correo Electrónico:</span> ventas@deltatacticalgear.com.pe
+                  </Typography>
+                </div>
+              </Grid>
+              <Grid item xs={12} md={6}>
+                <div>
+                  <Typography variant="h5" component="h2" gutterBottom>
+                    Escribe un mensaje y te responderemos a la brevedad
+                  </Typography>
+                  <form className="flex flex-col">
+                    <TextField
+                      label="Nombre"
+                      variant="outlined"
+                      margin="normal"
+                      className="mb-4"
+                      fullWidth
+                      value={nombre}
+                      onChange={(e) => setNombre(e.target.value)}
+                      error={errores.nombre ? true : false}
+                      helperText={errores.nombre}
+                    />
+                    <TextField
+                      label="Correo Electrónico"
+                      variant="outlined"
+                      margin="normal"
+                      className="mb-4"
+                      fullWidth
+                      value={correo}
+                      onChange={(e) => setCorreo(e.target.value)}
+                      error={errores.correo ? true : false}
+                      helperText={errores.correo}
+                    />
+                    <TextField
+                      label="Mensaje"
+                      multiline
+                      rows={4}
+                      variant="outlined"
+                      margin="normal"
+                      className="mb-4"
+                      fullWidth
+                      value={mensaje}
+                      onChange={(e) => setMensaje(e.target.value)}
+                      error={errores.mensaje ? true : false}
+                      helperText={errores.mensaje}
+                    />
+                    <Button variant="contained" color="primary" onClick={enviarMensaje}>
+                      Enviar Mensaje
+                    </Button>
+                  </form>
+                </div>
+              </Grid>
+              <Grid item xs={12}>
+                <div className="mt-10">
+                  <iframe
+                    title="Ubicación"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d487.77739192154075!2d-76.95178499298194!3d-12.028429400000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c42574522b6b%3A0x14456ae175e9d245!2sParque%20Urbanizaci%C3%B3n%20Santa%20Elvira!5e0!3m2!1ses-419!2spe!4v1689958989198!5m2!1ses-419!2spe"
+                    width="100%"
+                    height="450"
+                    style={{ border: "0" }}
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                  ></iframe>
+                </div>
+              </Grid>
+            </Grid>
+          </Container>
         </section>
       </div>
     </Layout>

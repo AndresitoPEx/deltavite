@@ -6,6 +6,7 @@ import { GetCategorias } from "../../apis/apiCategorias";
 import Layout from "../../Components/Layout";
 import Card from "../../Components/Card";
 
+
 import Container from "@mui/material/Container";
 
 const Tienda = () => {
@@ -64,18 +65,17 @@ const Tienda = () => {
       <Container maxWidth="xl">
         <div className="pt-10">
           <input
-            className="w-1/5 border border-gray-300 border-solid rounded-3 shadow-lg p-3 focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-transparent"
+            className="w-full border border-gray-300 border-solid rounded-3 shadow-lg p-3 focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-transparent"
             type="text"
             value={busqueda}
             onChange={(e) => setBusqueda(e.target.value)}
-            placeholder="Buscar productos por nombre..."
+            placeholder="Buscar productos..."
           />
         </div>
         {productosCard.length === 0 ? ( // Verificamos si no hay resultados en la búsqueda
           <div className="text-center mt-10 h-screen">
-
-            <p className="text-2xl font-semibold text-[#f5821f]">No se encontraron productos.</p>
-            <p className="text-xl text-gray-600">Intenta con otra busqueda.</p>
+            <p className="text-3xl font-semibold text-[#f5821f]">No se encontraron productos.</p>
+            <p className="text-2xl text-gray-600">Intenta con otra busqueda.</p>
           </div>
         ) : (
           <div className="grid gap-5 grid-cols-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-full py-20">

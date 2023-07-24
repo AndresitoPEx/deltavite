@@ -1,5 +1,6 @@
 import { useRoutes, BrowserRouter } from 'react-router-dom'
-import { CarritoProvider } from './Context'
+import { CarritoProvider } from './Context/carritoContext'
+
 //Area Frontend
 import Home from './pages/Home'
 import Tienda from './pages/TIenda'

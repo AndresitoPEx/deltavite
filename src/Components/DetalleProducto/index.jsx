@@ -5,7 +5,7 @@ import { GetCategorias } from "../../apis/apiCategorias";
 import { useParams } from "react-router-dom";
 import Layout from "../../Components/Layout";
 import { useContext } from "react";
-import { CarritoDeCompras } from "../../Context";
+import { CarritoDeCompras } from "../../Context/carritoContext";
 import { PlusIcon, CheckIcon } from "@heroicons/react/24/solid";
 
 const DetalleProducto = () => {

@@ -1,13 +1,18 @@
 export const PrecioTotal = (productos) => {
-    let total = 0; // Variable para almacenar el total inicializado en 0
-
+    let total = 0;
+  
     productos.forEach((producto) => {
-        const precio = parseFloat(producto.precio); // Convertir el precio a número decimal
-
-        if (!isNaN(precio)) { // Verificar si el precio es un número válido (no es NaN)
-            total += precio; // Sumar el precio al total
-        }
+      const precio = parseFloat(producto.precio);
+      const cantidad = producto.cantidad || 1; // Si la cantidad no está definida, asumimos 1 unidad
+  
+      if (!isNaN(precio)) {
+        total += precio * cantidad;
+      }
     });
-
-    return total.toFixed(2); // Devolver el total formateado con dos decimales
-};
+  
+    console.log("PRODUCTOS EN TOTAL DESDE UTILS:", productos.length, productos);
+    console.log("PRECIO TOTAL CALCULADO DESDE UTILS:", total.toFixed(2));
+  
+    return total.toFixed(2);
+  };
+      

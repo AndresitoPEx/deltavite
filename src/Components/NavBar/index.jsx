@@ -1,17 +1,18 @@
 import { NavLink } from "react-router-dom"
 import { useContext } from "react"
-import { CarritoDeCompras } from "../../Context"
-import { ShoppingBagIcon } from '@heroicons/react/24/outline'
+import { CarritoDeCompras } from "../../Context/carritoContext"
 import LoginButton from "../LoginButton"
 import Profile from "../Profile"
 import LogOut from "../LogOut"
 import { useAuth0 } from "@auth0/auth0-react"
+import { Badge } from "@mui/material"
+import { ShoppingCart } from "@mui/icons-material"
 
 
 const Navbar = () => {
     const context = useContext(CarritoDeCompras)
 
-    const { contar } = useContext(CarritoDeCompras)
+    console.log("Productos en el carrito desde el contexto Navbar:", context.productosCarrito.length);
 
     const { isAuthenticated } = useAuth0()
 
@@ -56,12 +57,12 @@ const Navbar = () => {
             <ul className="flex items-center gap-3">
                 <li>
                     <Profile />
-                </li>   
+                </li>
 
                 <li>
                     {isAuthenticated ? <LogOut /> : <LoginButton />}
                 </li>
-                
+
                 <li>
                     <NavLink
                         className={({ isActive }) => isActive ? activeStyle : undefined}
@@ -74,11 +75,9 @@ const Navbar = () => {
                     <button className="flex items-center justify-center"
                         onClick={() => context.openCheckOutMenu()}
                     >
-                        <ShoppingBagIcon className="h-6 w-6" />
-                        <span
-                            className="text-white rounded-full w-6 h-6 p-1 text-sm font-semibold">
-                            {context.productosCarrito.length}
-                        </span>
+                        <ShoppingCart className="h-6 w-6" />
+                        <Badge badgeContent={context.productosCarrito.length} color="error"/>
+                        
                     </button>
 
                 </li>
