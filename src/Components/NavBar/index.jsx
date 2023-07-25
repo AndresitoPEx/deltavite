@@ -81,8 +81,10 @@ const Navbar = () => {
                     <button className="flex items-center justify-center"
                         onClick={() => context.openCheckOutMenu()}
                     >
-                        <ShoppingCart className="h-6 w-6" />
-                        <Badge badgeContent={cantidadTotalProductos} color="error"/>
+                        
+                        <Badge badgeContent={cantidadTotalProductos} color="error">
+                            <ShoppingCart className="h-6 w-6 cursor-pointer ml-2" />
+                        </Badge>
                         
                     </button>
 
