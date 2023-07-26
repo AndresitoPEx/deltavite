@@ -1,6 +1,9 @@
 
 import { useState, useContext } from 'react';
 import { CarritoDeCompras } from '../../Context/carritoContext';
+import { Button } from '@mui/material';
+import { PlusIcon } from '@heroicons/react/24/solid';
+import { MinusIcon } from '@heroicons/react/24/solid';
 
 const OrderCard = (props) => {
 
@@ -41,39 +44,62 @@ const OrderCard = (props) => {
     const priceToShow = (parseFloat(precio) * cantidad).toFixed(2);
 
     return (
-        <div className="flex justify-between items-center mb-5 border-b-2 py-5">
+        <div className="flex justify-between items-center border-b-2 py-5">
             <div className="flex items-center gap-2">
-                <figure className="w-20 h-20 overflow-hidden rounded-md object-cover bg-gray-200 shadow-md  flex-shrink-0 
+                <figure className="w-28 h-28 overflow-hidden rounded-md object-cover bg-gray-200 shadow-md  flex-shrink-0 
                 ">
                     <img src={imagen} alt={nombre} className="w-full h-full rounded-md object-cover" />
                 </figure>
                 <div>
-                    <p className="text-md font-light gap-2">{nombre}</p>
-                    <div className="flex items-center gap-2">
-                        <button
-                            className="bg-blue-500 text-white px-2 rounded-md hover:bg-blue-600"
+                    <p className="text-md font-semibold gap-2">{nombre}</p>
+                    <p>
+                      {
+                        cantidad > 1 ? (
+                            <span className="text-xs font-thin text-gray-500">
+                                {cantidad} unidades
+                            </span>
+                        ) : (
+                            <span className="text-xs font-thin text-gray-500">
+                                {cantidad} unidad
+                            </span>
+                        )
+                      }  
+                    </p>
+                    <p className="text-xl font-extralight ">S/. {priceToShow}</p>
+                    <div className="flex items-center gap-2  ">
+                        <Button
+                            className=" text-black rounded-md hover:bg-gray-200"
                             onClick={handleRemoveUnit}
+                            variant='text'
+                            
                         >
-                            -
-                        </button>
-                        <span>{cantidad}</span>
-                        <button
-                            className="bg-blue-500 text-white px-2 rounded-md hover:bg-blue-600"
+                            <MinusIcon className="h-5 w-5" />
+                        </Button>
+                        <span className='px-3    py-1 text-md font-semibold text-black rounded-md shadow-md'>
+                            {cantidad}
+                        </span>
+                        <Button
+                            className=" text-black rounded-md hover:bg-gray-200"
                             onClick={handleAddUnit}
+                            variant='text'
                         >
-                            +
-                        </button>
+                            <PlusIcon className="h-5 w-5" />
+                        </Button>
+
                     </div>
+                    <Button
+                        className='text-black rounded-md hover:text-red-500 outline-none focus:outline-none'
+                        size='small'
+                        variant="text"
+                        onClick={handleDeleteProduct}
+                    >
+                        <p className="text-xs font-thin">Remover</p>
+                    </Button>
                 </div>
             </div>
             <div className="items-center gap-5">
-                <p className="text-xl font-semibold text-center py-2">S/. {priceToShow}</p>
-                <button
-                    className="bg-red-700 p-1 w-24 h-7 flex items-center justify-center rounded-md hover:bg-red-800"
-                    onClick={handleDeleteProduct}
-                >
-                    <p className="text-white text-sm font-semibold">Eliminar</p>
-                </button>
+
+
             </div>
         </div>
     );

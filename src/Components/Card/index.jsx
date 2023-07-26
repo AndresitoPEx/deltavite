@@ -19,6 +19,7 @@ const Card = ({ codigo, categoria, nombre, precio, imagen, color }) => {
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
     height: '400px', // Ajustar la altura de las imagenes
+        
   };
 
   const agregarProductoACarrito = (Card) => {
