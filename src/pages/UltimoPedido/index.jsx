@@ -4,11 +4,13 @@ import { Link } from 'react-router-dom';
 import { PrecioTotal } from '../../utils';
 import Layout from '../../Components/Layout';
 import Container from '@mui/material/Container';
-import { Badge } from '@mui/material';
+import { Badge, Paper } from '@mui/material';
 import { ShoppingCart } from '@mui/icons-material';
+import MoodBadIcon from '@mui/icons-material/MoodBad';
 
 //Area de Pago
 import BotonesPasarelas from '../../Components/ProcesoDePago/BotonPasarela';
+import RegistrarCliente from '../../Components/RegistrarCliente';
 
 const UltimoPedido = () => {
     const context = useContext(CarritoDeCompras);
@@ -27,9 +29,10 @@ const UltimoPedido = () => {
             <Container maxWidth="xl">
                 {context.order.length === 0 || context.order[index]?.productos?.length === 0 ? (
                     <div className="flex flex-col items-center justify-center h-screen">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-20 h-20">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.182 16.318A4.486 4.486 0 0012.016 15a4.486 4.486 0 00-3.198 1.318M21 12a9 9 0 11-18 0 9 9 0 0118 0zM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75zm-.375 0h.008v.015h-.008V9.75zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75zm-.375 0h.008v.015h-.008V9.75z" />
-                        </svg>
+                        <MoodBadIcon
+                            className="h-20 w-20 text-black mb-4"
+                            style={{ fontSize: 200 }}
+                        />
                         <p className="text-3xl font-semibold text-[#f5821f] mb-4">No hay pedidos aún.</p>
                         <p className="text-xl text-gray-600">¡Empieza agregando productos a tu carrito!</p>
                     </div>
@@ -37,15 +40,22 @@ const UltimoPedido = () => {
                     <div>
                         <div className="flex flex-col md:flex-row w-full md:px-40 py-10 h-screen">
                             <div className="flex flex-col md:w-7/12 px-5">
-                                <div className="flex justify-between items-center mb-5">
-                                    <div>
-                                        <h1 className="text-3xl font-semibold text-gray-600">
-                                            Pagar con:
+                                <div className="flex flex-col">
+                                    <Paper elevation={3} className="my-5 p-5">
+                                        <h1 className="text-md text-center mb-5 font-semibold text-gray-600">
+                                            Paga rapidamente con:
                                         </h1>
+                                        <div>
+                                            <BotonesPasarelas />
+                                        </div>
+                                    </Paper>
+                                        <p className="
+                                        text-md text-center mb-5 font-semibold text-gray-600 mt-5
+                                        ">Ó Registrese con su Email:</p>
+                                    <div>
 
-                                        <BotonesPasarelas />
+                                        <RegistrarCliente />
                                     </div>
-                                    
 
                                 </div>
                             </div>
@@ -58,7 +68,7 @@ const UltimoPedido = () => {
                                                 <div className="flex items-center gap-5 ">
                                                     <figure className="w-24 h-w-24  rounded-md object-cover bg-gray-200 shadow-md flex-shrink-0 relative">
                                                         <Badge
-                                                            badgeContent={producto.cantidad}
+                                                            badgeContent={`${producto.cantidad}`}
                                                             color="primary"
                                                             className="absolute top-0 right-0"
                                                         >
@@ -75,8 +85,8 @@ const UltimoPedido = () => {
                                                             {producto.nombre}
                                                             {
                                                                 producto?.codigo ? (
-                                                                    <span className="text-gray-500 block text-xs">
-                                                                        {producto.codigo}
+                                                                    <span className="text-gray-400 block text-xs">
+                                                                        Codigo: {producto.codigo}
                                                                     </span>
                                                                 ) : (
                                                                     <span className="text-gray-500 block text-xs">
@@ -87,7 +97,7 @@ const UltimoPedido = () => {
                                                             }
                                                         </p>
 
-                                                        <p className="text-md font-semibold text-gray-600 w-full 
+                                                        <p className="text-lg font-semibold text-gray-600 w-full 
                                                         md:w-auto md:text-right md:ml-auto md:mr-0 md:font-normal md:text-md md:py-0 md:px-0 md:mt-0 md:mb-0 md:gap-5 md:flex-row md:items-center md:justify-between md:space-x-5
                                                         ">
                                                             S/.{calcularPrecioTotalPorProducto(producto)}

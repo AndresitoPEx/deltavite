@@ -6,7 +6,7 @@ const NavbarAdmin = () => {
     return (
         <nav className="nav-admin w-full flex justify-between ">
             <figure className='w-1/6'>
-                <img src="./imgs/logo.png" alt="" />
+                <img src="https://i.postimg.cc/K802W0xt/DELTA_C.png" alt="" />
             </figure>
             <div className='flex items-center gap-5'>
                 <p className='text-md font-thin'>andresrt952@gmail.com</p>

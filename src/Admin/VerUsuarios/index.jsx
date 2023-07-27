@@ -1,11 +1,10 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { obtenerUsuarios, eliminarUsuario } from "../../apis/apiUsuarios";
 import LayoutAdmin from "../../Components/LayoutAdmin";
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Container, Button } from '@mui/material';
-import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const VerUsuarios = () => {
   const queryClient = useQueryClient();
@@ -53,18 +52,21 @@ const VerUsuarios = () => {
           <Table>
             <TableHead>
               <TableRow className="shadow-lg">
-                <TableCell>ID</TableCell>
+                <TableCell>Usuario</TableCell>
                 <TableCell>Nombre</TableCell>
                 <TableCell>Email</TableCell>
-                <TableCell>Acciones</TableCell>
+                <TableCell>Rol</TableCell>
+                <TableCell>{' '}</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {usuarios.map((usuario) => (
                 <TableRow key={usuario.id}>
-                  <TableCell>{usuario.id}</TableCell>
+                  <TableCell>{usuario.usuario}</TableCell>
                   <TableCell>{usuario.nombre}</TableCell>
                   <TableCell>{usuario.email}</TableCell>
+                  <TableCell>{usuario.rol}</TableCell>
+                  
                   <TableCell>
                     <Button
                       variant="contained"

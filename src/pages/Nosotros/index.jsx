@@ -4,7 +4,7 @@ import Container from '@mui/material/Container';
 const Nosotros = () => {
     return (
         <Layout>
-            <Container>
+            <Container maxWidth="xl">
             <div className="bg-gray-100">
                 <section className="py-10">
                     <div className="container mx-auto">

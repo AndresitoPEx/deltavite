@@ -19,7 +19,8 @@ import RegistrarProductos from './Admin/RegistrarProductos'
 import EditarProducto from './Admin/EditarProducto'
 import VerUsuarios from './Admin/VerUsuarios'
 import RegistrarUsuario from './Admin/RegistrarUsuario'
-
+import VerClientes from './Admin/VerClientes'
+import RegistrarCliente from './Components/RegistrarCliente'
 import VerVentas from './Admin/VerVentas'
 
 //Components
@@ -51,7 +52,8 @@ const AppRoutes = () => {
     { path: '/lista-usuarios', element: <VerUsuarios /> },
     { path: '/registrar-usuario', element: <RegistrarUsuario /> },
     { path: '/lista-ventas', element: <VerVentas /> },
-
+    { path: '/lista-clientes', element: <VerClientes /> },
+    { path: '/registrar-cliente', element: <RegistrarCliente /> },
 
   ])
 

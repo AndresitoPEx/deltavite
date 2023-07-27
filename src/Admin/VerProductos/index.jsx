@@ -73,13 +73,13 @@ const VerProductos = () => {
 
         navigate(`/editar-producto/${codigo}`);
     }
-    
+
 
     return (
         <LayoutAdmin>
             <Container maxWidth="xl">
                 <div className="text-left mt-5 mb-5 p-5 bg-light-gray rounded-3 shadow-lg border border-gray-300 border-solid border-opacity-50">
-                    <h2 className="text-3xl font-bold text-gray-700">Lista de Productos</h2>
+                    <h2 className="text-3xl font-bold text-gray-700">Stock de Productos</h2>
                 </div>
                 <div className="mb-5">
                     <NavLink to="/registrar-productos">
@@ -96,7 +96,7 @@ const VerProductos = () => {
                                 <TableCell>Imagen</TableCell>
                                 <TableCell>Código</TableCell>
                                 <TableCell>Color</TableCell>
-                                <TableCell>Editar/Eliminar</TableCell>
+                                <TableCell>{' '}</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -110,14 +110,24 @@ const VerProductos = () => {
                                     </TableCell>
                                     <TableCell>{producto.codigo}</TableCell>
                                     <TableCell>{producto.color}</TableCell>
-                                    <TableCell>
-                                        <button className="mx-10" onClick={() => handleEdit(producto.codigo)}>
-                                            <EditIcon color="warning" />
-                                        </button>
-                                        <button onClick={() => deleteMutation.mutate(producto.id)}>
-                                            <DeleteIcon color="error" />
-                                        </button>
-                                    </TableCell>    
+                                    <TableCell
+                                        className="flex justify-center items-center space-x-2"
+                                        style={{ width: "240px" }}
+                                    >
+                                        <Button
+                                            variant="contained"
+                                            color="warning"
+                                            className="mx-10"
+                                            onClick={() => handleEdit(producto.codigo)}>
+                                            <EditIcon />
+                                        </Button>
+                                        <Button
+                                            variant="contained"
+                                            color="error"
+                                            onClick={() => deleteMutation.mutate(producto.id)}>
+                                            <DeleteIcon />
+                                        </Button>
+                                    </TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>

@@ -15,6 +15,7 @@ import StoreIcon from '@mui/icons-material/Store';
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import SummarizeIcon from '@mui/icons-material/Summarize';
 import SettingsIcon from '@mui/icons-material/Settings';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 const SideBar = () => {
     return (
@@ -32,32 +33,6 @@ const SideBar = () => {
                     </NavLink>
                 </MenuItem>
 
-                <Divider/>
-
-                <MenuItem>
-                    <NavLink to="/lista-usuarios" className="flex">
-                        <ListItemIcon>
-                            <GroupIcon />
-                        </ListItemIcon>
-                        <ListItemText>
-                            <Typography variant="inherit">Usuarios</Typography>
-                        </ListItemText>
-                    </NavLink>
-                </MenuItem>
-
-                <Divider />
-
-                <MenuItem>
-                    <NavLink to='/lista-productos' className="flex">
-                        <ListItemIcon>
-                            <StoreIcon />
-                        </ListItemIcon>
-                        <ListItemText>
-                            <Typography variant="inherit">Productos</Typography>
-                        </ListItemText>
-                    </NavLink>
-                </MenuItem>
-
                 <Divider />
 
                 <MenuItem>
@@ -67,6 +42,48 @@ const SideBar = () => {
                         </ListItemIcon>
                         <ListItemText>
                             <Typography variant="inherit">Ventas</Typography>
+                        </ListItemText>
+                    </NavLink>
+                </MenuItem>
+
+                
+                <Divider />
+
+                <MenuItem>
+                    <NavLink to="/lista-clientes" className="flex">
+                        <ListItemIcon>
+                            <GroupIcon />
+                        </ListItemIcon>
+                        <ListItemText>
+                            <Typography variant="inherit">Clientes</Typography>
+                        </ListItemText>
+                    </NavLink>
+                </MenuItem>
+
+
+                <Divider />
+
+                <MenuItem>
+                    <NavLink to='/lista-productos' className="flex">
+                        <ListItemIcon>
+                            <StoreIcon />
+                        </ListItemIcon>
+                        <ListItemText>
+                            <Typography variant="inherit">Stock</Typography>
+                        </ListItemText>
+                    </NavLink>
+                </MenuItem>
+
+                
+                <Divider />
+
+                <MenuItem>
+                    <NavLink to="/lista-usuarios" className="flex">
+                        <ListItemIcon>
+                            <AccountCircleIcon />
+                        </ListItemIcon>
+                        <ListItemText>
+                            <Typography variant="inherit">Usuarios</Typography>
                         </ListItemText>
                     </NavLink>
                 </MenuItem>

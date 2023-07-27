@@ -59,7 +59,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="flex justify-center items-center mt-8">
-          <img src="./imgs/logo.png" alt="Logo" className="h-8 mr-2" />
+          <img src="https://i.postimg.cc/8C7qsb5M/LogoDelta_500px.png" alt="Logo" className="h-8 mr-2" />
           <p className="text-sm">
             &copy; 2023 <strong>Delta Tactical Gear</strong>. Todos los derechos reservados.
           </p>

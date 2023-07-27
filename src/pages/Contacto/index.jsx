@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Layout from "../../Components/Layout";
 import { Container, Grid, TextField, Button, Typography } from "@mui/material";
+import SendIcon from "@mui/icons-material/Send";
 
 const Contacto = () => {
   const [nombre, setNombre] = useState("");
@@ -44,7 +45,7 @@ const Contacto = () => {
     setErrores(errores);
     const mensajeError = Object.values(errores).find((error) => error);
     if (mensajeError) {
-      
+
       return;
     }
 
@@ -110,6 +111,7 @@ const Contacto = () => {
                   </Typography>
                   <form className="flex flex-col">
                     <TextField
+                      color="warning"
                       label="Nombre"
                       variant="outlined"
                       margin="normal"
@@ -121,6 +123,7 @@ const Contacto = () => {
                       helperText={errores.nombre}
                     />
                     <TextField
+                      color="warning"
                       label="Correo Electrónico"
                       variant="outlined"
                       margin="normal"
@@ -132,6 +135,7 @@ const Contacto = () => {
                       helperText={errores.correo}
                     />
                     <TextField
+                      color="warning"
                       label="Mensaje"
                       multiline
                       rows={4}
@@ -144,8 +148,10 @@ const Contacto = () => {
                       error={errores.mensaje ? true : false}
                       helperText={errores.mensaje}
                     />
-                    <Button variant="contained" color="primary" onClick={enviarMensaje}>
-                      Enviar Mensaje
+                    <Button endIcon={<SendIcon />} variant="contained" color="warning" onClick={enviarMensaje}>
+                      <p className="
+                      text-white font-normal text-xl">Enviar Mensaje</p>
+
                     </Button>
                   </form>
                 </div>

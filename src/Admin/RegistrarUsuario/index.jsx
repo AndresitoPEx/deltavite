@@ -24,9 +24,6 @@ const RegistrarUsuario = () => {
     },
   });
 
-  const queryClient = useQueryClient();
-  const navigate = useNavigate();
-
   const [formData, setFormData] = useState({
     nombre: "",
     apellidos: "",
