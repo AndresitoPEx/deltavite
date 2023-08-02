@@ -16,28 +16,38 @@ import SendIcon from '@mui/icons-material/Send';
 import Select from '@mui/material/Select';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
+import Swal from 'sweetalert2';
 
 
 const RegistrarProductos = () => {
   const mutationProduct = useMutation({
     mutationFn: PostProducto,
     onSuccess: () => {
-      alert("Producto Registrado");
+      Swal.fire({
+        icon: "success",
+        title: "Producto Registrado",
+        showConfirmButton: false,
+        timer: 2500,
+      });
     },
     onError: (error) => {
       console.error(error);
-      alert("Error al registrar el producto");
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Error al registrar el producto",
+      });
     },
   });
 
   const mutationImage = useMutation({
     mutationFn: PostImagen,
     onSuccess: () => {
-      alert("Imagen Registrada");
+      //alert("Imagen Registrada");
     },
     onError: (error) => {
       console.error(error);
-      alert("Error al registrar la imagen");
+      //alert("Error al registrar la imagen");
     },
   });
 
@@ -91,6 +101,19 @@ const RegistrarProductos = () => {
     // Enviar el nuevo producto
     mutationProduct.mutate(data);
     queryClient.invalidateQueries("productos");
+
+    // Limpiar el formulario después del registro exitoso
+    setFormData({
+      nombre: "",
+      precio: "",
+      categoriaId: "",
+      color: "",
+      imagenUrl: "",
+      stock: "",
+      descripcion: "",
+      codigo: "",
+      modelo: "",
+    });
   };
 
   const handleInputChange = (e) => {

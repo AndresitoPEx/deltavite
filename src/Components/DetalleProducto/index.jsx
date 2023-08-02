@@ -85,6 +85,8 @@ const DetalleProducto = () => {
   const producto = getProductById(codigo);
   console.log(producto);
 
+
+
   if (!producto) return <h1>No se encontró el producto</h1>;
 
   return (
@@ -105,7 +107,7 @@ const DetalleProducto = () => {
             <div className="flex-1 mb-10">
               <h2 className="text-2xl font-bold mb-4">{producto.codigo}</h2>
               <p className="text-lg mb-2">
-                <span className="font-bold text-5xl">S/.{producto.precio}</span>
+                <span className="font-bold text-5xl">S/.{producto.precio.toFixed(2)}</span>
               </p>
               <p className="text-lg mb-2">Categoría: {producto.categoria}</p>
               <p className="text-lg mb-2">Color: {producto.color}</p>

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Layout from "../../Components/Layout";
 import { Container, Grid, TextField, Button, Typography } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
+import Swal from "sweetalert2";
 
 const Contacto = () => {
   const [nombre, setNombre] = useState("");
@@ -64,15 +65,28 @@ const Contacto = () => {
       });
 
       if (response.ok) {
-        alert("Mensaje enviado correctamente");
+        Swal.fire({
+          icon: "success",
+          title: "Mensaje enviado correctamente",
+          showConfirmButton: false,
+          timer: 2500,
+        });
         setNombre("");
         setCorreo("");
         setMensaje("");
       } else {
-        alert("Hubo un error al enviar el mensaje. Por favor, intenta nuevamente.");
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: "Hubo un error al enviar el mensaje. Por favor, intenta nuevamente.",
+        });
       }
     } catch (error) {
-      alert("Hubo un error al enviar el mensaje. Por favor, intenta nuevamente.");
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Hubo un error al enviar el mensaje. Por favor, intenta nuevamente.",
+      });
     }
   };
 

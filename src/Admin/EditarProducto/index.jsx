@@ -12,6 +12,7 @@ import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
+import Swal from "sweetalert2";
 
 const EditarProducto = () => {
   const { codigo } = useParams();
@@ -42,9 +43,22 @@ const EditarProducto = () => {
   // Mutación para actualizar los datos del producto
   const updateMutation = useMutation((updatedData) => PutProducto(updatedData.id, updatedData), {
     onSuccess: () => {
-      alert("Producto actualizado exitosamente");
+      Swal.fire({
+        icon: "success",
+        title: "Producto actualizado",
+        showConfirmButton: false,
+        timer: 2500,
+      });
       queryClient.invalidateQueries("productos");
     },
+    onError: (error) => {
+      console.error(error);
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Error al actualizar el producto",
+      });
+    }
   });
 
   // Actualizar el estado con los datos del producto cuando se obtienen

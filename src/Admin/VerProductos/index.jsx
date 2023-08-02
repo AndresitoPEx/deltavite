@@ -6,6 +6,7 @@ import { GetCategorias } from "../../apis/apiCategorias";
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Container, Button } from '@mui/material';
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2';
 
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -36,7 +37,12 @@ const VerProductos = () => {
     const deleteMutation = useMutation({
         mutationFn: DeleteProducto,
         onSuccess: () => {
-            alert("Producto Eliminado");
+            Swal.fire({
+                icon: "success",
+                title: "Producto eliminado",
+                showConfirmButton: false,
+                timer: 2500,
+            });
             queryClient.invalidateQueries("productos");
         }
     });

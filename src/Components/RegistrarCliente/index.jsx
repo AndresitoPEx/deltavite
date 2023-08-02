@@ -190,18 +190,16 @@ const RegistrarCliente = () => {
                         />
                     </FormControl>
                 </div>
-                <div className="mt-5
-                flex justify-center
-                ">
+                <div className="mt-5 flex justify-center">
                     <Button
+                        className="w-1/2"
                         type="submit"
                         variant="contained"
-                        endIcon={<SendIcon />}
                         color="warning"
-                        // disabled={emailError || nombreError || apellidosError} // Desactivar el botón si hay errores en email, nombre o apellidos
+                    // disabled={emailError || nombreError || apellidosError} // Desactivar el botón si hay errores en email, nombre o apellidos
                     >
                         Registrarse
-                    </Button>   
+                    </Button>
                 </div>
             </form>
 

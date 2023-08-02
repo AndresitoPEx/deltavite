@@ -5,6 +5,7 @@ import LayoutAdmin from "../../Components/LayoutAdmin";
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Container, Button } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2';
 
 const VerUsuarios = () => {
   const queryClient = useQueryClient();
@@ -19,7 +20,12 @@ const VerUsuarios = () => {
   // Eliminar usuario
   const deleteMutation = useMutation(eliminarUsuario, {
     onSuccess: () => {
-      alert("Usuario eliminado exitosamente");
+      Swal.fire({
+        icon: "success",
+        title: "Usuario eliminado",
+        showConfirmButton: false,
+        timer: 2500,
+      });
       queryClient.invalidateQueries("usuarios");
     },
   });

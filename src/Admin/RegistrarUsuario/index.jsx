@@ -10,17 +10,27 @@ import Container from '@mui/material/Container';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
+import Swal from 'sweetalert2';
 
 
 const RegistrarUsuario = () => {
   const mutation = useMutation(crearUsuario, {
     onSuccess: () => {
-      alert("Usuario registrado exitosamente");
+      Swal.fire({
+        icon: "success",
+        title: "Usuario Registrado",
+        showConfirmButton: false,
+        timer: 2500,
+      });
       // Lógica adicional después de registrar el usuario
     },
     onError: (error) => {
       console.error(error);
-      alert("Error al registrar el usuario");
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Error al registrar el usuario",
+      });
     },
   });
 
