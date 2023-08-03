@@ -1,11 +1,29 @@
 import './home.css'
-
+import { useState, useEffect } from 'react';
 import Layout from "../../Components/Layout";
-
+import LoadingPage from "../../Components/Loading";
 //materialUI
 import Container from '@mui/material/Container';
 
 const Home = () => {
+
+    const [dataLoading, setDataLoading] = useState(true);
+
+    useEffect(() => {
+        // Simulación de una carga de datos con un temporizador
+        const timer = setTimeout(() => {
+            setDataLoading(false);
+        }, 2000);
+
+        return () => clearTimeout(timer);
+    }, []);
+
+    if (dataLoading) {
+        // Muestra la página de carga mientras dataLoading es true
+        return <LoadingPage />;        
+    }
+
+
     return (
         <Layout>
             {/* Sección de banner promocional */}
@@ -15,7 +33,7 @@ const Home = () => {
                 </div>
             </section>
             <div className="bg-gray-100 w-full">
-                <Container  maxWidth="xl">
+                <Container maxWidth="xl">
                     {/* Sección de categorías */}
                     <section className="py-10 bg-white w-full">
                         <div className="container mx-auto">

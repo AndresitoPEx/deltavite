@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import { useEffect, useState } from 'react';
 import { CarritoDeCompras } from '../../Context/carritoContext';
 import { Link } from 'react-router-dom';
 import { PrecioTotal } from '../../utils';
@@ -8,6 +9,7 @@ import { Badge, Divider, Paper } from '@mui/material';
 import { ShoppingCart } from '@mui/icons-material';
 import MoodBadIcon from '@mui/icons-material/MoodBad';
 import MisPedidos from '../Pedidos';
+import LoadingPage from '../../Components/Loading';
 
 
 //Area de Pago
@@ -17,6 +19,19 @@ import RegistrarCliente from '../../Components/RegistrarCliente';
 const UltimoPedido = () => {
     const context = useContext(CarritoDeCompras);
     const index = context.order.length - 1;
+
+    // Estado para controlar la carga
+    const [dataLoading, setDataLoading] = useState(true);
+
+    useEffect(() => {
+        setTimeout(() => {
+            setDataLoading(false);
+        }, 1000);
+    }, []);
+
+    if (dataLoading) {
+        return <LoadingPage />;
+    }
 
     // Calcular el precio total por producto (ya que la cantidad está en cada producto)
     const calcularPrecioTotalPorProducto = (producto) => {
@@ -53,13 +68,13 @@ const UltimoPedido = () => {
                                             <BotonesPasarelas />
                                         </div>
                                     </Paper>
-                                    <p className="text-md text-center mb-5 font-semibold text-gray-600 mt-5">
+                                    <span className="text-md text-center mb-5 font-semibold text-gray-600 mt-5">
                                         <Divider>
                                             <h1 className="text-md text-center justify-center mb-2 font-semibold text-gray-600">
                                                 O
                                             </h1>
                                         </Divider>
-                                    </p>
+                                    </span>
                                     <div>
 
                                         {/* <RegistrarCliente /> */}

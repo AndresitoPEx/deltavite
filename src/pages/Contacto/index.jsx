@@ -3,8 +3,10 @@ import Layout from "../../Components/Layout";
 import { Container, Grid, TextField, Button, Typography } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import Swal from "sweetalert2";
+import LoadingPage from "../../Components/Loading";
 
 const Contacto = () => {
+
   const [nombre, setNombre] = useState("");
   const [correo, setCorreo] = useState("");
   const [mensaje, setMensaje] = useState("");
@@ -13,6 +15,10 @@ const Contacto = () => {
     correo: "",
     mensaje: "",
   });
+
+  // Estado para controlar la carga
+  const [dataLoading, setDataLoading] = useState(true);
+
 
   const validarNombre = () => {
     if (nombre.trim() === "" || nombre.length < 3 || nombre.length > 30 || !/^[a-zA-Z\s]*$/.test(nombre)) {
@@ -49,6 +55,7 @@ const Contacto = () => {
 
       return;
     }
+
 
     // Aqui enviamos el mensaje al servidor de formspree
     try {
@@ -89,6 +96,20 @@ const Contacto = () => {
       });
     }
   };
+
+  useEffect(() => {
+    // Simulación de una carga de datos con un temporizador
+    const timer = setTimeout(() => {
+      setDataLoading(false);
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (dataLoading) {
+    // Muestra la página de carga mientras dataLoading es true
+    return <LoadingPage />;
+  }
 
   return (
     <Layout>
@@ -178,9 +199,9 @@ const Contacto = () => {
                     width="100%"
                     height="450"
                     style={{ border: "0" }}
-                    allowfullscreen=""
+                    allowFullscreen=""
                     loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"
+                    referrerPolicy="no-referrer-when-downgrade"
                   ></iframe>
                 </div>
               </Grid>

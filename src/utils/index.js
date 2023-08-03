@@ -14,8 +14,8 @@ export const PrecioTotal = (productos) => {
     }
   });
 
-  console.log("PRODUCTOS EN TOTAL DESDE UTILS:", productos);
-  console.log("PRECIO TOTAL CALCULADO DESDE UTILS:", total);
+  console.log("❌PRODUCTOS EN TOTAL DESDE UTILS:", productos);
+  console.log("❌PRECIO TOTAL CALCULADO DESDE UTILS:", total);
 
   return total.toFixed(2);
 };

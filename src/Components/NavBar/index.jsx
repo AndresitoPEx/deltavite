@@ -7,7 +7,7 @@ import LogOut from "../LogOut"
 import { useAuth0 } from "@auth0/auth0-react"
 import { Badge } from "@mui/material"
 import { ShoppingCart } from "@mui/icons-material"
-import AdminHome from "../../Admin/AdminHome"
+
 
 
 const Navbar = () => {
@@ -62,13 +62,6 @@ const Navbar = () => {
             </ul>
 
             <ul className="flex items-center gap-3">
-                <li>
-                    <NavLink
-                        className={({ isActive }) => isActive ? activeStyle : undefined}
-                        to="/admin-home">
-                        Admin
-                    </NavLink>
-                </li>
                 <li>
                     <Profile />
                 </li>

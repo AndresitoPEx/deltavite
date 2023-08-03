@@ -1,38 +1,46 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { GetProductos } from "../../apis/apiProductos";
 import { GetImagenes } from "../../apis/apiImagenes";
 import { GetCategorias } from "../../apis/apiCategorias";
 import Layout from "../../Components/Layout";
 import Card from "../../Components/Card";
-
-
+import LoadingPage from "../../Components/Loading";
 import Container from "@mui/material/Container";
 
 const Tienda = () => {
 
   const [busqueda, setBusqueda] = useState("");
+  const [showLoading, setShowLoading] = useState(true);
 
-  const { data: productos, isLoading, error, isError } = useQuery({
+  const { data: productos, isLoading: isLoadingProductos, error: errorProductos, isError: isErrorProductos } = useQuery({
     queryKey: ["productos"],
     queryFn: GetProductos,
     select: (productos) => productos.sort((a, b) => b.id - a.id),
   });
 
-  const { data: imagenes, isLoading2, error2, isError2 } = useQuery({
+  const { data: imagenes, isLoading: isLoadingImagenes, error: errorImagenes, isError: isErrorImagenes } = useQuery({
     queryKey: ["imagenes"],
     queryFn: GetImagenes,
   });
 
-  const { data: categorias, isLoading3, error3, isError3 } = useQuery({
+  const { data: categorias, isLoading: isLoadingCategorias, error: errorCategorias, isError: isErrorCategorias } = useQuery({
     queryKey: ["categorias"],
     queryFn: GetCategorias,
   });
 
-  if (isLoading || isLoading2 || isLoading3) return <h1>Cargando...</h1>;
-  if (isError) return <h1>Hubo un error al obtener los datos de productos: {error.message}</h1>;
-  if (isError2) return <h1>Hubo un error al obtener los datos de imágenes: {error2.message}</h1>;
-  if (isError3) return <h1>Hubo un error al obtener los datos de categorías: {error3.message}</h1>;
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowLoading(false);
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoadingProductos || isLoadingImagenes || isLoadingCategorias || showLoading) return <LoadingPage />;
+  if (isErrorProductos) return <h1>Hubo un error al obtener los datos de productos: {errorProductos.message}</h1>;
+  if (isErrorImagenes) return <h1>Hubo un error al obtener los datos de imágenes: {errorImagenes.message}</h1>;
+  if (isErrorCategorias) return <h1>Hubo un error al obtener los datos de categorías: {errorCategorias.message}</h1>;
 
   const getProducts = () => {
     if (productos && imagenes && categorias) {

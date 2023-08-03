@@ -5,7 +5,7 @@ import Layout from "../../Components/Layout";
 const NotFound = () => {
     return (
         <Layout>
-        <h1>NotFound</h1>
+            <h1 className="h-screen">NotFound</h1>
         </Layout>
     );
 

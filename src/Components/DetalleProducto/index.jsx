@@ -1,17 +1,30 @@
-import React from "react";
+
 import { useQuery } from "@tanstack/react-query";
 import { GetProductos } from "../../apis/apiProductos";
 import { GetImagenes } from "../../apis/apiImagenes";
 import { GetCategorias } from "../../apis/apiCategorias";
 import { useParams } from "react-router-dom";
-import Layout from "../../Components/Layout";
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import { CarritoDeCompras } from "../../Context/carritoContext";
 import { PlusIcon, CheckIcon } from "@heroicons/react/24/solid";
+import Layout from "../../Components/Layout";
+import LoadingPage from "../../Components/Loading";
+
 
 const DetalleProducto = () => {
   const context = useContext(CarritoDeCompras);
   const { codigo } = useParams();
+
+  const [addingToCart, setAddingToCart] = useState(false);
+  const [showLoading, setShowLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowLoading(false);
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const { data: productos, isLoading, error, isError } = useQuery({
     queryKey: ["productos"],
@@ -28,7 +41,9 @@ const DetalleProducto = () => {
     queryFn: GetCategorias,
   });
 
-  if (isLoading || isLoading2 || isLoading3) return <h1>Cargando...</h1>;
+  if (showLoading) return <LoadingPage />;
+
+  if (isLoading || isLoading2 || isLoading3) return <LoadingPage /> ;
   if (isError) return <h1>Error al obtener los datos de productos: {error.message}</h1>;
   if (isError2) return <h1>Error al obtener los datos de imágenes: {error2.message}</h1>;
   if (isError3) return <h1>Error al obtener los datos de categorías: {error3.message}</h1>;
@@ -55,10 +70,14 @@ const DetalleProducto = () => {
   };
 
   const agregarProductoACarrito = (producto) => {
-    context.agregarProductoACarrito(producto); // Usamos la función del contexto para agregar el producto al carrito
+    setAddingToCart(true);
+    setTimeout(() => {
+      context.agregarProductoACarrito(producto); // Usamos la función del contexto para agregar el producto al carrito
+      setAddingToCart(false);
+    }, 1000);
   };
 
-  const renderIcon = (codigo) => {
+  const renderIcon = (codigo, loading) => {
     const productoEnCarrito =
       context.productosCarrito.filter((producto) => producto.codigo === codigo).length > 0;
 
@@ -74,9 +93,33 @@ const DetalleProducto = () => {
         <button
           className="bg-[#f5821f] p-2 flex items-center justify-center rounded-md text-white hover:bg-[#e3661d] focus:outline-none"
           onClick={() => agregarProductoACarrito(producto)}
+          disabled={loading} // Deshabilitar el botón mientras está en estado de carga
         >
-          <PlusIcon className="h-5 w-5 mr-1" />
-          <span>Agregar producto</span>
+          {loading ? (
+            <svg
+              className="animate-spin h-5 w-5 mr-1 text-white"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                className="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                strokeWidth="4"
+              ></circle>
+              <path
+                className="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647zm10 2.647A7.962 7.962 0 0020 12h-4a7.962 7.962 0 01-3 5.291l3 2.647z"
+              ></path>
+            </svg>
+          ) : (
+            <PlusIcon className="h-5 w-5 mr-1" />
+          )}
+          <span>{loading ? "Agregando..." : "Agregar producto"}</span>
         </button>
       );
     }
@@ -114,7 +157,7 @@ const DetalleProducto = () => {
               <p className="text-lg mb-2">Descripción: {producto.descripcion}</p>
               <p className="text-lg mb-2">Modelo: {producto.modelo}</p>
             </div>
-            <div>{renderIcon(producto.codigo)}</div>
+            <div>{renderIcon(producto.codigo, addingToCart)}</div>
           </div>
         </div>
       </div>

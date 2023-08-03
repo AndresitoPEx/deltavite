@@ -55,19 +55,18 @@ const CheckOutMenu = () => {
         context.setTotal(0);
         context.closeCheckOutMenu();
         console.log('datos de la orden: ', newOrder);
-        console.log("Productos en el carrito después de la orden:", context.productosCarrito);
         console.log("Precio total después de la orden:", context.total);
     };
 
     return (
         <aside className={`${context.isCheckOutMenuOpen ? 'flex' : 'hidden'} checkout-menu`}>
-            <div className="flex justify-between m-5 items-center">
-                <h2 className="font-medium text-xl">Mi Orden</h2>
+            <div className="flex justify-between m-5 items-center border-b-2 border-gray-300 pb-2 px-3 mb-3 sticky top-0">
+                <h2 className="font-medium text-xl">Carrito: </h2>
                 <button className="">
-                    <XMarkIcon className="h-6 w-6 text-black" onClick={() => context.closeCheckOutMenu()}></XMarkIcon>
+                    <XMarkIcon className="h-6 w-6 text-black hover:text-gray-500 transition-all duration-300 ease-in-out cursor-pointer " onClick={() => context.closeCheckOutMenu()}></XMarkIcon>
                 </button>
             </div>
-            <div className="px-6 overflow-y-scroll flex-1">
+            <div className="px-3 flex-1 overflow-y-auto overflow-x-hidden scrollbar-hide">
                 {context.productosCarrito.map((producto) => {
                     return (
                         <OrderCard
@@ -84,18 +83,18 @@ const CheckOutMenu = () => {
                     );
                 })}
             </div>
-            <div className="px-6 mb-24">
+            <div className="px-6 mb-24 flex flex-col justify-between border-t-2">
                 <div className="flex justify-between items-center p-5 mb-3">
 
-                    <span className="font-light">Total: </span>
+                    <span className="font-light text-xl">Sub Total: </span>
                     <span className="font-medium text-2xl">S/. {parseFloat(context.total).toFixed(2)}</span>{/* Aqui se muestra el precio total de los productos seleccionados, tambien debe aumentar o disminuir segun el cliente presione en "-" o "+" */}
                 </div>
                 <Link to="/mi-pedido">
                     <button
-                        className="bg-black text-white w-full h-12 font-medium text-xl hover:bg-gray-800 transition-all duration-300 ease-in-out rounded-md "
+                        className="bg-black text-white font-medium py-3 rounded-md hover:bg-gray-800 transition-all duration-300 ease-in-out cursor-pointer w-full"
                         onClick={handleCheckOut}
                     >
-                        Continuar
+                        Continuar Pedido
                     </button>
                 </Link>
             </div>

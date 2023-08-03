@@ -53,47 +53,52 @@ const OrderCard = (props) => {
                 <div>
                     <p className="text-md font-semibold gap-2">{nombre}</p>
                     <p>
-                      {
-                        cantidad > 1 ? (
-                            <span className="text-xs font-thin text-gray-500">
-                                {cantidad} unidades
-                            </span>
-                        ) : (
-                            <span className="text-xs font-thin text-gray-500">
-                                {cantidad} unidad
-                            </span>
-                        )
-                      }  
+                        {
+                            cantidad > 1 ? (
+                                <span className="text-xs font-thin text-gray-500">
+                                    {cantidad} unidades
+                                </span>
+                            ) : (
+                                <span className="text-xs font-thin text-gray-500">
+                                    {cantidad} unidad
+                                </span>
+                            )
+                        }
                     </p>
                     <p className="text-xl font-extralight ">S/. {priceToShow}</p>
                     <div className="flex items-center gap-2  ">
                         <Button
-                            className=" text-black rounded-md hover:bg-gray-200"
+                            className=" text-black rounded-md hover:bg-gray-300"
                             onClick={handleRemoveUnit}
-                            variant='text'
-                            
+                            variant='outlined'
+                            color='warning'
                         >
                             <MinusIcon className="h-5 w-5" />
                         </Button>
-                        <span className='px-3    py-1 text-md font-semibold text-black rounded-md shadow-md'>
+                        <span className='px-3 py-1 text-md font-semibold text-black rounded-md bg-gray-200'>
                             {cantidad}
                         </span>
                         <Button
-                            className=" text-black rounded-md hover:bg-gray-200"
+                            className=" text-black rounded-md hover:bg-gray-300"
                             onClick={handleAddUnit}
-                            variant='text'
+                            variant='outlined'
+                            color='warning'
+
                         >
                             <PlusIcon className="h-5 w-5" />
                         </Button>
 
                     </div>
                     <Button
-                        className='text-black rounded-md hover:text-red-500 outline-none focus:outline-none'
+                        className='text-black rounded-md'
                         size='small'
                         variant="text"
                         onClick={handleDeleteProduct}
+                        
                     >
-                        <p className="text-xs font-thin">Remover</p>
+                        <p className="text-xs font-light text-red-500 hover:underline cursor-pointer mt-2">
+                            Remover
+                        </p>
                     </Button>
                 </div>
             </div>

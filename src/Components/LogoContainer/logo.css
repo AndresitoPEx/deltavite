@@ -1,0 +1,12 @@
+.logo-container {
+    transition: opacity 0.3s ease;
+    opacity: 1;
+    pointer-events: auto;
+    
+}
+
+.logo-container.hidden {
+    opacity: 0;
+    pointer-events: none; /* Para evitar que los eventos se propaguen cuando el elemento está oculto */
+
+}

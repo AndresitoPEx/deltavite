@@ -1,13 +1,17 @@
 import { useContext } from 'react';
+import { useState, useEffect } from 'react';
 import { CarritoDeCompras } from '../../Context/carritoContext'; //importamos el contexto global
 import { PlusIcon, CheckIcon } from '@heroicons/react/24/solid';
 import { useNavigate } from 'react-router-dom';
+
 
 import './card.css';
 
 const Card = ({ codigo, categoria, nombre, precio, imagen, color }) => {
   const context = useContext(CarritoDeCompras);
   const navigate = useNavigate();
+
+  const [loading, setLoading] = useState(false);
 
   const handleVerDetalles = (codigo) => {
     navigate(`/producto/${codigo}`);
@@ -19,11 +23,19 @@ const Card = ({ codigo, categoria, nombre, precio, imagen, color }) => {
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
     height: '400px', // Ajustar la altura de las imagenes
-        
+
   };
 
-  const agregarProductoACarrito = (Card) => {
+  const agregarProductoACarrito = async (Card) => {
+
+    setLoading(true);
+
+    // Simular una carga de 1 segundo antes de agregar el producto al carrito
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
     context.agregarProductoACarrito(Card); // Usamos la función del contexto para agregar el producto al carrito
+
+    setLoading(false);
   };
 
   const renderIcon = (codigo) => {
@@ -38,7 +50,7 @@ const Card = ({ codigo, categoria, nombre, precio, imagen, color }) => {
     } else {
       return (
         <button
-          className="bg-[#f5821f] p-1.5 w-8 h-8 items-center justify-center rounded-md hover:bg-[#e26611]"
+          className="bg-[#f5821f] p-1.5 w-8 h-8 items-center justify-center rounded-md hover:bg-[#e26611] focus:outline-none transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 "
           onClick={() =>
             agregarProductoACarrito({
               codigo: codigo,
@@ -50,7 +62,7 @@ const Card = ({ codigo, categoria, nombre, precio, imagen, color }) => {
             })
           }
         >
-          <PlusIcon className="h-5 w-5" />
+          <PlusIcon className="h-5 w-5 text-white hover:text-black transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" />
         </button>
       );
     }
@@ -73,11 +85,18 @@ const Card = ({ codigo, categoria, nombre, precio, imagen, color }) => {
           <span className="text-lg font-semibold">S/. {priceToShow}</span>
         </div>
         <div className="flex justify-between items-center m-2 ">
-          <button className="bg-black text-white p-2 rounded-md" onClick={() => handleVerDetalles(codigo)}>
-            Ver Detalles
+          <button className="bg-black hover:bg-gray-900  text-white p-2 rounded-md " onClick={() => handleVerDetalles(codigo)}>
+            <h4 className='text-sm font-semibold transition duration-500 ease-in-out transform hover:scale-105
+            '>Ver Detalles</h4>
           </button>
 
-          {renderIcon(codigo)}
+          {loading ? (
+            <div className="bg-[#f5821f] p-1.5 w-8 h-8 items-center justify-center rounded-md">
+              <div className="w-5 h-5 border-t-2 border-white rounded-full animate-spin"></div>
+            </div>
+          ) : (
+            renderIcon(codigo)
+          )}
         </div>
       </div>
     </div>

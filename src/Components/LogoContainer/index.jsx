@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { Link } from 'react-router-dom'
-
+import './logo.css'
 
 
 const LogoContainer = () => {
@@ -9,6 +9,7 @@ const LogoContainer = () => {
 
     useEffect(() => {
         const handleScroll = () => {
+            
             const isScrolled = window.scrollY > 0
             setEsVisible(!isScrolled)
         }
