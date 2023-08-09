@@ -13,7 +13,7 @@ const Home = () => {
         // Simulación de una carga de datos con un temporizador
         const timer = setTimeout(() => {
             setDataLoading(false);
-        }, 2000);
+        }, 1000);
 
         return () => clearTimeout(timer);
     }, []);

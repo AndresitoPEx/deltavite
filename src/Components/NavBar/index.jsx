@@ -85,7 +85,7 @@ const Navbar = () => {
                         <Badge 
                         badgeContent={cantidadTotalProductos} 
                         color="error"
-                        className="cursor-pointer"
+                        className="cursor-pointer transition duration-500 ease-in-out hover:text-[#f5821f]"
                         >
                             <ShoppingCart className="h-6 w-6 cursor-pointer ml-2" />
                         </Badge>

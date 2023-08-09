@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { useMutation, useQueryClient, useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { NavLink } from 'react-router-dom';
@@ -229,25 +229,39 @@ const RegistrarProductos = () => {
             </div>
           </div>
 
-          <div className='flex gap-10 mt-10'>
-            <Button
-              variant="contained"
-              type="submit"
-              color="success"
-              size='large'
-            >
-              Registrar
-            </Button>
-            <NavLink to="/lista-productos">
+          <div className='flex gap-10 mt-10 justify-between'>
+            <div className='flex gap-10'>
               <Button
-                variant="outlined"
-                type="button"
+                variant="contained"
+                type="submit"
+                color="success"
                 size='large'
-                endIcon={<SendIcon />}
               >
-                Ver Productos
+                Registrar
               </Button>
-            </NavLink>
+              <NavLink to="/lista-productos">
+                <Button
+                  variant="contained"
+                  type="button"
+                  size='large'
+                  endIcon={<SendIcon />}
+                >
+                  Ver Productos
+                </Button>
+              </NavLink>
+            </div>
+            <div>
+              <NavLink to="/registrar-categoria">
+                <Button
+                  variant="contained"
+                  type="button"
+                  size='large'
+                  color='warning'
+                >
+                  Agregar Categoria
+                </Button>
+              </NavLink>
+            </div>
           </div>
         </form>
       </Container>

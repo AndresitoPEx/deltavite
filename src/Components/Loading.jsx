@@ -23,8 +23,8 @@ const LoadingPage = () => {
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-gray-900 ">    
       <img className="w-40 animate-pulse" src="https://i.postimg.cc/jjWL24MX/stiker_delta_3.png" alt="Logo" />
-      <BarLoader color={color} loading={loading} css={override} />
-      <h1 className="text-xl text-center text-[#f5821f] font-normal mt-1 mb-5">Cargando...</h1>
+      <BarLoader color={color} loading={loading} css={override}   />
+      <h1 className="text-sm font-extrabold text-center text-[#f5821f] mt-1 mb-5 animate-pulse">CARGANDO...</h1>
     </div>
   );
 };

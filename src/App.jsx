@@ -22,6 +22,7 @@ import RegistrarUsuario from './Admin/RegistrarUsuario'
 import VerClientes from './Admin/VerClientes'
 import RegistrarCliente from './Components/RegistrarCliente'
 import VerVentas from './Admin/VerVentas'
+import RegistrarCategoria from './Admin/RegistrarCategoria'
 
 //Components
 import DetalleProducto from './Components/DetalleProducto'
@@ -54,6 +55,8 @@ const AppRoutes = () => {
     { path: '/lista-ventas', element: <VerVentas /> },
     { path: '/lista-clientes', element: <VerClientes /> },
     { path: '/registrar-cliente', element: <RegistrarCliente /> },
+    { path: '/registrar-categoria', element: <RegistrarCategoria /> },
+
 
   ])
 

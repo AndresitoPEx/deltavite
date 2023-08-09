@@ -32,7 +32,7 @@ const Tienda = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowLoading(false);
-    }, 3000);
+    }, 1000);
 
     return () => clearTimeout(timer);
   }, []);

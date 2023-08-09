@@ -72,31 +72,35 @@ const Card = ({ codigo, categoria, nombre, precio, imagen, color }) => {
   const priceToShow = precio % 1 === 0 ? precio : formattedPrice;
 
   return (
-    <div className="bg-[#f5f5f5] rounded-sm hover-card flex flex-col justify-between ">
-      <div className="relative mb-2 w-full cursor-pointer" style={imageStyle}></div>
-      <div className="flex flex-col p-3 ">
-        <div className="m-2">
-          <span className="text-md font-thin text-black bg-[#d1d1d1] py-1 px-2 rounded-md hover:bg-[#e26611] hover:text-white">
-            {categoria}
-          </span>
-        </div>
-        <div className="flex justify-between items-center m-2">
-          <span className="text-xl font-semibold text-gray-600">{nombre}</span>
-          <span className="text-lg font-semibold">S/. {priceToShow}</span>
-        </div>
-        <div className="flex justify-between items-center m-2 ">
-          <button className="bg-black hover:bg-gray-900  text-white p-2 rounded-md " onClick={() => handleVerDetalles(codigo)}>
-            <h4 className='text-sm font-semibold transition duration-500 ease-in-out transform hover:scale-105
+    <div className="bg-[#f5f5f5] rounded-xl hover-card flex flex-col justify-between ">
+      <div className="flex flex-col ">
+        <button className="hover:bg-gray-200  text-white rounded-md " onClick={() => handleVerDetalles(codigo)}>
+          <div className="relative w-full cursor-pointer rounded-xl " style={imageStyle}></div>
+        </button>
+        <div className="flex flex-col justify-between h-40 w-full bg-[#f5f5f5] rounded-xl p-3">
+          <div className="m-2">
+            <span className="text-md font-thin text-black bg-[#d1d1d1] py-1 px-2 rounded-md hover:bg-[#e26611] hover:text-white">
+              {categoria}
+            </span>
+          </div>
+          <div className="flex justify-between items-center m-2">
+            <span className="text-xl font-semibold text-gray-600">{nombre}</span>
+            <span className="text-lg font-semibold">S/. {priceToShow}</span>
+          </div>
+          <div className="flex justify-between items-center m-2 ">
+            <button className="bg-black hover:bg-gray-900  text-white p-2 rounded-md " onClick={() => handleVerDetalles(codigo)}>
+              <h4 className='text-sm font-semibold transition duration-500 ease-in-out transform hover:scale-105
             '>Ver Detalles</h4>
-          </button>
+            </button>
 
-          {loading ? (
-            <div className="bg-[#f5821f] p-1.5 w-8 h-8 items-center justify-center rounded-md">
-              <div className="w-5 h-5 border-t-2 border-white rounded-full animate-spin"></div>
-            </div>
-          ) : (
-            renderIcon(codigo)
-          )}
+            {loading ? (
+              <div className="bg-[#f5821f] p-1.5 w-8 h-8 items-center justify-center rounded-md">
+                <div className="w-5 h-5 border-t-2 border-white rounded-full animate-spin"></div>
+              </div>
+            ) : (
+              renderIcon(codigo)
+            )}
+          </div>
         </div>
       </div>
     </div>

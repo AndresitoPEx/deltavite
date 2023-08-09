@@ -1,7 +1,7 @@
 
 import { useState, useContext } from 'react';
 import { CarritoDeCompras } from '../../Context/carritoContext';
-import { Button } from '@mui/material';
+import { Button, Divider } from '@mui/material';
 import { PlusIcon } from '@heroicons/react/24/solid';
 import { MinusIcon } from '@heroicons/react/24/solid';
 
@@ -44,10 +44,10 @@ const OrderCard = (props) => {
     const priceToShow = (parseFloat(precio) * cantidad).toFixed(2);
 
     return (
-        <div className="flex justify-between items-center border-b-2 py-5">
+        <>
+        <div className="flex justify-center items-center py-3 rounded-xl">
             <div className="flex items-center gap-2">
-                <figure className="w-28 h-28 overflow-hidden rounded-md object-cover bg-gray-200 shadow-md  flex-shrink-0 
-                ">
+                <figure className="w-28 h-28 overflow-hidden rounded-md object-cover bg-gray-200 shadow-md  flex-shrink-0">
                     <img src={imagen} alt={nombre} className="w-full h-full rounded-md object-cover" />
                 </figure>
                 <div>
@@ -94,7 +94,7 @@ const OrderCard = (props) => {
                         size='small'
                         variant="text"
                         onClick={handleDeleteProduct}
-                        
+
                     >
                         <p className="text-xs font-light text-red-500 hover:underline cursor-pointer mt-2">
                             Remover
@@ -102,11 +102,9 @@ const OrderCard = (props) => {
                     </Button>
                 </div>
             </div>
-            <div className="items-center gap-5">
-
-
-            </div>
         </div>
+        <Divider light />
+        </>
     );
 };
 

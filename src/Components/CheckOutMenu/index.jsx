@@ -59,9 +59,9 @@ const CheckOutMenu = () => {
     };
 
     return (
-        <aside className={`${context.isCheckOutMenuOpen ? 'flex' : 'hidden'} checkout-menu`}>
+        <aside className={`${context.isCheckOutMenuOpen ? 'flex' : 'hidden'} checkout-menu bg-gray-300`}>
             <div className="flex justify-between m-5 items-center border-b-2 border-gray-300 pb-2 px-3 mb-3 sticky top-0">
-                <h2 className="font-medium text-xl">Carrito: </h2>
+                <h2 className="font-medium text-xl">Mi Carrito: </h2>
                 <button className="">
                     <XMarkIcon className="h-6 w-6 text-black hover:text-gray-500 transition-all duration-300 ease-in-out cursor-pointer " onClick={() => context.closeCheckOutMenu()}></XMarkIcon>
                 </button>
