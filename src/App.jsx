@@ -46,7 +46,7 @@ const AppRoutes = () => {
     { path: '/mi-pedido', element: <UltimoPedido /> },
     { path: '*', element: <NotFound /> },
     //Area Backend
-    { path: '/admin-home/*', element: <AdminHome /> },
+    { path: '/admin/*', element: <AdminHome /> },
     { path: '/lista-productos', element: <VerProductos /> },
     { path: '/registrar-productos', element: <RegistrarProductos /> },
     { path: '/editar-producto/:codigo', element: <EditarProducto /> },

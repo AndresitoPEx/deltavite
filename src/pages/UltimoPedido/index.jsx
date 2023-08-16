@@ -11,10 +11,7 @@ import MoodBadIcon from '@mui/icons-material/MoodBad';
 import MisPedidos from '../Pedidos';
 import LoadingPage from '../../Components/Loading';
 
-
-//Area de Pago
-import BotonesPasarelas from '../../Components/ProcesoDePago/BotonPasarela';
-import RegistrarCliente from '../../Components/RegistrarCliente';
+import CompletarPago from '../../Components/CompletarPago';
 
 const UltimoPedido = () => {
     const context = useContext(CarritoDeCompras);
@@ -33,6 +30,37 @@ const UltimoPedido = () => {
         return <LoadingPage />;
     }
 
+
+
+    const handlePayment = async () => {
+        try {
+            const paymentConf = {
+                amount: parseFloat(precioTotal), // Convertir el precio total a céntimos
+                currency: 'PEN'
+            };
+
+            const res = await fetch('http://localhost:2000/createPayment', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ paymentConf })
+            });
+
+            const data = await res.json();
+
+            if (data.status === 'ERROR') {
+                console.error("Error al procesar el pago:", data.answer.errorMessage);
+                // Mostrar un mensaje de error al usuario
+            } else {
+                // El pago se procesó con éxito. Redirige o muestra un mensaje de confirmación.
+            }
+        } catch (error) {
+            console.error("Error en el proceso de pago:", error);
+            // Mostrar un mensaje de error al usuario   
+
+        }
+    };
+
+
     // Calcular el precio total por producto (ya que la cantidad está en cada producto)
     const calcularPrecioTotalPorProducto = (producto) => {
         return (parseFloat(producto.precio) * producto.cantidad).toFixed(2);
@@ -40,6 +68,7 @@ const UltimoPedido = () => {
 
     // Calcular el precio total de todos los productos
     const precioTotal = PrecioTotal(context.order?.[index]?.productos);
+
 
     return (
         <Layout className=" bg-gray-100 min-h-screen flex flex-col items-center justify-center w-full h-full ">
@@ -60,14 +89,14 @@ const UltimoPedido = () => {
                                 <div className="flex flex-col">
                                     <Divider>
                                         <h1 className="text-md text-center mb-2 font-semibold text-gray-600">
-                                            Paga rapidamente con:
+                                            Datos de envío:
                                         </h1>
                                     </Divider>
-                                    <Paper variant="outlined" square className="my-5 p-5">
-                                        <div>
-                                            <BotonesPasarelas />
-                                        </div>
-                                    </Paper>
+
+                                    <div>
+                                        <CompletarPago precioTotal={precioTotal} />
+                                    </div>
+
                                     <span className="text-md text-center mb-5 font-semibold text-gray-600 mt-5">
                                         <Divider>
                                             <h1 className="text-md text-center justify-center mb-2 font-semibold text-gray-600">
@@ -92,8 +121,13 @@ const UltimoPedido = () => {
 
                 )}
                 <Link to="/pagar-productos">
-                    <button className="flex text-lg bg-[#f5821f] p-8 w-auto h-8 items-center justify-center rounded-md text-black font-semibold hover:bg-[#e26611] transition duration-300 ease-in-out cursor-pointer mt-5">
+                    <button
+                        className="flex text-lg bg-[#f5821f] p-8 w-auto h-8 items-center justify-center rounded-md text-black font-semibold hover:bg-[#e26611] transition duration-300 ease-in-out cursor-pointer mt-5"
+                        onClick={handlePayment}
+                    >
+
                         Completar Pedido
+
                         {
                             <Badge badgeContent={
                                 context.order?.[index]?.productos?.reduce((total, producto) => total + producto.cantidad, 0)

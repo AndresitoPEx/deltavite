@@ -69,7 +69,6 @@ const Card = ({ codigo, categoria, nombre, precio, imagen, color }) => {
   };
 
   const formattedPrice = parseFloat(precio).toFixed(2);
-  const priceToShow = precio % 1 === 0 ? precio : formattedPrice;
 
   return (
     <div className="bg-[#f5f5f5] rounded-xl hover-card flex flex-col justify-between ">
@@ -85,7 +84,7 @@ const Card = ({ codigo, categoria, nombre, precio, imagen, color }) => {
           </div>
           <div className="flex justify-between items-center m-2">
             <span className="text-xl font-semibold text-gray-600">{nombre}</span>
-            <span className="text-lg font-semibold">S/. {priceToShow}</span>
+            <span className="text-lg font-semibold">S/. {formattedPrice}</span>
           </div>
           <div className="flex justify-between items-center m-2 ">
             <button className="bg-black hover:bg-gray-900  text-white p-2 rounded-md " onClick={() => handleVerDetalles(codigo)}>

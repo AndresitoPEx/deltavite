@@ -55,7 +55,7 @@ const CheckOutMenu = () => {
         context.setTotal(0);
         context.closeCheckOutMenu();
         console.log('datos de la orden: ', newOrder);
-        console.log("Precio total después de la orden:", context.total);
+        console.log("Precio total después de la orden:", context.total.toFixed(2));
     };
 
     return (
