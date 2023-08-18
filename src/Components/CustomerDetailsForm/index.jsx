@@ -3,12 +3,12 @@ import { Button, TextField, Paper, Grid, Typography, Select, MenuItem, FormContr
 
 const CustomerDetailsForm = ({ onSubmit }) => {
     const [formData, setFormData] = useState({
-        firstName: '',
-        lastName: '',
+        firstName: 'Jorge',
+        lastName: 'Romo',
         identityType: 'DNI',
-        identityCode: '',
-        cellPhoneNumber: '',
-        email: '',
+        identityCode: '46512243',
+        cellPhoneNumber: '930172021',
+        email: 'andresrt952@gmail.com',
     });
     const [error, setError] = useState(null);
     const [isSubmitted, setIsSubmitted] = useState(false);

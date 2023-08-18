@@ -1,25 +1,43 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+
 .payment-container {
     background-color: #f9f9f9;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     width: 100%;
+    max-width: 500px;
+
 }
 
 .payment-title {
-    color: #333;
+    color: #6d6d6d;
     font-size: 24px;
     margin-bottom: 20px;
+    text-align: center;
+    font-weight: 500;
 }
 
 .payment-inner-container {
-    background-color: #fff;
+    
     padding: 20px;
     border-radius: 5px;
+    margin-bottom: 20px;
 }
 
 .payment-message {
     color: green;
     font-weight: 400;
     margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+
 }
+

@@ -50,7 +50,7 @@ const CompletarPago = ({ precioTotal }) => {
                         }
                     });
 
-                    
+
                     await KR.onSubmit(async paymentData => {
                         const response = await fetch('http://localhost:2000/validatePayment', {
                             method: 'POST',
@@ -85,7 +85,7 @@ const CompletarPago = ({ precioTotal }) => {
                     <div className="payment-inner-container">
                         <div id="myPaymentForm">
                             <div className="kr-embedded" />
-                        </div>
+                        </div>  
                     </div>
                     <p className="payment-message">{paymentMessage}</p>
                 </div>

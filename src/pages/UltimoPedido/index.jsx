@@ -86,18 +86,20 @@ const UltimoPedido = () => {
                     <div>
                         <div className="flex flex-col md:flex-row w-full md:px-40 py-10 h-screen">
                             <div className="flex flex-col md:w-7/12 px-5">
-                                <div className="flex flex-col">
+                                <div className="flex flex-col items-center justify-center w-full bg-gray-200 rounded-md p-5">
                                     <Divider>
                                         <h1 className="text-md text-center mb-2 font-semibold text-gray-600">
                                             Datos de envío:
                                         </h1>
                                     </Divider>
 
-                                    <div>
+                                    <div className=" justify-center mt-5">
+                                    
+                                    
                                         <CompletarPago precioTotal={precioTotal} />
                                     </div>
 
-                                    <span className="text-md text-center mb-5 font-semibold text-gray-600 mt-5">
+                                    {/* <span className="text-md text-center mb-5 font-semibold text-gray-600 mt-5">
                                         <Divider>
                                             <h1 className="text-md text-center justify-center mb-2 font-semibold text-gray-600">
                                                 O
@@ -106,8 +108,8 @@ const UltimoPedido = () => {
                                     </span>
                                     <div>
 
-                                        {/* <RegistrarCliente /> */}
-                                    </div>
+                                         <RegistrarCliente /> 
+                                    </div> */}
 
                                 </div>
                             </div>
