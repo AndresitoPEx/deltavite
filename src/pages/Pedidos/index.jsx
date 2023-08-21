@@ -22,7 +22,7 @@ const MisPedidos = () => {
 
     return (
         <div>
-            <div className="flex flex-col md:border-l-2 md:pl-5">
+            <div className="bg-[#f5821f] flex flex-col items-center justify-center w-full rounded-lg shadow-md mx-5 pb-2">
 
                 <div className="bg-white mb-20 md:mb-0 md:sticky md:top-20 md:py-5 md:px-5 md:shadow-md md:rounded-md w-full h-4/5">
                     <div className="border-b-2">

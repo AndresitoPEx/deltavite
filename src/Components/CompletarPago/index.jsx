@@ -1,13 +1,16 @@
 import { useState, useEffect } from 'react';
 import KRGlue from '@lyracom/embedded-form-glue';
 import CustomerDetailsForm from '../CustomerDetailsForm';
-import './pagos.css'
+import './pagos.css';
 
-const CompletarPago = ({ precioTotal }) => {
+const CompletarPago = ({ precioTotal, carrito }) => {
     const [showPaymentForm, setShowPaymentForm] = useState(false);
     const [paymentMessage, setPaymentMessage] = useState('');
+    const [customerData, setCustomerData] = useState({});
 
     const handleCustomerDetailsSubmit = (customerDetails) => {
+        console.log('Datos del cliente:', customerDetails);
+        setCustomerData(customerDetails);
         setShowPaymentForm(true);
     };
 
@@ -23,7 +26,34 @@ const CompletarPago = ({ precioTotal }) => {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({
-                            paymentConf: { amount: precioTotal * 100, currency: 'PEN' }
+
+                            paymentConf: {
+                                amount: parseFloat((precioTotal * 100).toFixed(0)),
+                                currency: 'PEN',
+                                customer: {
+                                    billingDetails: {
+                                        firstName: customerData.firstName,
+                                        lastName: customerData.lastName,
+                                        cellPhoneNumber: customerData.cellPhoneNumber,
+                                        identityType: customerData.identityType,
+                                        identityCode: customerData.identityCode,
+                                    },
+                                    email: customerData.email,
+                                    shippingDetails: {
+                                        address: customerData.address,
+                                        district: customerData.district,
+                                        city: customerData.city,
+                                        phoneNumber: customerData.phoneNumber,
+                                    },
+                                    shoppingCart: {
+                                        cartItemInfo: carrito.map(item => ({
+                                            productLabel: item.nombre,
+                                            productQty: item.cantidad,
+                                            productAmount: parseFloat(item.precio),
+                                        })),
+                                    },
+                                },
+                            }
                         })
                     });
                     formToken = await res.text();
@@ -34,22 +64,7 @@ const CompletarPago = ({ precioTotal }) => {
                     await KR.setFormConfig({
                         formToken: formToken,
                         'kr-language': 'es-ES',
-                        'kr-theme': 'classic', // Establece el tema a "classic"
-                        'merchant': {
-                            'header': {
-                                'image': {
-                                    'type': 'logo',
-                                    'visibility': true,
-                                    'src': 'https://i.postimg.cc/K802W0xt/DELTA_C.png'
-                                },
-                                'shopName': {
-                                    'color': 'red'
-                                },
-                                'backgroundColor': 'blue'
-                            }
-                        }
                     });
-
 
                     await KR.onSubmit(async paymentData => {
                         const response = await fetch('http://localhost:2000/validatePayment', {
@@ -70,7 +85,7 @@ const CompletarPago = ({ precioTotal }) => {
 
             setupPaymentForm();
         }
-    }, [showPaymentForm, precioTotal]);
+    }, [showPaymentForm, precioTotal, customerData, carrito]);
 
     return (
         <div className="payment-container">
@@ -85,14 +100,13 @@ const CompletarPago = ({ precioTotal }) => {
                     <div className="payment-inner-container">
                         <div id="myPaymentForm">
                             <div className="kr-embedded" />
-                        </div>  
+                        </div>
                     </div>
                     <p className="payment-message">{paymentMessage}</p>
                 </div>
             )}
         </div>
     );
-
 };
 
 export default CompletarPago;

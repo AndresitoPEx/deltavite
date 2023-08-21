@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { PrecioTotal } from '../../utils';
 import Layout from '../../Components/Layout';
 import Container from '@mui/material/Container';
-import { Badge, Divider, Paper } from '@mui/material';
+import { Badge } from '@mui/material';
 import { ShoppingCart } from '@mui/icons-material';
 import MoodBadIcon from '@mui/icons-material/MoodBad';
 import MisPedidos from '../Pedidos';
@@ -85,32 +85,9 @@ const UltimoPedido = () => {
                 ) : (
                     <div>
                         <div className="flex flex-col md:flex-row w-full md:px-40 py-10 h-screen">
-                            <div className="flex flex-col md:w-7/12 px-5">
-                                <div className="flex flex-col items-center justify-center w-full bg-gray-200 rounded-md p-5">
-                                    <Divider>
-                                        <h1 className="text-md text-center mb-2 font-semibold text-gray-600">
-                                            Datos de envío:
-                                        </h1>
-                                    </Divider>
-
-                                    <div className=" justify-center mt-5">
-                                    
-                                    
-                                        <CompletarPago precioTotal={precioTotal} />
-                                    </div>
-
-                                    {/* <span className="text-md text-center mb-5 font-semibold text-gray-600 mt-5">
-                                        <Divider>
-                                            <h1 className="text-md text-center justify-center mb-2 font-semibold text-gray-600">
-                                                O
-                                            </h1>
-                                        </Divider>
-                                    </span>
-                                    <div>
-
-                                         <RegistrarCliente /> 
-                                    </div> */}
-
+                            <div className="flex flex-col md:w-8/12">
+                                <div className="flex flex-col items-center justify-center w-full bg-[#f5821f] rounded-lg">
+                                    <CompletarPago precioTotal={precioTotal} carrito={context.order[index]?.productos}/>
                                 </div>
                             </div>
 
@@ -122,7 +99,7 @@ const UltimoPedido = () => {
                     </div>
 
                 )}
-                <Link to="/pagar-productos">
+                {/* <Link to="/pagar-productos">
                     <button
                         className="flex text-lg bg-[#f5821f] p-8 w-auto h-8 items-center justify-center rounded-md text-black font-semibold hover:bg-[#e26611] transition duration-300 ease-in-out cursor-pointer mt-5"
                         onClick={handlePayment}
@@ -139,7 +116,7 @@ const UltimoPedido = () => {
                             </Badge>
                         }
                     </button>
-                </Link>
+                </Link> */}
             </Container>
 
         </Layout>
