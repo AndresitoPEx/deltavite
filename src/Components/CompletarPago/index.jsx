@@ -22,7 +22,7 @@ const CompletarPago = ({ precioTotal, carrito }) => {
                 let formToken = '';
 
                 try {
-                    const res = await fetch('http://localhost:2000/createPayment', {
+                    const res = await fetch('https://node-payserver.onrender.com/createPayment', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({
@@ -49,7 +49,7 @@ const CompletarPago = ({ precioTotal, carrito }) => {
                                         cartItemInfo: carrito.map(item => ({
                                             productLabel: item.nombre,
                                             productQty: item.cantidad,
-                                            productAmount: parseFloat(item.precio),
+                                            productAmount: parseFloat((item.precio * 100).toFixed(0)),
                                         })),
                                     },
                                 },
@@ -67,7 +67,7 @@ const CompletarPago = ({ precioTotal, carrito }) => {
                     });
 
                     await KR.onSubmit(async paymentData => {
-                        const response = await fetch('http://localhost:2000/validatePayment', {
+                        const response = await fetch('https://node-payserver.onrender.com/validatePayment', {
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify(paymentData)
