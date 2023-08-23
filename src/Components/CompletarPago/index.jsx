@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import KRGlue from '@lyracom/embedded-form-glue';
 import CustomerDetailsForm from '../CustomerDetailsForm';
+import { useNavigate } from 'react-router-dom';
 import './pagos.css';
 
 const CompletarPago = ({ precioTotal, carrito }) => {
@@ -9,10 +10,11 @@ const CompletarPago = ({ precioTotal, carrito }) => {
     const [customerData, setCustomerData] = useState({});
 
     const handleCustomerDetailsSubmit = (customerDetails) => {
-        console.log('Datos del cliente:', customerDetails);
+        console.log('Datos del cliente❌❌❌:', customerDetails);
         setCustomerData(customerDetails);
         setShowPaymentForm(true);
     };
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (showPaymentForm) {
@@ -23,6 +25,8 @@ const CompletarPago = ({ precioTotal, carrito }) => {
 
                 try {
                     const res = await fetch('https://node-payserver.onrender.com/createPayment', {
+                        // https://node-payserver.onrender.com
+                        //http://localhost:2000
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({
@@ -85,6 +89,9 @@ const CompletarPago = ({ precioTotal, carrito }) => {
 
             setupPaymentForm();
         }
+
+
+
     }, [showPaymentForm, precioTotal, customerData, carrito]);
 
     return (
@@ -99,7 +106,7 @@ const CompletarPago = ({ precioTotal, carrito }) => {
 
                     <div className="payment-inner-container">
                         <div id="myPaymentForm">
-                            <div className="kr-embedded" />
+                            <div className="kr-embedded bg-form" />
                         </div>
                     </div>
                     <p className="payment-message">{paymentMessage}</p>

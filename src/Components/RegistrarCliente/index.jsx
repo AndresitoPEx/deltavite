@@ -18,7 +18,7 @@ import InputLabel from '@mui/material/InputLabel';
 const RegistrarCliente = () => {
     const mutation = useMutation(crearCliente, {
         onSuccess: () => {
-            alert("Cliente registrado exitosamente");
+            alert("Cliente registrado exitosamente");   
             // Lógica adicional después de registrar el usuario
         },
         onError: (error) => {
@@ -129,7 +129,7 @@ const RegistrarCliente = () => {
             <form onSubmit={handleSubmit}>
                 <p className="text-sm font-semibold text-red-400">Datos Obligatorios *</p>
 
-                <div className="flex flex-col">
+                <div className="flex flex-col md:flex-row md:justify-between md:gap-5 md:items-center gap-5 mt-5 px-5 md:px-0 md:mt-0">
                     <TextField
                         id="nombre"
                         name="nombre"

@@ -9,7 +9,7 @@ import CuentaCliente from './pages/MiCuenta'
 import Nosotros from './pages/Nosotros'
 import NotFound from './pages/NotFound'
 import UltimoPedido from './pages/UltimoPedido'
-
+import ConfirmacionDePago from './pages/Confirmacion'
 
 
 //Area Backend
@@ -20,7 +20,7 @@ import EditarProducto from './Admin/EditarProducto'
 import VerUsuarios from './Admin/VerUsuarios'
 import RegistrarUsuario from './Admin/RegistrarUsuario'
 import VerClientes from './Admin/VerClientes'
-import RegistrarCliente from './Components/RegistrarCliente'
+import MayoristasPage from './pages/MayoristasForm'
 import VerVentas from './Admin/VerVentas'
 import RegistrarCategoria from './Admin/RegistrarCategoria'
 
@@ -44,6 +44,7 @@ const AppRoutes = () => {
     { path: '/mi-cuenta', element: <CuentaCliente /> },
     { path: '/nosotros', element: <Nosotros /> },
     { path: '/mi-pedido', element: <UltimoPedido /> },
+    { path: '/confirmacion-pago', element: <ConfirmacionDePago /> },
     { path: '*', element: <NotFound /> },
     //Area Backend
     { path: '/admin/*', element: <AdminHome /> },
@@ -54,7 +55,7 @@ const AppRoutes = () => {
     { path: '/registrar-usuario', element: <RegistrarUsuario /> },
     { path: '/lista-ventas', element: <VerVentas /> },
     { path: '/lista-clientes', element: <VerClientes /> },
-    { path: '/registrar-cliente', element: <RegistrarCliente /> },
+    { path: '/mayoristas-form', element: <MayoristasPage /> },
     { path: '/registrar-categoria', element: <RegistrarCategoria /> },
 
 

@@ -74,4 +74,21 @@
     
 }
 
+/* Button */
+.kr-embedded .kr-payment-button {
+    color: #ffffff !important;
+    background-color: #f5821f !important;
+    border-radius: 4px !important;
+    height:55px !important;
+    margin-bottom: 0px !important;
+    border-color: #f5821f !important;
+}
+.bg-form {
+    border-radius: 5px;
+    background: #ffffff;
+    padding: 5%;
+    margin-top: 2%;
+    box-shadow: 0 13px 17px #bbc3d666;
+  }
+
 

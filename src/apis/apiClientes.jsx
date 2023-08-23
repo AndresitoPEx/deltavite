@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseURL = "https://ihiz062-001-site1.dtempurl.com/api/clientes";
+const baseURL = "https://ihiz062-001-site1.dtempurl.com/api/clientesmayoristas";
 
 export const apiClientes = axios.create({
   baseURL

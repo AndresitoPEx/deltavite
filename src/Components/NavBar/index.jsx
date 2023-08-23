@@ -29,7 +29,7 @@ const Navbar = () => {
 
     return (
         <nav className="bg-black text-white flex justify-between items-center w-full py-5 px-40 text-xl font-thin z-10 border-b-2">
-            <ul className="flex items-center gap-3">
+            <ul className="flex items-center gap-10">
                 <li>
                     <NavLink
                         className={({ isActive }) => isActive ? activeStyle : undefined}
@@ -58,10 +58,17 @@ const Navbar = () => {
                         Nosotros
                     </NavLink>
                 </li>
+                <li>
+                    <NavLink
+                        className={({ isActive }) => isActive ? activeStyle : undefined}
+                        to="/mayoristas-form">
+                        Sé distribuidor
+                    </NavLink>
+                </li>
 
             </ul>
 
-            <ul className="flex items-center gap-3">
+            <ul className="flex items-center gap-10">
                 <li>
                     <Profile />
                 </li>
