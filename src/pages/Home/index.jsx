@@ -4,7 +4,7 @@ import Layout from "../../Components/Layout";
 import LoadingPage from "../../Components/Loading";
 //materialUI
 import Container from '@mui/material/Container';
-
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 const Home = () => {
 
     const [dataLoading, setDataLoading] = useState(true);
@@ -20,7 +20,7 @@ const Home = () => {
 
     if (dataLoading) {
         // Muestra la página de carga mientras dataLoading es true
-        return <LoadingPage />;        
+        return <LoadingPage />;
     }
 
 
@@ -153,7 +153,9 @@ const Home = () => {
                         </div>
                     </section>
 
-
+                    <a className='whatsapp-icon-container' href="https://wa.link/kptufa" target="_blank" rel="noopener noreferrer">
+                        <WhatsAppIcon  className="whatsapp-icon" />
+                    </a>
                 </Container>
             </div>
         </Layout>

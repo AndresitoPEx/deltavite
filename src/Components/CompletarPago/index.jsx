@@ -32,7 +32,7 @@ const CompletarPago = ({ precioTotal, carrito }) => {
                         body: JSON.stringify({
 
                             paymentConf: {
-                                amount: parseFloat((precioTotal * 100).toFixed(0)),
+                                    amount: parseFloat((precioTotal * 100).toFixed(0)),
                                 currency: 'PEN',
                                 customer: {
                                     billingDetails: {
@@ -83,7 +83,7 @@ const CompletarPago = ({ precioTotal, carrito }) => {
                     const { result } = await KR.attachForm('#myPaymentForm');
                     await KR.showForm(result.formId);
                 } catch (error) {
-                    setPaymentMessage('Error: ' + error.message);
+                    setPaymentMessage('Error: ' + error.message);       
                 }
             }
 

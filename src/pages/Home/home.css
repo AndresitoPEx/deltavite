@@ -1,19 +1,49 @@
-
 .parallax-container {
-    position: relative;
-    overflow: hidden;
-    height: 400px; /* Ajusta la altura según tus necesidades */
-    
-  }
-  
-  .parallax-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed; /* Fija la imagen de fondo */
-  }
-  
+  position: relative;
+  overflow: hidden;
+  height: 400px;
+  /* Ajusta la altura según tus necesidades */
+
+}
+
+.parallax-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  /* Fija la imagen de fondo */
+}
+
+.whatsapp-icon-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  background-color: #25D366;
+  border-radius: 50%;
+  width: 60px;
+  /* Aumenté un poco el tamaño para que sea más visible */
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  /* Agregué una sombra suave para darle profundidad */
+  transition: transform 0.3s ease;
+  /* Agregué una transición para el efecto hover */
+}
+
+.whatsapp-icon-container:hover {
+  transform: scale(1.1);
+  /* Efecto de crecimiento al pasar el mouse por encima */
+}
+
+.whatsapp-icon {
+  width: 2rem !important;
+  height: 2rem !important;
+  color: white;
+} 
