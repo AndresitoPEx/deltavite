@@ -27,11 +27,13 @@ const Home = () => {
     return (
         <Layout>
             {/* Sección de banner promocional */}
-            <section className="w-full  ">
-                <div className="">
-                    <img src="https://i.postimg.cc/90SwfqCK/294061075-553185146335372-2252448118094084959-n.jpg" alt="Banner promocional" className="w-full" />
+            <section className="w-full">
+                <div className="relative">
+                    <img src="https://i.postimg.cc/90SwfqCK/294061075-553185146335372-2252448118094084959-n.jpg" alt="Banner promocional" className="w-full h-auto object-cover" />
                 </div>
             </section>
+
+
             <div className="bg-gray-100 w-full">
                 <Container maxWidth="xl">
                     {/* Sección de categorías */}
@@ -154,7 +156,7 @@ const Home = () => {
                     </section>
 
                     <a className='whatsapp-icon-container' href="https://wa.link/kptufa" target="_blank" rel="noopener noreferrer">
-                        <WhatsAppIcon  className="whatsapp-icon" />
+                        <WhatsAppIcon className="whatsapp-icon" />
                     </a>
                 </Container>
             </div>

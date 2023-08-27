@@ -32,7 +32,7 @@ const CompletarPago = ({ precioTotal, carrito }) => {
                         body: JSON.stringify({
 
                             paymentConf: {
-                                    amount: parseFloat((precioTotal * 100).toFixed(0)),
+                                        amount: parseFloat((precioTotal * 100).toFixed(0)),
                                 currency: 'PEN',
                                 customer: {
                                     billingDetails: {

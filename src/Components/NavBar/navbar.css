@@ -1,0 +1,11 @@
+/* Por defecto, el ícono se mostrará */
+.hidden-md-up {
+    display: block;
+}
+
+/* Cuando la pantalla sea de tamaño mediano (por ejemplo, más de 768px), lo ocultamos */
+@media (min-width: 640px) {
+    .hidden-md-up {
+        display: none !important;
+    }
+}

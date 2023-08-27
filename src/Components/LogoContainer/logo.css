@@ -7,6 +7,5 @@
 
 .logo-container.hidden {
     opacity: 0;
-    pointer-events: none; /* Para evitar que los eventos se propaguen cuando el elemento está oculto */
-
+    pointer-events: none; 
 }
