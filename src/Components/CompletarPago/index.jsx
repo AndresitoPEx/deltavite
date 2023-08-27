@@ -76,9 +76,13 @@ const CompletarPago = ({ precioTotal, carrito }) => {
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify(paymentData)
                         });
-                        if (response.status === 200) setPaymentMessage('¡Pago exitoso!');
-                        return false;
-                    });
+                        if (response.status === 200) {
+                            setPaymentMessage('¡Pago exitoso!');
+                            localStorage.removeItem('productos');
+                        } else {
+                            return false;
+                        }
+                        });
 
                     const { result } = await KR.attachForm('#myPaymentForm');
                     await KR.showForm(result.formId);

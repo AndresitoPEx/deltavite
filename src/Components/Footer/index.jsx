@@ -10,7 +10,7 @@ const Footer = () => {
   return (
     <footer className="bg-black text-white py-8 flex-shrink-0 w-full">
       <Container maxWidth="lg">
-        <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 ">
+        <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 text-center md:text-left">
           <div className="col-span-1">
             <h2 className="text-lg font-bold mb-4">Sobre Nosotros</h2>
             <p className="text-sm">Breve descripción de la empresa y sus valores.</p>
@@ -42,7 +42,7 @@ const Footer = () => {
           </div>
           <div className="col-span-1">
             <h2 className="text-lg font-bold mb-4">Redes Sociales</h2>
-            <div className="flex space-x-4">
+            <div className="flex justify-center md:justify-start space-x-4">
               <a href="#" className="text-sm">
                 <FacebookIcon />
               </a>
@@ -58,8 +58,8 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="flex justify-center items-center mt-8">
-          <img src="https://i.postimg.cc/8C7qsb5M/LogoDelta_500px.png" alt="Logo" className="h-8 mr-2" />
+        <div className="flex flex-col md:flex-row justify-center items-center text-center md:text-left mt-8">
+          <img src="https://i.postimg.cc/8C7qsb5M/LogoDelta_500px.png" alt="Logo" className="h-8 mb-2 md:mb-0 md:mr-2" />
           <p className="text-sm">
             &copy; 2023 <strong>Delta Tactical Gear</strong>. Todos los derechos reservados.
           </p>

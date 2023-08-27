@@ -18,9 +18,9 @@ const Profile = () => {
     if (!isAuthenticated || !user) {
         return <></>;
     }
-
+    
     return (
-        <div className="">
+        <div className="sm:w-auto">
             <button className="" onClick={toggleDropdown}>
                 <img className="rounded-full h-10 w-10 border-2 hover:border-[#f5821f] transition duration-500 ease-in-out" src={user.picture} alt={user.name} />
             </button>

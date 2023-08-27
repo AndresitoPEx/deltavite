@@ -19,6 +19,7 @@ const MisPedidos = () => {
 
     // Calcular el precio total de todos los productos
     const precioTotal = PrecioTotal(context.order?.[index]?.productos);
+    
 
     return (
         <div>

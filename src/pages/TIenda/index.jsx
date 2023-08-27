@@ -68,42 +68,42 @@ const Tienda = () => {
 
   const productosCard = getProducts();
 
-  return (
-    <Layout>
-      <Container maxWidth="xl">
-        <div className="pt-10">
-          <input
-            className="w-full border border-gray-300 border-solid rounded-3 shadow-lg p-3 focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-transparent"
-            type="text"
-            value={busqueda}
-            onChange={(e) => setBusqueda(e.target.value)}
-            placeholder="Buscar productos..."
-          />
+return (
+  <Layout>
+    <Container maxWidth="xl">
+      <div className="pt-10">
+        <input
+          className="w-full border border-gray-300 border-solid rounded-3 shadow-lg p-3 focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-transparent"
+          type="text"
+          value={busqueda}
+          onChange={(e) => setBusqueda(e.target.value)}
+          placeholder="Buscar productos..."
+        />
+      </div>
+      {productosCard.length === 0 ? (
+        <div className="text-center mt-10 h-screen">
+          <p className="text-3xl font-semibold text-[#f5821f]">No se encontraron productos.</p>
+          <p className="text-2xl text-gray-600">Intenta con otra busqueda.</p>
         </div>
-        {productosCard.length === 0 ? ( // Verificamos si no hay resultados en la búsqueda
-          <div className="text-center mt-10 h-screen">
-            <p className="text-3xl font-semibold text-[#f5821f]">No se encontraron productos.</p>
-            <p className="text-2xl text-gray-600">Intenta con otra busqueda.</p>
-          </div>
-        ) : (
-          <div className="grid gap-5 grid-cols-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-full py-20">
-            {productosCard.map((producto) => (
-              <div key={producto.id}>
-                <Card
-                  categoria={producto.categoriaNombre}
-                  nombre={producto.nombre}
-                  precio={producto.precio}
-                  imagen={producto.imagenNombre}
-                  codigo={producto.codigo}
-                  color={producto.color}
-                />
-              </div>
-            ))}
-          </div>
-        )}
-      </Container>
-    </Layout>
-  );
+      ) : (
+        <div className="grid gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-full py-20">
+          {productosCard.map((producto) => (
+            <div key={producto.id}>
+              <Card
+                categoria={producto.categoriaNombre}
+                nombre={producto.nombre}
+                precio={producto.precio}
+                imagen={producto.imagenNombre}
+                codigo={producto.codigo}
+                color={producto.color}
+              />
+            </div>
+          ))}
+        </div>
+      )}
+    </Container>
+  </Layout>
+);
 };
 
 export default Tienda;

@@ -1,14 +1,14 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
-//crear contexto
+// Crear contexto
 export const CarritoDeCompras = createContext();
 
-//crear provider
+// Crear provider
 export const CarritoProvider = ({ children }) => {
 
-
-
-    const [productosCarrito, setProductosCarrito] = useState([])
+    // 1. Inicializar el estado con localStorage (si hay datos)
+    const initialCart = localStorage.getItem('productosCarrito') ? JSON.parse(localStorage.getItem('productosCarrito')) : [];
+    const [productosCarrito, setProductosCarrito] = useState(initialCart);
 
     const handleUpdateCantidad = (codigo, newCantidad) => {
         const updatedProducts = productosCarrito.map((producto) => (producto.codigo === codigo ? { ...producto, cantidad: newCantidad } : producto));
@@ -25,42 +25,42 @@ export const CarritoProvider = ({ children }) => {
         openCheckOutMenu();
     };
 
-    const [isCheckOutMenuOpen, setCheckOutMenu] = useState(false)
-    const openCheckOutMenu = () => setCheckOutMenu(true)
-    const closeCheckOutMenu = () => setCheckOutMenu(false)
+    const [isCheckOutMenuOpen, setCheckOutMenu] = useState(false);
+    const openCheckOutMenu = () => setCheckOutMenu(true);
+    const closeCheckOutMenu = () => setCheckOutMenu(false);
 
-    const [order, setOrder] = useState([])
-
+    const [order, setOrder] = useState([]);
     const [total, setTotal] = useState(0);
 
+    // 2. Cada vez que cambie productosCarrito, actualizamos localStorage
+    useEffect(() => {
+        if (productosCarrito.length > 0) {
+            localStorage.setItem('productosCarrito', JSON.stringify(productosCarrito));
+        } else {
+            localStorage.removeItem('productosCarrito');
+        }
+    }, [productosCarrito]);
 
     console.log("Valor de total desde el contexto:", total);
     console.log("Productos en el carrito desde el contexto:", productosCarrito);
 
-
     return (
         <CarritoDeCompras.Provider
             value={{
-
-
                 productosCarrito,
                 setProductosCarrito,
-
                 isCheckOutMenuOpen,
                 openCheckOutMenu,
                 closeCheckOutMenu,
-
                 order,
                 setOrder,
-
                 total, // Agregar la variable total al contexto
                 setTotal, // Agregar la función setTotal al contexto
-
                 agregarProductoACarrito,
-
             }}>
-
             {children}
         </CarritoDeCompras.Provider>
     )
 }
+
+export default CarritoProvider;
