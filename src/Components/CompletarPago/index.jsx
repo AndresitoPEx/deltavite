@@ -20,11 +20,11 @@ const CompletarPago = ({ precioTotal, carrito }) => {
         if (showPaymentForm) {
             async function setupPaymentForm() {
                 const endpoint = 'https://api.micuentaweb.pe';
-                const publicKey = '14245093:testpublickey_o9XP4sFofz1xE3mg5j1oU420p7tQjtGLP2rxRteGJFspg';
+                const publicKey = '14245093:publickey_nj6grHNc8nJNVtG05sKX0Or3zErw25jNQqCTX69b4aesO';
                 let formToken = '';
 
                 try {
-                    const res = await fetch('http://localhost:2000/createPayment', {
+                    const res = await fetch('https://node-payserver.onrender.com/createPayment', {
                         // https://node-payserver.onrender.com
                         //http://localhost:2000
                         method: 'POST',
@@ -71,7 +71,7 @@ const CompletarPago = ({ precioTotal, carrito }) => {
                     });
 
                     await KR.onSubmit(async paymentData => {
-                        const response = await fetch('http://localhost:2000/validatePayment', {
+                        const response = await fetch('https://node-payserver.onrender.com/validatePayment', {
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify(paymentData)
