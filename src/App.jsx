@@ -44,7 +44,7 @@ const AppRoutes = () => {
     { path: '/mi-cuenta', element: <CuentaCliente /> },
     { path: '/nosotros', element: <Nosotros /> },
     { path: '/mi-pedido', element: <UltimoPedido /> },
-    { path: '/confirmacion-pago', element: <ConfirmacionDePago /> },
+    { path: '/confirmacion', element: <ConfirmacionDePago /> },
     { path: '*', element: <NotFound /> },
     //Area Backend
     { path: '/admin/*', element: <AdminHome /> },

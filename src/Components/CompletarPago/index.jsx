@@ -19,8 +19,8 @@ const CompletarPago = ({ precioTotal, carrito }) => {
     useEffect(() => {
         if (showPaymentForm) {
             async function setupPaymentForm() {
-                const endpoint = 'https://api.micuentaweb.pe';
-                const publicKey = '14245093:testpublickey_o9XP4sFofz1xE3mg5j1oU420p7tQjtGLP2rxRteGJFspg';
+                const endpoint = import.meta.env.VITE_API_ENDPOINT;
+                const publicKey = import.meta.env.VITE_PUBLIC_KEY;
                 let formToken = '';
 
                 try {
@@ -32,7 +32,7 @@ const CompletarPago = ({ precioTotal, carrito }) => {
                         body: JSON.stringify({
 
                             paymentConf: {
-                                        amount: parseFloat((precioTotal * 100).toFixed(0)),
+                                amount: parseFloat((precioTotal * 100).toFixed(0)),
                                 currency: 'PEN',
                                 customer: {
                                     billingDetails: {
@@ -64,7 +64,7 @@ const CompletarPago = ({ precioTotal, carrito }) => {
 
                     const { KR } = await KRGlue.loadLibrary(endpoint, publicKey);
 
-                    // Configuración personalizada del formulario
+                    // Configuración del formulario
                     await KR.setFormConfig({
                         formToken: formToken,
                         'kr-language': 'es-ES',
@@ -78,16 +78,16 @@ const CompletarPago = ({ precioTotal, carrito }) => {
                         });
                         if (response.status === 200) {
                             setPaymentMessage('¡Pago exitoso!');
-                            localStorage.removeItem('productos');
+                            navigate('/confirmacion');
                         } else {
                             return false;
                         }
-                        });
+                    });
 
                     const { result } = await KR.attachForm('#myPaymentForm');
                     await KR.showForm(result.formId);
                 } catch (error) {
-                    setPaymentMessage('Error: ' + error.message);       
+                    setPaymentMessage('Error: ' + error.message);
                 }
             }
 
