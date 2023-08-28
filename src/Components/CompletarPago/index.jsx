@@ -20,7 +20,7 @@ const CompletarPago = ({ precioTotal, carrito }) => {
         if (showPaymentForm) {
             async function setupPaymentForm() {
                 const endpoint = 'https://api.micuentaweb.pe';
-                const publicKey = '14245093:testpublickey_o9XP4sFofz1xE3mg5j1oU420p7tQjtGLP2rxRteGJFspg';
+                const publicKey = '14245093:publickey_nj6grHNc8nJNVtG05sKX0Or3zErw25jNQqCTX69b4aesO';
                 let formToken = '';
 
                 try {
