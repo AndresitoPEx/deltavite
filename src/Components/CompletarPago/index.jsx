@@ -76,7 +76,7 @@ const CompletarPago = ({ precioTotal, carrito }) => {
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify(paymentData)
                         });
-                        if (response.status === 200) setPaymentMessage('¡Pago exitoso!');
+                        if (response.status === 200) navigate('/confirmacion');
                         return false;
                     });
 
