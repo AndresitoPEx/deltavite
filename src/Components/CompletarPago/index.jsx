@@ -32,7 +32,7 @@ const CompletarPago = ({ precioTotal, carrito }) => {
                         body: JSON.stringify({
 
                             paymentConf: {
-                                amount: parseFloat((precioTotal * 100).toFixed(0)),
+                                    amount: parseFloat((precioTotal * 100).toFixed(0)),
                                 currency: 'PEN',
                                 customer: {
                                     billingDetails: {
@@ -64,7 +64,7 @@ const CompletarPago = ({ precioTotal, carrito }) => {
 
                     const { KR } = await KRGlue.loadLibrary(endpoint, publicKey);
 
-                    // Configuración del formulario
+                    // Configuración personalizada del formulario
                     await KR.setFormConfig({
                         formToken: formToken,
                         'kr-language': 'es-ES',
@@ -76,13 +76,9 @@ const CompletarPago = ({ precioTotal, carrito }) => {
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify(paymentData)
                         });
-                        if (response.status === 200) {
-                            setPaymentMessage('¡Pago exitoso!');
-                            navigate('/confirmacion');
-                        } else {
-                            return false;
-                        }
-                        });
+                        if (response.status === 200) setPaymentMessage('¡Pago exitoso!');
+                        return false;
+                    });
 
                     const { result } = await KR.attachForm('#myPaymentForm');
                     await KR.showForm(result.formId);
