@@ -101,8 +101,8 @@ const CompletarPago = ({ precioTotal, carrito }) => {
             )}
 
             {showPaymentForm && (
-                <div className="form payment-form">
-                    <h1 className="payment-title">Ingrese sus datos de pago</h1>
+                <div className="form payment-form flex flex-col items-center">
+                    <h1 className="payment-title ">Ingrese sus datos de pago</h1>
 
                     <div className="payment-inner-container">
                         <div id="myPaymentForm">

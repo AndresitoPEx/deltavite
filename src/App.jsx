@@ -37,7 +37,8 @@ const AppRoutes = () => {
 
   let routes = useRoutes([
     //Area Frontend
-    { path: '/', element: <Home /> },
+    { path: '/home', element: <Home /> },
+    { path: '/', element: <Tienda /> },
     { path: '/tienda', element: <Tienda /> },
     { path: '/producto/:codigo', element: <DetalleProducto /> },
     { path: '/contacto', element: <Contacto /> },

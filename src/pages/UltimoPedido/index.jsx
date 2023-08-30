@@ -72,10 +72,10 @@ const UltimoPedido = () => {
 
 
     return (
-        <Layout className=" bg-gray-100 min-h-screen flex flex-col items-center justify-center w-full h-full ">
-            <Container maxWidth="xl">
+        <Layout>
+            <Container maxWidth="xl" className='bg-gray-200'>
                 {context.order.length === 0 || context.order[index]?.productos?.length === 0 ? (
-                    <div className="flex flex-col items-center justify-center h-screen">
+                    <div className="flex flex-col md:flex-row w-full px-4 md:px-40 py-10 h-screen overflow-y-auto">
                         <MoodBadIcon
                             className="h-20 w-20 text-black mb-4"
                             style={{ fontSize: 200 }}
@@ -84,40 +84,21 @@ const UltimoPedido = () => {
                         <p className="text-xl text-gray-600">¡Empieza agregando productos a tu carrito!</p>
                     </div>
                 ) : (
-                    <div>
-                        <div className="flex flex-col md:flex-row w-full md:px-40 py-10 h-screen">
-                            <div className="flex flex-col md:w-8/12">
-                                <div className="flex flex-col items-center justify-center w-full bg-[#f5821f] rounded-lg">
+                    <div className=" ">
+                        <div className="flex flex-col md:flex-row w-full xl:px-20 lg:px-10 md:px-0 py-10 ">
+                            
                                     <CompletarPago precioTotal={precioTotal} carrito={context.order[index]?.productos}/>
-                                </div>
-                            </div>
+                    
 
-                            <div>
+                            
                                 <MisPedidos />
-                            </div>
+                            
                         </div>
 
                     </div>
 
                 )}
-                {/* <Link to="/pagar-productos">
-                    <button
-                        className="flex text-lg bg-[#f5821f] p-8 w-auto h-8 items-center justify-center rounded-md text-black font-semibold hover:bg-[#e26611] transition duration-300 ease-in-out cursor-pointer mt-5"
-                        onClick={handlePayment}
-                    >
-
-                        Completar Pedido
-
-                        {
-                            <Badge badgeContent={
-                                context.order?.[index]?.productos?.reduce((total, producto) => total + producto.cantidad, 0)
-                            }
-                                color="error">
-                                <ShoppingCart className="h-6 w-6 cursor-pointer ml-2" />
-                            </Badge>
-                        }
-                    </button>
-                </Link> */}
+                
             </Container>
 
         </Layout>

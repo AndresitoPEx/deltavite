@@ -22,67 +22,40 @@ const MisPedidos = () => {
     
 
     return (
-        <div>
-            <div className="bg-[#f5821f] flex flex-col items-center justify-center w-full rounded-lg shadow-md mx-5 pb-2">
+        <div className="container mx-auto md:px-0 md:w-1/2 lg:w-1/2 xl:w-1/2 2xl:w-1/2">
+            <div className="bg-[#f5821f] rounded-lg shadow-md xl:mx-5 lg:mx-3 md:mx-2 sm:mx-0 sm:pb-1">
 
-                <div className="bg-white mb-20 md:mb-0 md:sticky md:top-20 md:py-5 md:px-5 md:shadow-md md:rounded-md w-full h-4/5">
-                    <div className="border-b-2">
+                <div className="bg-white mb-20 md:mb-0 md:sticky md:top-20 py-5 px-5 shadow-md rounded-md w-full h-4/5">
+                    <div className=" ">
                         {context.order?.[index]?.productos?.map((producto) => (
-                            <div key={producto.codigo} className="mb-5 relative">
-                                <div className="flex items-center gap-5 ">
-                                    <figure className="w-24 h-w-24  rounded-md object-cover bg-gray-200 shadow-md flex-shrink-0 relative">
-                                        <Badge
-                                            badgeContent={`${producto.cantidad}`}
-                                            color="warning"
-                                            className="absolute top-0 right-0"
-                                        >
-                                            <img src={producto.imagen} alt="" className="w-full h-full object-cover" />
-
+                            <div key={producto.codigo} className="mb-5">
+                                <div className="flex items-center gap-5">
+                                    <figure className="w-24 h-w-24 rounded-md object-cover bg-gray-200 shadow-md">
+                                        <Badge badgeContent={`${producto.cantidad}`} color="warning">
+                                            <img src={producto.imagen} alt={producto.nombre} className="w-full h-full object-cover" />
                                         </Badge>
-
-
                                     </figure>
-
-                                    <div className="flex justify-between items-center w-full border-b-2 pb-5 md:pb-0 md:border-b-0 md:pr-2 md:py-2 md:gap-5 md:flex-row
-                                        ">
+                                    <div className="flex-1 flex justify-between items-center border-b-2 pb-5">
                                         <p className="text-md font-normal">
                                             {producto.nombre}
-                                            {
-                                                producto?.codigo ? (
-                                                    <span className="text-gray-400 block text-xs">
-                                                        Codigo: {producto.codigo}
-                                                    </span>
-                                                ) : (
-                                                    <span className="text-gray-500 block text-xs">
-                                                        Sin codigo
-                                                    </span>
-
-                                                )
-                                            }
+                                            <span className={`block text-xs ${producto?.codigo ? "text-gray-400" : "text-gray-500"}`}>
+                                                {producto?.codigo ? `Codigo: ${producto.codigo}` : 'Sin codigo'}
+                                            </span>
                                         </p>
-
-                                        <p className="text-lg font-semibold text-gray-600 w-full 
-                                            md:w-auto md:text-right md:ml-auto md:mr-0 md:font-normal md:text-md md:py-0 md:px-0 md:mt-0 md:mb-0 md:gap-5 md:flex-row md:items-center md:justify-between md:space-x-5
-                                            ">
+                                        <p className="text-lg font-semibold text-gray-600">
                                             S/.{calcularPrecioTotalPorProducto(producto)}
                                         </p>
-
-
                                     </div>
-
                                 </div>
                             </div>
                         ))}
                     </div>
-                    <br />
-                    <h3 className="flex justify-between items-center w-full border-b-2 pb-5 md:pb-0 md:border-b-0 md:px-5 md:py">
-                        <span className="font-normal text-xl text-gray-600 md:text-2xl">
+                    <h3 className="flex justify-between items-center w-full border-b-2 pb-5">
+                        <span className="font-normal text-xl text-gray-600">
                             Total:
                         </span>
                         <span className="font-bold text-2xl">
                             S/. {precioTotal}
-
-
                         </span>
                     </h3>
                 </div>

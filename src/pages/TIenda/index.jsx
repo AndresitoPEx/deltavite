@@ -71,7 +71,7 @@ const Tienda = () => {
 return (
   <Layout>
     <Container maxWidth="xl">
-      <div className="pt-10">
+      <div className="pt-14">
         <input
           className="w-full border border-gray-300 border-solid rounded-3 shadow-lg p-3 focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-transparent"
           type="text"

@@ -27,7 +27,7 @@ const Navbar = () => {
 
 
     return (
-        <nav className="bg-black text-white flex md:flex-row lg:flex-row xl:flex-row justify-between items-center w-full py-2 md:py-4 lg:py-5 px-2 md:px-20 lg:px-40 xl:px-40 text-sm md:text-md lg:text-lg xl:text-xl font-thin z-10 border-b-2">
+        <nav className="bg-black text-white flex md:flex-row lg:flex-row xl:flex-row justify-between items-center w-full py-2 md:py-4 lg:py-3 px-2 md:px-20 lg:px-40 xl:px-40 text-sm md:text-md lg:text-lg xl:text-xl font-thin z-10">
             <div className="flex justify-between sm:w-auto">
                 <MenuIcon className="h-6 w-6 hidden-md-up cursor-pointer transition duration-500 mx-10 ease-in-out hover:text-[#f5821f] " onClick={toggleMenu} />
                 <ul className={`flex items-left gap-2 ${menuOpen ? 'flex-col block w-full' : 'hidden'} sm:flex-row sm:w-auto sm:gap-5 transition duration-500 ease-in-out sm:flex sm:items-center sm:justify-center`}>
@@ -35,14 +35,14 @@ const Navbar = () => {
                     <li>
                         <NavLink
                             className={({ isActive }) => isActive ? activeStyle : undefined}
-                            to="/">
+                            to="/home">
                             Inicio
                         </NavLink>
                     </li>
                     <li>
                         <NavLink
                             className={({ isActive }) => isActive ? activeStyle : undefined}
-                            to="/tienda">
+                            to="/">
                             Tienda
                         </NavLink>
                     </li>

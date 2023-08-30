@@ -9,7 +9,7 @@ const LogoContainer = () => {
 
     useEffect(() => {
         const handleScroll = () => {
-            
+
             const isScrolled = window.scrollY > 0
             setEsVisible(!isScrolled)
         }
@@ -22,12 +22,13 @@ const LogoContainer = () => {
     }, [])
 
     return (
-        <div className={`flex justify-center h-20 items-center pt-3 ${esVisible ? "visible" : "hidden"}`}>
-            <figure className="w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-1/6 2xl:w-1/7 ">
-                <Link to="/">
-                    <img className="w-full" src="https://i.postimg.cc/8C7qsb5M/LogoDelta_500px.png" alt="" />
-                </Link>
-            </figure>
+        <div className={`bg-black ${esVisible ? "visible" : "hidden"}`}>
+            <div className="bg-[#f5821f] text-center justify-center p-1 ">
+                <h4 className="text-black text-opacity-50 font-thin text-sm animate-bounce tracking-widest">¡ ENVÍOS GRATIS POR EL MES DE LA POLICÍA !</h4>
+            </div>
+
+
+
         </div>
     )
 }
