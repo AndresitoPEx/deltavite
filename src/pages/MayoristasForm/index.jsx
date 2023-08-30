@@ -5,8 +5,13 @@ const MayoristasPage = () => {
 
     return (
         <Layout className="flex flex-col items-center justify-center gap-10">
-            <h1>Para Distribuidores</h1>
-            <RegistrarCliente />
+
+            <div className="h-screen">
+
+                <h1>Para Distribuidores</h1>
+                <RegistrarCliente />
+            </div>
+
         </Layout>
     )
 }

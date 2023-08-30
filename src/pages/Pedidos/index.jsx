@@ -19,11 +19,11 @@ const MisPedidos = () => {
 
     // Calcular el precio total de todos los productos
     const precioTotal = PrecioTotal(context.order?.[index]?.productos);
-    
+
 
     return (
         <div className="container mx-auto md:px-0 md:w-1/2 lg:w-1/2 xl:w-1/2 2xl:w-1/2">
-            <div className="bg-[#f5821f] rounded-lg shadow-md xl:mx-5 lg:mx-3 md:mx-2 sm:mx-0 sm:pb-1">
+            <div className="bg-[#f5821f] rounded-lg shadow-lg xl:mx-5 lg:mx-3 md:mx-2 sm:mx-0 sm:pb-1">
 
                 <div className="bg-white mb-20 md:mb-0 md:sticky md:top-20 py-5 px-5 shadow-md rounded-md w-full h-4/5">
                     <div className=" ">

@@ -29,7 +29,7 @@ const UltimoPedido = () => {
     if (dataLoading) {
         return <LoadingPage />;
     }
-    
+
 
 
 
@@ -73,7 +73,7 @@ const UltimoPedido = () => {
 
     return (
         <Layout>
-            <Container maxWidth="xl" className='bg-gray-200'>
+            <Container maxWidth="xl" >
                 {context.order.length === 0 || context.order[index]?.productos?.length === 0 ? (
                     <div className="flex flex-col md:flex-row w-full px-4 md:px-40 py-10 h-screen overflow-y-auto">
                         <MoodBadIcon
@@ -86,19 +86,19 @@ const UltimoPedido = () => {
                 ) : (
                     <div className=" ">
                         <div className="flex flex-col md:flex-row w-full xl:px-20 lg:px-10 md:px-0 py-10 ">
-                            
-                                    <CompletarPago precioTotal={precioTotal} carrito={context.order[index]?.productos}/>
-                    
 
-                            
-                                <MisPedidos />
-                            
+                            <CompletarPago precioTotal={precioTotal} carrito={context.order[index]?.productos} />
+
+
+
+                            <MisPedidos />
+
                         </div>
 
                     </div>
 
                 )}
-                
+
             </Container>
 
         </Layout>

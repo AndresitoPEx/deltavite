@@ -113,7 +113,7 @@ const Contacto = () => {
 
   return (
     <Layout>
-      <div className="bg-gray-100">
+      <div className="">
         <section className="py-10">
           <Container maxWidth="xl">
             <Typography variant="h4" component="h1" align="center" gutterBottom>

@@ -75,7 +75,7 @@ const OrderCard = (props) => {
                         >
                             <MinusIcon className="h-5 w-5" />
                         </Button>
-                        <span className='px-3 py-1 text-md font-semibold text-black rounded-md bg-gray-200'>
+                        <span className='px-3 py-1 text-md font-semibold text-black rounded-md bg-gray-100 shadow-sm'>
                             {cantidad}
                         </span>
                         <Button

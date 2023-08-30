@@ -1,15 +1,30 @@
 .checkout-menu {
     display: flex;
     flex-direction: column;
-    width: 350px;
-    height: calc(100% - 68px); 
-    top: 68px;
+    width: 100%; /* para pantallas pequeñas */
+    max-width: 350px; /* para pantallas grandes */
+    height: 100%;
+    top: 0;
     right: 0;
     position: fixed;
-    background-color: #f5f5f5;
-    z-index: 10;
+    z-index: 11; /* mayor que el overlay */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    right: 0;
     transition: right 0.3s ease-in-out;
+    background-color: #fff; /* o cualquier color que desees */
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7); /* negro con transparencia */
+    z-index: 10; /* menor que el menú */
+    display: none; /* oculto por defecto */
+}
+
+.overlay.active {
+    display: block; /* visible cuando está activo */
 }
 
