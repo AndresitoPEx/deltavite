@@ -5,6 +5,7 @@ import SendIcon from "@mui/icons-material/Send";
 import Swal from "sweetalert2";
 import LoadingPage from "../../Components/Loading";
 
+
 const Contacto = () => {
 
   const [nombre, setNombre] = useState("");
@@ -113,6 +114,15 @@ const Contacto = () => {
 
   return (
     <Layout>
+      <div className="w-full h-[700px] relative">
+        <img
+          src='https://i.postimg.cc/pXSG80s5/military_wallpaper_065_-_1368x912.jpg'
+          className="object-cover object-top w-full h-full"
+        />
+        <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+          <h1 className="text-white text-3xl"></h1>
+        </div>
+      </div>
       <div className="">
         <section className="py-10">
           <Container maxWidth="xl">

@@ -75,7 +75,7 @@ const UltimoPedido = () => {
         <Layout>
             <Container maxWidth="xl" >
                 {context.order.length === 0 || context.order[index]?.productos?.length === 0 ? (
-                    <div className="flex flex-col md:flex-row w-full px-4 md:px-40 py-10 h-screen overflow-y-auto">
+                    <div className="flex flex-col w-full px-4 md:px-40 py-10 h-screen items-center justify-center">
                         <MoodBadIcon
                             className="h-20 w-20 text-black mb-4"
                             style={{ fontSize: 200 }}

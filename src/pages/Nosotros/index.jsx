@@ -3,6 +3,7 @@ import Container from '@mui/material/Container';
 import LoadingPage from "../../Components/Loading";
 import { useState, useEffect } from "react";
 
+
 const Nosotros = () => {
 
     const [dataLoading, setDataLoading] = useState(true);
@@ -20,6 +21,15 @@ const Nosotros = () => {
 
     return (
         <Layout>
+            <div className="w-full h-[700px] relative">
+                <img
+                    src='https://i.postimg.cc/8PBkz0ND/PORTADA_FACEBOK.jpg'
+                    className="object-cover object-top w-full h-full"
+                />
+                <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+                    <h1 className="text-white text-3xl "></h1>
+                </div>
+            </div>
             <Container maxWidth="xl">
                 <div className="">
                     <section className="py-10">

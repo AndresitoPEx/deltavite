@@ -83,7 +83,7 @@ const Card = ({ codigo, categoria, nombre, precio, imagen, color }) => {
             </span>
           </div>
           <div className="flex justify-between items-center m-2">
-            <span className="text-xl font-semibold text-gray-600">{nombre}</span>
+            <span className="text-lg font-semibold text-gray-600">{nombre}</span>
             <span className="text-lg font-semibold">S/. {formattedPrice}</span>
           </div>
           <div className="flex justify-between items-center m-2 ">
