@@ -30,43 +30,6 @@ const UltimoPedido = () => {
         return <LoadingPage />;
     }
 
-
-
-
-    // const handlePayment = async () => {
-    //     try {
-    //         const paymentConf = {
-    //             amount: parseFloat(precioTotal), // Convertir el precio total a céntimos
-    //             currency: 'PEN'
-    //         };
-
-    //         const res = await fetch('http://localhost:2000/createPayment', {
-    //             method: 'POST',
-    //             headers: { 'Content-Type': 'application/json' },
-    //             body: JSON.stringify({ paymentConf })
-    //         });
-
-    //         const data = await res.json();
-
-    //         if (data.status === 'ERROR') {
-    //             console.error("Error al procesar el pago:", data.answer.errorMessage);
-    //             // Mostrar un mensaje de error al usuario
-    //         } else {
-    //             // El pago se procesó con éxito. Redirige o muestra un mensaje de confirmación.
-    //         }
-    //     } catch (error) {
-    //         console.error("Error en el proceso de pago:", error);
-    //         // Mostrar un mensaje de error al usuario   
-
-    //     }
-    // };
-
-
-    // // Calcular el precio total por producto (ya que la cantidad está en cada producto)
-    // const calcularPrecioTotalPorProducto = (producto) => {
-    //     return (parseFloat(producto.precio) * producto.cantidad).toFixed(2);
-    // };
-
     // Calcular el precio total de todos los productos
     const precioTotal = PrecioTotal(context.order?.[index]?.productos);
 
@@ -85,7 +48,7 @@ const UltimoPedido = () => {
                     </div>
                 ) : (
                     <div className=" ">
-                        <div className="flex flex-col md:flex-row w-full xl:px-20 lg:px-10 md:px-0 py-10 ">
+                        <div className="flex flex-col md:flex-row w-full xl:px-20 lg:px-10 md:px-0 py-20">
 
                             <CompletarPago precioTotal={precioTotal} carrito={context.order[index]?.productos} />
 

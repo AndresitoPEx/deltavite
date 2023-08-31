@@ -21,11 +21,20 @@ const MisPedidos = () => {
     const precioTotal = PrecioTotal(context.order?.[index]?.productos);
 
 
+
+
     return (
         <div className="container mx-auto md:px-0 md:w-1/2 lg:w-1/2 xl:w-1/2 2xl:w-1/2">
-            <div className="bg-[#f5821f] rounded-lg shadow-lg xl:mx-5 lg:mx-3 md:mx-2 sm:mx-0 sm:pb-1">
+            <div className="bg-[#f5821f] rounded-lg shadow-lg  xl:mx-5 lg:mx-3 md:mx-2 sm:mx-0 sm:pb-1">
 
-                <div className="bg-white mb-20 md:mb-0 md:sticky md:top-20 py-5 px-5 shadow-md rounded-md w-full h-4/5">
+            <span>
+                <div className="flex justify-between items-center px-5 py-3">
+                    <h1 className="text-gray-100 text-2xl font-semibold tracking-wide">Mi Pedido: </h1>
+                    
+                </div>
+            </span>
+
+                <div className="bg-white mb-20 md:mb-0 md:sticky md:top-20 py-5 px-3 rounded-md w-full h-4/5">
                     <div className=" ">
                         {context.order?.[index]?.productos?.map((producto) => (
                             <div key={producto.codigo} className="mb-5">
@@ -36,9 +45,9 @@ const MisPedidos = () => {
                                         </Badge>
                                     </figure>
                                     <div className="flex-1 flex justify-between items-center border-b-2 pb-5">
-                                        <p className="text-md font-normal">
+                                        <p className="text-md font-normal text-md">
                                             {producto.nombre}
-                                            <span className={`block text-xs ${producto?.codigo ? "text-gray-400" : "text-gray-500"}`}>
+                                            <span className={`block font-mono text-xs ${producto?.codigo ? "text-gray-400" : "text-gray-500"}`}>
                                                 {producto?.codigo ? `Codigo: ${producto.codigo}` : 'Sin codigo'}
                                             </span>
                                         </p>

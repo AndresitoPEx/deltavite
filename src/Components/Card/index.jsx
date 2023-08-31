@@ -77,13 +77,17 @@ const Card = ({ codigo, categoria, nombre, precio, imagen, color }) => {
           <div className="relative w-full cursor-pointer rounded-xl " style={imageStyle}></div>
         </button>
         <div className="flex flex-col justify-between h-40 w-full bg-[#f5f5f5] rounded-xl p-3">
-          <div className="m-2">
+          <div className="flex justify-between m-2">
             <span className="text-md font-thin text-black bg-[#d1d1d1] py-1 px-2 rounded-md hover:bg-[#e26611] hover:text-white">
               {categoria}
             </span>
+            <div>
+              <span className="text-sm font-bold text-gray-400">{color}</span>
+            </div>
           </div>
           <div className="flex justify-between items-center m-2">
             <span className="text-lg font-semibold text-gray-600">{nombre}</span>
+
             <span className="text-lg font-semibold">S/. {formattedPrice}</span>
           </div>
           <div className="flex justify-between items-center m-2 ">

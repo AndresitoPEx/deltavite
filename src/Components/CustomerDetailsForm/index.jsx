@@ -200,9 +200,15 @@ const CustomerDetailsForm = ({ onSubmit }) => {
                             <Typography color="error">{error}</Typography>
                         </Grid>
                     )}
-                    <Grid item xs={12} className='justify-center flex'>
-                        <Button size='large' type="submit" variant="contained" color="warning">
-                            Enviar
+                    <Grid item 
+                        xs={12}
+                        className="flex justify-center"
+
+
+                    >
+                        <Button size='large' type="submit" variant="contained" color="warning" className='
+                        w-full md:w-1/2 lg:w-1/2 xl:w-1/2 2xl:w-1/2' >
+                            Continuar
                         </Button>
                     </Grid>
                 </Grid>
