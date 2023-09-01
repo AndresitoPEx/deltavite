@@ -14,7 +14,7 @@ const LayoutAdmin = ({ children }) => {
             <SideBar />
             <div className='layout-admin'>
                 <Container maxWidth="xl">
-                    <div className="flex flex-col items-center">
+                    <div className="flex flex-col items-center py-10">
                         {children}
                     </div>
                 </Container>

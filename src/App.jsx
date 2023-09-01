@@ -21,7 +21,6 @@ import VerUsuarios from './Admin/VerUsuarios'
 import RegistrarUsuario from './Admin/RegistrarUsuario'
 import VerClientes from './Admin/VerClientes'
 import MayoristasPage from './pages/MayoristasForm'
-import VerVentas from './Admin/VerVentas'
 import RegistrarCategoria from './Admin/RegistrarCategoria'
 
 //Components
@@ -54,7 +53,6 @@ const AppRoutes = () => {
     { path: '/editar-producto/:codigo', element: <EditarProducto /> },
     { path: '/lista-usuarios', element: <VerUsuarios /> },
     { path: '/registrar-usuario', element: <RegistrarUsuario /> },
-    { path: '/lista-ventas', element: <VerVentas /> },
     { path: '/lista-clientes', element: <VerClientes /> },
     { path: '/mayoristas-form', element: <MayoristasPage /> },
     { path: '/registrar-categoria', element: <RegistrarCategoria /> },

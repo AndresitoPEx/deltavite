@@ -4,13 +4,13 @@ import { obtenerClientes, eliminarCliente } from "../../apis/apiClientes";
 import LayoutAdmin from "../../Components/LayoutAdmin";
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Container, Button } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { useNavigate } from "react-router-dom";
+
 import Swal from 'sweetalert2';
 
 const VerClientes = () => {
 
     const queryClient = useQueryClient();
-    const navigate = useNavigate();
+
 
     // Obtener lista de usuarios
     const { data: clientes, isLoading, error, isError } = useQuery(
@@ -31,26 +31,13 @@ const VerClientes = () => {
         },
     });
 
-    useEffect(() => {
-        // Lógica adicional al cargar el componente
-    }, []);
-
-    const handleCrearCliente = () => {
-        // Lógica para redireccionar al formulario de registro de usuario
-        navigate("/registrar-cliente");
-    };
-
     return (
         <LayoutAdmin>
             <Container maxWidth="xl">
                 <div className="text-left mt-5 mb-5 p-5 bg-light-gray rounded-3 shadow-lg border border-gray-300 border-solid border-opacity-50">
-                    <h2 className="text-3xl font-bold text-gray-700">Lista de Clientes</h2>
+                    <h2 className="text-3xl font-bold text-gray-700">Lista de Clientes Mayoristas</h2>
                 </div>
-                <div className="mb-5">
-                    <Button variant="contained" onClick={handleCrearCliente}>
-                        Registrar Cliente
-                    </Button>
-                </div>
+            
                 <TableContainer component={Paper}>
                     <Table>
                         <TableHead>
@@ -58,6 +45,13 @@ const VerClientes = () => {
                                 <TableCell>Nombre</TableCell>
                                 <TableCell>Apellidos</TableCell>
                                 <TableCell>Email</TableCell>
+                                <TableCell>Número</TableCell>
+                                <TableCell>Empresa</TableCell>
+                                <TableCell>DNI</TableCell>
+                                <TableCell>RUC</TableCell>
+                                <TableCell>Dirección</TableCell>
+                                <TableCell>Ubicación</TableCell>
+
                                 <TableCell>{' '}</TableCell>
                             </TableRow>
                         </TableHead>
@@ -67,6 +61,13 @@ const VerClientes = () => {
                                     <TableCell>{cliente.nombre}</TableCell>
                                     <TableCell>{cliente.apellidos}</TableCell>
                                     <TableCell>{cliente.email}</TableCell>
+                                    <TableCell>{cliente.telefono}</TableCell>
+                                    <TableCell>{cliente.nombreempresa}</TableCell>
+                                    <TableCell>{cliente.dni}</TableCell>
+                                    <TableCell>{cliente.ruc}</TableCell>
+                                    <TableCell>{cliente.region}</TableCell>
+                                    <TableCell>{cliente.ubicacion}</TableCell>
+                                    
                                     <TableCell>
                                         <Button
                                             variant="contained"

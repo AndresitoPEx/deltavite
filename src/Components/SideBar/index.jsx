@@ -22,7 +22,7 @@ const SideBar = () => {
         <div className="sideBar">
             <MenuList>
                 <MenuItem>
-                    <NavLink to='/admin-home' className="flex">
+                    <NavLink to='/admin' className="flex">
                         <ListItemIcon>
                             <HomeIcon />
                         </ListItemIcon>
@@ -33,20 +33,6 @@ const SideBar = () => {
                     </NavLink>
                 </MenuItem>
 
-                <Divider />
-
-                <MenuItem>
-                    <NavLink to='/lista-ventas' className="flex">
-                        <ListItemIcon>
-                            <MonetizationOnIcon />
-                        </ListItemIcon>
-                        <ListItemText>
-                            <Typography variant="inherit">Ventas</Typography>
-                        </ListItemText>
-                    </NavLink>
-                </MenuItem>
-
-                
                 <Divider />
 
                 <MenuItem>
@@ -69,12 +55,12 @@ const SideBar = () => {
                             <StoreIcon />
                         </ListItemIcon>
                         <ListItemText>
-                            <Typography variant="inherit">Stock</Typography>
+                            <Typography variant="inherit">Tienda</Typography>
                         </ListItemText>
                     </NavLink>
                 </MenuItem>
 
-                
+
                 <Divider />
 
                 <MenuItem>
@@ -88,7 +74,7 @@ const SideBar = () => {
                     </NavLink>
                 </MenuItem>
 
-                <Divider />
+                {/* <Divider />
 
                 <MenuItem>
                     <NavLink className="flex">
@@ -104,7 +90,7 @@ const SideBar = () => {
                 <Divider />
 
                 <MenuItem>
-                    <NavLink className="flex">
+                    <NavLink className="flex"   >
                         <ListItemIcon>
                             <SettingsIcon />
                         </ListItemIcon>
@@ -112,8 +98,10 @@ const SideBar = () => {
                             <Typography variant="inherit">Configuración</Typography>
                         </ListItemText>
                     </NavLink>
-                </MenuItem>
+                </MenuItem> */}
+
                 <Divider />
+
             </MenuList>
 
 

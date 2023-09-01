@@ -1,210 +1,191 @@
 import { useState } from 'react';
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { crearCliente } from "../../apis/apiClientes";
-
-// Material UI
+import { useMutation } from '@tanstack/react-query';
+import { crearCliente } from '../../apis/apiClientes';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import SendIcon from '@mui/icons-material/Send';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import InputAdornment from '@mui/material/InputAdornment';
-import IconButton from '@mui/material/IconButton';
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import FormControl from '@mui/material/FormControl';
-import InputLabel from '@mui/material/InputLabel';
-
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Snackbar from '@mui/material/Snackbar';
 
 const RegistrarCliente = () => {
     const mutation = useMutation(crearCliente, {
         onSuccess: () => {
-            alert("Cliente registrado exitosamente");   
+            setSnackbar({ open: true, message: 'Cliente registrado exitosamente', severity: 'success' });
             // Lógica adicional después de registrar el usuario
         },
         onError: (error) => {
             console.error(error);
-            alert("Error al registrar el cliente");
+            setSnackbar({ open: true, message: 'Error al registrar el cliente', severity: 'error' });
         },
     });
 
     const [formData, setFormData] = useState({
-        nombre: "",
-        apellidos: "",
-        email: "",
-        clave: "",
+        nombre: '',
+        apellidos: '',
+        email: '',
+        telefono: '',
+        nombreempresa: '',
+        dni: '',
+        ruc: '',
+        region: '',
+        ubicacion: '',
+        fecha: new Date().toISOString(),
     });
 
-    const [emailError, setEmailError] = useState(false);
-    const [nombreError, setNombreError] = useState(false);
-    const [apellidosError, setApellidosError] = useState(false);
-    const [claveError, setClaveError] = useState(false);
+    const [snackbar, setSnackbar] = useState({
+        open: false,
+        message: '',
+        severity: 'success',
+    });
 
-    const validarEmail = (email) => {
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return !emailPattern.test(email);
-    };
-
-    const validarFormulario = () => {
-        const { nombre, apellidos, email, clave } = formData;
-
-        let hayErrores = false;
-
-        if (!nombre || nombre.length < 2) {
-            hayErrores = true;
-            setNombreError(true);
-        } else {
-            setNombreError(false);
-        }
-
-        if (!apellidos || apellidos.length < 2) {
-            hayErrores = true;
-            setApellidosError(true);
-        } else {
-            setApellidosError(false);
-        }
-
-        if (!email) {
-            hayErrores = true;
-            setEmailError(true);
-        } else {
-            setEmailError(validarEmail(email));
-        }
-
-        if (!clave || clave.length < 6) {
-            hayErrores = true;
-            setClaveError(true);
-        } else {
-            setClaveError(false); // Restablecer el estado de claveError si es válido
-        }
-
-        return !hayErrores;
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-        if (validarFormulario()) {
-            mutation.mutate(formData);
-        }
+    const handleCloseSnackbar = () => {
+        setSnackbar({
+            ...snackbar,
+            open: false,
+        });
     };
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-        setFormData((prevData) => ({
-            ...prevData,
+        setFormData({
+            ...formData,
             [name]: value,
-        }));
-
-        // Validar el campo de contraseña al cambiar su valor
-        if (name === "email") {
-            setEmailError(validarEmail(value));
-        } else if (name === "clave") {
-            setClaveError(value.length < 6);
-        }
+        });
     };
 
-    const handlePasswordChange = (e) => {
-        const { value } = e.target;
-        setFormData((prevData) => ({
-            ...prevData,
-            clave: value, // Actualizar el valor del campo de contraseña en el estado
-        }));
-
-        setClaveError(value.length < 6); // Validar el campo de contraseña y actualizar el estado claveError
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // Aquí va la lógica para validar el formulario
+        // Si todo es correcto, llamamos a la mutación.
+        mutation.mutate(formData);
     };
-
-    const [showPassword, setShowPassword] = useState(false);
-
-    const handleClickShowPassword = () => {
-        setShowPassword(!showPassword);
-    };
-
-    const handleMouseDownPassword = (event) => {
-        event.preventDefault();
-    };
-
 
     return (
-        <section>
-            <form onSubmit={handleSubmit}>
-                <p className="text-sm font-semibold text-red-400">Datos Obligatorios *</p>
-
-                <div className="flex flex-col md:flex-row md:justify-between md:gap-5 md:items-center gap-5 mt-5 px-5 md:px-0 md:mt-0">
-                    <TextField
-                        id="nombre"
-                        name="nombre"
-                        label="Nombres"
-                        variant="outlined"
-                        required
-                        error={nombreError}
-                        helperText={nombreError ? "Por favor, ingrese un nombre." : ""}
-                        onChange={handleInputChange}
-                        margin="normal"
-                        color="warning"
-                    />
-                    <TextField
-                        id="apellidos"
-                        name="apellidos"
-                        label="Apellidos"
-                        variant="outlined"
-                        required
-                        error={apellidosError}
-                        helperText={apellidosError ? "Por favor, ingrese apellidos." : ""}
-                        onChange={handleInputChange}
-                        margin="normal"
-                        color="warning"
-                    />
-                    <TextField
-                        id="email"
-                        name="email"
-                        label="Email"
-                        variant="outlined"
-                        required
-                        error={emailError}
-                        helperText={emailError ? "Por favor, ingrese un correo electrónico válido." : ""}
-                        onChange={handleInputChange}
-                        margin="normal"
-                        color="warning"
-                    />
-                    <FormControl margin="normal" color="warning" variant="outlined">
-                        <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
-                        <OutlinedInput
-                            id="outlined-adornment-password"
-                            type={showPassword ? 'text' : 'password'}
-                            error={claveError}
-                            helperText={claveError ? "Por favor, ingrese una contraseña almenos de 8 caracteres" : ""}
-                            onChange={handlePasswordChange}
-                            endAdornment={
-                                <InputAdornment position="end">
-                                    <IconButton
-                                        aria-label="toggle password visibility"
-                                        onClick={handleClickShowPassword}
-                                        onMouseDown={handleMouseDownPassword}
-                                        edge="end"
-                                    >
-                                        {showPassword ? <Visibility /> : <VisibilityOff />}
-                                    </IconButton>
-                                </InputAdornment>
-                            }
-                            label="Password"
-                        />
-                    </FormControl>
-                </div>
-                <div className="mt-5 flex justify-center">
-                    <Button
-                        className="w-1/2"
-                        type="submit"
-                        variant="contained"
-                        color="warning"
-                    // disabled={emailError || nombreError || apellidosError} // Desactivar el botón si hay errores en email, nombre o apellidos
-                    >
-                        Registrarse
+        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mt: 4 }}>
+            <Typography variant="h4" component="div" gutterBottom>
+                Registro de Cliente
+            </Typography>
+            <form onSubmit={handleSubmit} style={{ width: '100%', maxWidth: '500px' }} >
+                <TextField
+                    fullWidth
+                    color="warning"
+                    margin="normal"
+                    id="nombre"
+                    name="nombre"
+                    label="Nombres"
+                    variant="outlined"
+                    value={formData.nombre}
+                    onChange={handleInputChange}
+                />
+                <TextField
+                    fullWidth
+                    color="warning"
+                    margin="normal"
+                    id="apellidos"
+                    name="apellidos"
+                    label="Apellidos"
+                    variant="outlined"
+                    value={formData.apellidos}
+                    onChange={handleInputChange}
+                />
+                <TextField
+                    fullWidth
+                    color="warning"
+                    margin="normal"
+                    id="email"
+                    name="email"
+                    label="Email"
+                    variant="outlined"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                />
+                <TextField
+                    fullWidth
+                    color="warning"
+                    margin="normal"
+                    id="nombreempresa"
+                    name="nombreempresa"
+                    label="Nombre de tu empresa"
+                    variant="outlined"
+                    value={formData.nombreempresa}
+                    onChange={handleInputChange}
+                />
+                <TextField
+                    fullWidth
+                    color="warning"
+                    margin="normal"
+                    id="telefono"
+                    name="telefono"
+                    label="Teléfono de contacto"
+                    variant="outlined"
+                    value={formData.telefono}
+                    onChange={handleInputChange}
+                />
+                <TextField
+                    fullWidth
+                    color="warning"
+                    margin="normal"
+                    id="dni"
+                    name="dni"
+                    label="DNI"
+                    variant="outlined"
+                    value={formData.dni}
+                    onChange={handleInputChange}
+                />
+                <TextField
+                    fullWidth
+                    color="warning"
+                    margin="normal"
+                    id="ruc"
+                    name="ruc"
+                    label="RUC"
+                    variant="outlined"
+                    value={formData.ruc}
+                    onChange={handleInputChange}
+                />
+                <TextField
+                    fullWidth
+                    color="warning"
+                    margin="normal"
+                    id="ubicacion"
+                    name="ubicacion"
+                    label="Dirección de tu empresa"
+                    variant="outlined"
+                    value={formData.ubicacion}
+                    onChange={handleInputChange}
+                />
+                <TextField
+                    fullWidth
+                    color="warning"
+                    margin="normal"
+                    id="region"
+                    name="region"
+                    label="Distrito / Provincia / Departamento"
+                    variant="outlined"
+                    value={formData.region}
+                    onChange={handleInputChange}
+                />
+                <Box mt={2}>
+                    <Button fullWidth type="submit" variant="contained" color="warning">
+                        Enviar Datos
                     </Button>
-                </div>
+                </Box>
             </form>
 
-        </section>
-    )
+            <Snackbar
+                anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
+                open={snackbar.open}
+                autoHideDuration={6000}
+                onClose={handleCloseSnackbar}
+                message={snackbar.message}
+                action={
+                    <Button color="primary" size="small" onClick={handleCloseSnackbar}>
+                        Cerrar
+                    </Button>
+                }
+            />
+        </Box>
+    );
 };
 
 export default RegistrarCliente;

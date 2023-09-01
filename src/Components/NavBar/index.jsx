@@ -64,7 +64,7 @@ const Navbar = () => {
                         <NavLink
                             className={({ isActive }) => isActive ? activeStyle : undefined}
                             to="/mayoristas-form">
-                            Sé distribuidor
+                            Mayoristas
                         </NavLink>
                     </li>
                 </ul>
