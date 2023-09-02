@@ -40,17 +40,9 @@ const Nosotros = () => {
                                 <div>
                                     <h2 className="text-2xl font-bold mb-4">Nuestra Misión</h2>
                                     <p className="text-lg mb-4">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut fringilla justo
-                                        vitae diam auctor, at pretium magna tincidunt. Nulla facilisi. Sed sed enim
-                                        mauris. Sed faucibus, nisi id consectetur condimentum, sapien sem commodo
-                                        metus, at ullamcorper odio ex sed nulla.
+                                        En DELTA TACTICAL GEAR, nuestra misión es más que simplemente proveer equipo táctico de alta calidad. Nos esforzamos por ser un pilar de confianza y eficacia para las fuerzas de seguridad y los individuos que buscan equipamiento de alto rendimiento. Fabricamos nuestros productos con la más alta calidad de materiales, como la tela cordura 1000D, para asegurar que cada artículo no solo cumpla sino que supere las expectativas de nuestros clientes.
                                     </p>
-                                    <p className="text-lg mb-4">
-                                        Aliquam consequat est sed tellus euismod, at placerat mauris tristique. Morbi
-                                        non feugiat ligula. Phasellus efficitur interdum justo, sed vulputate justo
-                                        eleifend id. Suspendisse potenti. Fusce bibendum dolor vitae venenatis
-                                        facilisis. Morbi eget est in tellus suscipit varius in in massa.
-                                    </p>
+
                                 </div>
                                 <div>
                                     <img
@@ -72,17 +64,9 @@ const Nosotros = () => {
                                 <div>
                                     <h2 className="text-2xl font-bold mb-4">Nuestra Visión</h2>
                                     <p className="text-lg mb-4">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut fringilla justo
-                                        vitae diam auctor, at pretium magna tincidunt. Nulla facilisi. Sed sed enim
-                                        mauris. Sed faucibus, nisi id consectetur condimentum, sapien sem commodo
-                                        metus, at ullamcorper odio ex sed nulla.
+                                        Visualizamos un futuro donde DELTA TACTICAL GEAR sea la marca de referencia en equipamiento táctico a nivel nacional e internacional. Aspiramos a ser líderes en innovación, estableciendo nuevos estándares de calidad y funcionalidad en todo nuestro rango de productos. Queremos ser la primera elección para profesionales y entusiastas que buscan equipamiento táctico de alta calidad, durabilidad y eficacia.
                                     </p>
-                                    <p className="text-lg mb-4">
-                                        Aliquam consequat est sed tellus euismod, at placerat mauris tristique. Morbi
-                                        non feugiat ligula. Phasellus efficitur interdum justo, sed vulputate justo
-                                        eleifend id. Suspendisse potenti. Fusce bibendum dolor vitae venenatis
-                                        facilisis. Morbi eget est in tellus suscipit varius in in massa.
-                                    </p>
+
                                 </div>
                             </div>
 
@@ -90,17 +74,12 @@ const Nosotros = () => {
                                 <div>
                                     <h2 className="text-2xl font-bold mb-4">Nuestros Valores</h2>
                                     <p className="text-lg mb-4">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut fringilla justo
-                                        vitae diam auctor, at pretium magna tincidunt. Nulla facilisi. Sed sed enim
-                                        mauris. Sed faucibus, nisi id consectetur condimentum, sapien sem commodo
-                                        metus, at ullamcorper odio ex sed nulla.
+                                        Calidad: Nos comprometemos a ofrecer productos de la más alta calidad, fabricados con materiales resistentes y duraderos.
+                                        Integridad: Actuamos con honestidad y transparencia en todas nuestras interacciones, tanto con clientes como con proveedores.
+                                        Innovación: Estamos en una búsqueda constante de mejora, siempre buscando formas de innovar en diseño y funcionalidad.
+                                        Responsabilidad: Entendemos la importancia de nuestro rol en la seguridad de nuestros clientes, y nos tomamos esa responsabilidad muy en serio.
                                     </p>
-                                    <p className="text-lg mb-4">
-                                        Aliquam consequat est sed tellus euismod, at placerat mauris tristique. Morbi
-                                        non feugiat ligula. Phasellus efficitur interdum justo, sed vulputate justo
-                                        eleifend id. Suspendisse potenti. Fusce bibendum dolor vitae venenatis
-                                        facilisis. Morbi eget est in tellus suscipit varius in in massa.
-                                    </p>
+
                                 </div>
                                 <div>
                                     <img
@@ -122,17 +101,9 @@ const Nosotros = () => {
                                 <div>
                                     <h2 className="text-2xl font-bold mb-4">Nuestro Compromiso</h2>
                                     <p className="text-lg mb-4">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut fringilla justo
-                                        vitae diam auctor, at pretium magna tincidunt. Nulla facilisi. Sed sed enim
-                                        mauris. Sed faucibus, nisi id consectetur condimentum, sapien sem commodo
-                                        metus, at ullamcorper odio ex sed nulla.
+                                        En DELTA TACTICAL GEAR, estamos comprometidos con la excelencia en cada aspecto de nuestro negocio. Desde el momento en que seleccionas tus productos hasta el instante en que los recibes, puedes contar con un servicio rápido y eficiente. Ofrecemos entrega a nivel nacional e internacional, asegurando que nuestros productos de alta calidad lleguen a tus manos lo más rápido posible. Tu seguridad y satisfacción son nuestra máxima prioridad.
                                     </p>
-                                    <p className="text-lg mb-4">
-                                        Aliquam consequat est sed tellus euismod, at placerat mauris tristique. Morbi
-                                        non feugiat ligula. Phasellus efficitur interdum justo, sed vulputate justo
-                                        eleifend id. Suspendisse potenti. Fusce bibendum dolor vitae venenatis
-                                        facilisis. Morbi eget est in tellus suscipit varius in in massa.
-                                    </p>
+
                                 </div>
                             </div>
 
