@@ -77,7 +77,7 @@ const VerProductos = () => {
     const handleEdit = (codigo) => {
         console.log("Editar producto con código: ", codigo);
 
-        navigate(`/editar-producto/${codigo}`);
+        navigate(`/admin/editar-producto/${codigo}`);
     }
 
 
@@ -88,7 +88,7 @@ const VerProductos = () => {
                     <h2 className="text-3xl font-bold text-gray-700">Stock de Productos</h2>
                 </div>
                 <div className="mb-5">
-                    <NavLink to="/registrar-productos">
+                    <NavLink to="/admin/registrar-producto">
                         <Button variant="contained">Registrar Producto</Button>
                     </NavLink>
                 </div>

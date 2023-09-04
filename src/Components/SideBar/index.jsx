@@ -36,7 +36,7 @@ const SideBar = () => {
                 <Divider />
 
                 <MenuItem>
-                    <NavLink to="/lista-clientes" className="flex">
+                    <NavLink to="/admin/lista-clientes" className="flex">
                         <ListItemIcon>
                             <GroupIcon />
                         </ListItemIcon>
@@ -50,7 +50,7 @@ const SideBar = () => {
                 <Divider />
 
                 <MenuItem>
-                    <NavLink to='/lista-productos' className="flex">
+                    <NavLink to='/admin/lista-productos' className="flex">
                         <ListItemIcon>
                             <StoreIcon />
                         </ListItemIcon>
@@ -64,7 +64,7 @@ const SideBar = () => {
                 <Divider />
 
                 <MenuItem>
-                    <NavLink to="/lista-usuarios" className="flex">
+                    <NavLink to="/admin/lista-usuarios" className="flex">
                         <ListItemIcon>
                             <AccountCircleIcon />
                         </ListItemIcon>

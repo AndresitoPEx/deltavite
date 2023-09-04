@@ -8,7 +8,7 @@ import LayoutAdmin from "../../Components/LayoutAdmin";
 import { Paper, Grid, Typography } from '@mui/material';
 
 const AdminHome = () => {
-
+    console.log("AdminHome");
     const { data: clientes, isLoading: isLoadingClientes } = useQuery(
         ["clientes"],
         obtenerClientes

@@ -239,7 +239,7 @@ const RegistrarProductos = () => {
               >
                 Registrar
               </Button>
-              <NavLink to="/lista-productos">
+              <NavLink to="/admin/lista-productos">
                 <Button
                   variant="contained"
                   type="button"
@@ -251,7 +251,7 @@ const RegistrarProductos = () => {
               </NavLink>
             </div>
             <div>
-              <NavLink to="/registrar-categoria">
+              <NavLink to="/admin/registrar-categoria">
                 <Button
                   variant="contained"
                   type="button"

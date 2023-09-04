@@ -36,69 +36,49 @@ const Home = () => {
 
             <div className="bg-gray-100 w-full">
                 <Container maxWidth="xl">
-                    {/* Sección de categorías */}
-                    <section className="py-10 bg-white w-full">
-                        <div className="container mx-auto">
-                            <h2 className="text-3xl font-bold mb-6 text-center">Categorías</h2>
-                            <ul className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                                <li>
-                                    <a href="#" className="block bg-white p-4 text-center">
-                                        <img src="https://i.postimg.cc/529jM3By/246505382-1292446391207518-4064799709388919362-n.jpg" alt="Categoría 1" className="w-full h-32 object-cover mb-4" />
-                                        Categoría 1
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" className="block bg-white p-4 text-center">
-                                        <img src="https://i.postimg.cc/529jM3By/246505382-1292446391207518-4064799709388919362-n.jpg" alt="Categoría 2" className="w-full h-32 object-cover mb-4" />
-                                        Categoría 2
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" className="block bg-white p-4 text-center">
-                                        <img src="https://i.postimg.cc/529jM3By/246505382-1292446391207518-4064799709388919362-n.jpg" alt="Categoría 2" className="w-full h-32 object-cover mb-4" />
-                                        Categoría 3
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" className="block bg-white p-4 text-center">
-                                        <img src="https://i.postimg.cc/529jM3By/246505382-1292446391207518-4064799709388919362-n.jpg" alt="Categoría 2" className="w-full h-32 object-cover mb-4" />
-                                        Categoría 4
-                                    </a>
-                                </li>
-                                {/* Agregar más categorías */}
-                            </ul>
-                        </div>
-                    </section>
 
-                    {/* Sección destacada de productos */}
-                    <section className="py-10">
-                        <div className="container mx-auto">
-                            <h2 className="text-3xl font-bold mb-6 text-center">Productos Destacados</h2>
-                            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                                <div className="bg-white p-4">
-                                    <img src="https://i.postimg.cc/zG35jPwC/322475247-1559586227861359-4888582581913463503-n.jpg" alt="Producto 1" className="w-full h-3/4 object-cover mb-4" />
-                                    <h3 className="text-lg font-semibold mb-2">Producto 1</h3>
-                                    <p className="text-sm">Descripción del producto 1</p>
+                    <section className="py-10 bg-gray-100 w-full">
+                        <div className="container mx-auto text-center">
+                            <h2 className="text-3xl font-bold mb-6">Nuestra Filosofía</h2>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <img src="https://i.postimg.cc/FKMfDJxq/96579.jpg" alt="Our Team" className="w-full object-cover mb-4" />
                                 </div>
-                                <div className="bg-white p-4">
-                                    <img src="https://i.postimg.cc/zG35jPwC/322475247-1559586227861359-4888582581913463503-n.jpg" alt="Producto 2" className="w-full h-3/4 object-cover mb-4" />
-                                    <h3 className="text-lg font-semibold mb-2">Producto 2</h3>
-                                    <p className="text-sm">Descripción del producto 2</p>
+                                <div className="flex flex-col justify-center">
+                                    <blockquote className="italic">
+                                        "Nuestra misión es ofrecer productos de alta calidad que mejoran la vida de nuestros clientes."
+                                    </blockquote>
+                                    
                                 </div>
-                                <div className="bg-white p-4">
-                                    <img src="https://i.postimg.cc/zG35jPwC/322475247-1559586227861359-4888582581913463503-n.jpg" alt="Producto 2" className="w-full h-3/4 object-cover mb-4" />
-                                    <h3 className="text-lg font-semibold mb-2">Producto 2</h3>
-                                    <p className="text-sm">Descripción del producto 3</p>
-                                </div>
-                                <div className="bg-white p-4">
-                                    <img src="https://i.postimg.cc/zG35jPwC/322475247-1559586227861359-4888582581913463503-n.jpg" alt="Producto 2" className="w-full h-3/4 object-cover mb-4" />
-                                    <h3 className="text-lg font-semibold mb-2">Producto 2</h3>
-                                    <p className="text-sm">Descripción del producto 4</p>
-                                </div>
-                                {/* Agregar más productos */}
                             </div>
                         </div>
                     </section>
+
+
+                    {/* Sección destacada de productos */}
+                    <section className="py-10 bg-white w-full">
+                        <div className="container mx-auto text-center">
+                            <h2 className="text-3xl font-bold mb-6">¿Cómo Confeccionamos Nuestros Productos?</h2>
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                <div className="step-container">
+                                    <img src="path/to/image1.jpg" alt="Step 1" className="w-full h-48 object-cover mb-4" />
+                                    <h3 className="text-lg font-semibold mb-2">Paso 1: Diseño</h3>
+                                    <p className="text-sm">Nuestro equipo de diseñadores trabaja en los bocetos iniciales.</p>
+                                </div>
+                                <div className="step-container">
+                                    <img src="path/to/image2.jpg" alt="Step 2" className="w-full h-48 object-cover mb-4" />
+                                    <h3 className="text-lg font-semibold mb-2">Paso 2: Materiales</h3>
+                                    <p className="text-sm">Seleccionamos los mejores materiales para garantizar calidad.</p>
+                                </div>
+                                <div className="step-container">
+                                    <img src="path/to/image3.jpg" alt="Step 3" className="w-full h-48 object-cover mb-4" />
+                                    <h3 className="text-lg font-semibold mb-2">Paso 3: Fabricación</h3>
+                                    <p className="text-sm">Proceso de fabricación altamente controlado y optimizado.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
 
                     {/* Sección de banner con efecto parallax */}
 
@@ -115,45 +95,22 @@ const Home = () => {
 
 
                     {/* Sección de últimas novedades */}
-                    <section className="py-10">
-                        <div className="container mx-auto">
-                            <h2 className="text-3xl font-bold mb-6 text-center">Últimas Novedades</h2>
-                            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                                <div className="bg-white p-4">
-                                    <img src="https://i.postimg.cc/bNczqTh8/28616300-414339525684880-3109795440802123074-o.jpg" alt="Novedad 1" className="w-full h-48 object-cover mb-4" />
-                                    <h3 className="text-lg font-semibold mb-2">Novedad 1</h3>
-                                    <p className="text-sm">Descripción de la novedad 1</p>
+                    <section className="py-10 bg-white w-full">
+                        <div className="container mx-auto text-center">
+                            <h2 className="text-3xl font-bold mb-6">Tecnología e Innovación</h2>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div className="flex flex-col justify-center">
+                                    <p className="text-lg mb-4">
+                                        Utilizamos tecnología de punta y procesos de fabricación optimizados para garantizar la calidad y la sostenibilidad de nuestros productos.
+                                    </p>
                                 </div>
-                                <div className="bg-white p-4">
-                                    <img src="https://i.postimg.cc/bNczqTh8/28616300-414339525684880-3109795440802123074-o.jpg" alt="Novedad 2" className="w-full h-48 object-cover mb-4" />
-                                    <h3 className="text-lg font-semibold mb-2">Novedad 2</h3>
-                                    <p className="text-sm">Descripción de la novedad 2</p>
-                                </div>
-                                <div className="bg-white p-4">
-                                    <img src="https://i.postimg.cc/bNczqTh8/28616300-414339525684880-3109795440802123074-o.jpg" alt="Novedad 2" className="w-full h-48 object-cover mb-4" />
-                                    <h3 className="text-lg font-semibold mb-2">Novedad 2</h3>
-                                    <p className="text-sm">Descripción de la novedad 3</p>
-                                </div>
-                                <div className="bg-white p-4">
-                                    <img src="https://i.postimg.cc/bNczqTh8/28616300-414339525684880-3109795440802123074-o.jpg" alt="Novedad 2" className="w-full h-48 object-cover mb-4" />
-                                    <h3 className="text-lg font-semibold mb-2">Novedad 2</h3>
-                                    <p className="text-sm">Descripción de la novedad 4</p>
-                                </div>
-                                {/* Agregar más novedades */}
-                            </div>
-                            <div className="mt-10">
-                                <h2 className="text-2xl font-bold mb-4 text-center"></h2>
-                                <div className="aspect-w-16 h-80 rounded-lg overflow-hidden">
-                                    <iframe
-                                        src="https://www.youtube.com/embed/d_UYUGhdIR8"
-                                        title="Nuestro Video"
-                                        className="w-full h-full"
-                                        allowFullScreen
-                                    ></iframe>
+                                <div>
+                                    <img src="https://i.postimg.cc/W4gNvHFV/277733606_1398040550648101_7333026352736774807_n.jpg" alt="Technology and Innovation" className="w-full object-cover mb-4" />
                                 </div>
                             </div>
                         </div>
                     </section>
+
 
                     <a className='whatsapp-icon-container' href="https://wa.link/kptufa" target="_blank" rel="noopener noreferrer">
                         <WhatsAppIcon className="whatsapp-icon" />
