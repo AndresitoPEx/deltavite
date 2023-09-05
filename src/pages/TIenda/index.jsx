@@ -7,7 +7,7 @@ import Layout from "../../Components/Layout";
 import Card from "../../Components/Card";
 import LoadingPage from "../../Components/Loading";
 import Container from "@mui/material/Container";
-
+import { Divider } from "@mui/material";
 
 const Tienda = () => {
 
@@ -88,6 +88,14 @@ const Tienda = () => {
             value={busqueda}
             onChange={(e) => setBusqueda(e.target.value)}
             placeholder="Buscar productos..."
+          />
+        </div>
+
+        <div>
+
+          <h1 className="text-3xl text-gray-400 font-bold mt-6 text-center">CATÁLOGO AGOSTO - SETIEMBRE 2023</h1>
+          <Divider
+            className="bg-[#f5f5f5e0]"
           />
         </div>
         {productosCard.length === 0 ? (

@@ -24,7 +24,7 @@ const LogoContainer = () => {
     return (
         <div className={`bg-black ${esVisible ? "visible" : "hidden"}`}>
             <div className="bg-[#f5821f] text-center justify-center p-1 ">
-                <h4 className="text-black text-opacity-50 font-mono text-sm animate-bounce tracking-widest">¡ ENVÍOS GRATIS POR EL MES DE LA POLICÍA !</h4>
+                <h4 className="text-black text-opacity-50 font-mono text-sm animate-bounce tracking-wider">¡ENVÍOS GRATIS POR EL MES DE LA POLICÍA!</h4>
             </div>
 
 

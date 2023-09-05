@@ -62,18 +62,7 @@ const AdminHome = () => {
                         {/* Aquí puedes agregar más información relevante acerca de los productos */}
                     </Paper>
                 </Grid>
-
-                {/* Usuarios */}
-                <Grid item xs={12} md={4}>
-                    <Paper elevation={3} className="p-5">
-                        <Typography variant="h6">Total de Usuarios</Typography>
-                        <Typography variant="h3">{usuarios.length}</Typography>
-                        {/* Aquí puedes agregar más información relevante acerca de los usuarios */}
-                    </Paper>
-                </Grid>
-
-                {/* Más Estadísticas, quizás gráficas, tablas resumidas, etc. */}
-                {/* ... */}
+            
 
             </Grid>
         </LayoutAdmin>

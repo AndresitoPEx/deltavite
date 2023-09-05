@@ -60,7 +60,7 @@ const SideBar = () => {
                     </NavLink>
                 </MenuItem>
 
-
+                {/* 
                 <Divider />
 
                 <MenuItem>
@@ -74,7 +74,7 @@ const SideBar = () => {
                     </NavLink>
                 </MenuItem>
 
-                {/* <Divider />
+                <Divider />
 
                 <MenuItem>
                     <NavLink className="flex">

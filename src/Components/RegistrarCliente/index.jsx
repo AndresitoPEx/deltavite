@@ -51,8 +51,8 @@ const RegistrarCliente = () => {
         let errors = {};
         let isValid = true;
 
-        if (!formData.nombre.trim()) {
-            errors.nombre = "El nombre es requerido";
+        if (!formData.nombre.trim() || formData.nombre.length < 3) {
+            errors.nombre = "El nombre debe tener al menos 3 caracteres";
             isValid = false;
         }
 
@@ -61,13 +61,13 @@ const RegistrarCliente = () => {
             isValid = false;
         }
 
-        if (!formData.apellidos.trim()) {
-            errors.apellidos = "Los apellidos son requeridos";
+        if (!formData.apellidos.trim() || formData.apellidos.length < 3) {
+            errors.apellidos = "Los apellidos deben tener al menos 3 caracteres";
             isValid = false;
         }
 
-        if (!formData.telefono.trim()) {
-            errors.telefono = "El teléfono es requerido";
+        if (!formData.telefono.trim() || !/^\d{9,10}$/.test(formData.telefono)) {
+            errors.telefono = "El teléfono debe tener 9 o 10 dígitos";
             isValid = false;
         }
 
@@ -76,13 +76,13 @@ const RegistrarCliente = () => {
             isValid = false;
         }
 
-        if (!formData.dni.trim()) {
-            errors.dni = "El DNI es requerido";
+        if (!formData.dni.trim() || !/^\d{8}$/.test(formData.dni)) {
+            errors.dni = "El DNI debe tener 8 dígitos";
             isValid = false;
         }
 
-        if (!formData.ruc.trim()) {
-            errors.ruc = "El RUC es requerido";
+        if (!formData.ruc.trim() || !/^\d{11}$/.test(formData.ruc)) {
+            errors.ruc = "El RUC debe tener 11 dígitos";
             isValid = false;
         }
 
@@ -129,6 +129,7 @@ const RegistrarCliente = () => {
 
 
             <form onSubmit={handleSubmit} style={{ width: '100%', maxWidth: '500px' }} >
+                <p className='text-gray-400 font-semibold text-sm tracking-wide'>* Datos obligatorios</p>
                 <TextField
                     fullWidth
                     color="warning"
@@ -181,7 +182,7 @@ const RegistrarCliente = () => {
                     variant="outlined"
                     value={formData.nombreempresa}
                     onChange={handleInputChange}
-                    required
+                    
                 />
                 <TextField
                     fullWidth
@@ -195,30 +196,32 @@ const RegistrarCliente = () => {
                     onChange={handleInputChange}
                     required
                 />
-                <TextField
-                    fullWidth
-                    color="warning"
-                    margin="normal"
-                    id="dni"
-                    name="dni"
-                    label="DNI"
-                    variant="outlined"
-                    value={formData.dni}
-                    onChange={handleInputChange}
-                    required
-                />
-                <TextField
-                    fullWidth
-                    color="warning"
-                    margin="normal"
-                    id="ruc"
-                    name="ruc"
-                    label="RUC"
-                    variant="outlined"
-                    value={formData.ruc}
-                    onChange={handleInputChange}
-                    required
-                />
+                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                    <TextField
+                        style={{ flex: 1, marginRight: '8px' }}
+                        color="warning"
+                        margin="normal"
+                        id="dni"
+                        name="dni"
+                        label="DNI"
+                        variant="outlined"
+                        value={formData.dni}
+                        onChange={handleInputChange}
+                        required
+                    />
+                    <TextField
+                        style={{ flex: 1, marginLeft: '8px' }}
+                        color="warning"
+                        margin="normal"
+                        id="ruc"
+                        name="ruc"
+                        label="RUC"
+                        variant="outlined"
+                        value={formData.ruc}
+                        onChange={handleInputChange}
+                        
+                    />
+                </div>
                 <TextField
                     fullWidth
                     color="warning"
@@ -229,7 +232,7 @@ const RegistrarCliente = () => {
                     variant="outlined"
                     value={formData.ubicacion}
                     onChange={handleInputChange}
-                    required
+                    
                 />
                 <TextField
                     fullWidth
@@ -241,7 +244,7 @@ const RegistrarCliente = () => {
                     variant="outlined"
                     value={formData.region}
                     onChange={handleInputChange}
-                    required
+                    
                 />
                 <Box mt={2}>
 

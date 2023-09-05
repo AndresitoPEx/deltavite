@@ -83,7 +83,7 @@ const Nosotros = () => {
                                 </div>
                                 <div>
                                     <img
-                                        src="https://i.postimg.cc/5yZjJdmM/266340555-1325636307888526-8060030097436519231-n.jpg"
+                                        src="https://i.postimg.cc/KjbV7T7k/77218556_454221148567222_4240801668364636430_n.jpg"
                                         alt="Imagen Nuestra Historia"
                                         className="w-full h-auto rounded-lg"
                                     />
@@ -93,7 +93,7 @@ const Nosotros = () => {
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center mt-10">
                                 <div>
                                     <img
-                                        src="https://i.postimg.cc/SRrqZBtr/242809003-1274601109658713-2618943298765768435-n.jpg"
+                                        src="https://i.postimg.cc/D0cNxz5C/179900087_191210182837685_4842390274538153276_n.jpg"
                                         alt="Imagen Nuestro Equipo"
                                         className="w-full h-auto rounded-lg"
                                     />
@@ -108,11 +108,11 @@ const Nosotros = () => {
                             </div>
 
 
-                            <div className="flex justify-center mt-10">
+                            {/* <div className="flex justify-center mt-10">
                                 <button className="bg-black text-white py-2 px-14 rounded-md hover:bg-orange-600">
                                     Conoce más
                                 </button>
-                            </div>
+                            </div> */}
 
 
                         </div>
