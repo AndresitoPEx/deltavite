@@ -24,7 +24,7 @@ const ConfirmacionDePago = () => {
                 
                 <p className="mt-2 text-lg text-center text-gray-700 tracking-tight sm:text-md lg:text-lg
                 mb-6 ">
-                    En breve recibirás un correo con los detalles de tu compra y un asesor se pondrá en contacto contigo.
+                    En breve recibirás un correo con los detalles de tu compra y un asesor se pondrá en contacto contigo en las próximas 24 horas.
                 </p>
 
                 <div className="mt-8 flex flex-col items-center justify-center w-full mx-auto px-4 sm:px-6 lg:px-8">
