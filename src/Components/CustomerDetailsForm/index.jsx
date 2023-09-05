@@ -52,7 +52,7 @@ const CustomerDetailsForm = ({ onSubmit }) => {
     }
 
     return (
-        <div className="p-5">
+        <div className="">
             <Typography variant="h5" className="text-gray-800 pb-8 text-center font-bold">Datos del cliente</Typography>
             <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
                 <Grid container spacing={3}>

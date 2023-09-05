@@ -27,7 +27,7 @@ const Profile = () => {
             {isDropdownOpen && (
                 <ul className="absolute w-48 mt-2 py-1 text-black bg-white border border-gray-300 rounded-lg shadow-lg">
                     <li className="px-4 py-2 hover:bg-gray-100 hover:text-gray-900">
-                        <NavLink to="/mi-pedido">Mis Pedidos</NavLink>
+                        <NavLink to="/mi-pedido">Mi Pedido</NavLink>
                     </li>
                     <li className="px-4 py-2 hover:bg-gray-100 hover:text-gray-900">
                         <LogOut />

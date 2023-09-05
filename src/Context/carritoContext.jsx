@@ -29,10 +29,11 @@ export const CarritoProvider = ({ children }) => {
     const openCheckOutMenu = () => setCheckOutMenu(true);
     const closeCheckOutMenu = () => setCheckOutMenu(false);
 
-    const [order, setOrder] = useState([]);
+    const initialOrder = localStorage.getItem('order') ? JSON.parse(localStorage.getItem('order')) : [];
+    const [order, setOrder] = useState(initialOrder);
     const [total, setTotal] = useState(0);
 
-    // 2. Cada vez que cambie productosCarrito, actualizamos localStorage
+    // Cada vez que cambie productosCarrito actualizamos localStorage
     useEffect(() => {
         if (productosCarrito.length > 0) {
             localStorage.setItem('productosCarrito', JSON.stringify(productosCarrito));
@@ -40,6 +41,17 @@ export const CarritoProvider = ({ children }) => {
             localStorage.removeItem('productosCarrito');
         }
     }, [productosCarrito]);
+    // Cada vez que cambie order actualizamos localStorage
+    useEffect(() => {
+        if (order.length > 0) {
+            localStorage.setItem('order', JSON.stringify(order));
+        } else {
+            localStorage.removeItem('order');
+        }
+    }, [order]);
+
+
+
 
     console.log("Valor de total desde el contexto:", total);
     console.log("Productos en el carrito desde el contexto:", productosCarrito);

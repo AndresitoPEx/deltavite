@@ -18,6 +18,42 @@ const Home = () => {
         return () => clearTimeout(timer);
     }, []);
 
+    // useEffect(() => {
+    //     // Simulación de una carga de datos con un temporizador
+    //     const timer = setTimeout(() => {
+    //         setDataLoading(false);
+    //     }, 1000);
+
+    //     // Función para agregar el script del chatbot
+    //     const addChatbotScript = () => {
+    //         const script = document.createElement('script');
+    //         script.src = "https://www.chatbase.co/embed.min.js";
+    //         script.id = "R-_SwarTzCUZEB3KB1qIf";
+    //         script.defer = true;
+    //         document.body.appendChild(script);
+
+    //         // Configuración del chatbot
+    //         window.chatbaseConfig = {
+    //             chatbotId: "R-_SwarTzCUZEB3KB1qIf",
+    //         };
+    //     };
+
+    //     // Función para eliminar el script del chatbot
+    //     const removeChatbotScript = () => {
+    //         const script = document.getElementById("R-_SwarTzCUZEB3KB1qIf");
+    //         if (script) {
+    //             document.body.removeChild(script);
+    //         }
+    //     };
+
+    //     addChatbotScript();
+
+    //     // Limpiar (eliminar el script y el temporizador) cuando el componente se desmonta
+    //     return () => {
+    //         clearTimeout(timer);
+    //         removeChatbotScript();
+    //     };
+
     if (dataLoading) {
         // Muestra la página de carga mientras dataLoading es true
         return <LoadingPage />;
