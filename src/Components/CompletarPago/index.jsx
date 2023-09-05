@@ -32,7 +32,7 @@ const CompletarPago = ({ precioTotal, carrito }) => {
                         body: JSON.stringify({
 
                             paymentConf: {
-                                    amount: parseFloat((precioTotal * 100).toFixed(0)),
+                                amount: parseFloat((precioTotal * 100).toFixed(0)),
                                 currency: 'PEN',
                                 customer: {
                                     billingDetails: {
@@ -76,14 +76,17 @@ const CompletarPago = ({ precioTotal, carrito }) => {
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify(paymentData)
                         });
-                        if (response.status === 200) navigate('/confirmacion');
+                        if (response.status === 200) {
+                            navigate('/confirmacion');
+                            localStorage.removeItem('order');
+                        }
                         return false;
                     });
 
                     const { result } = await KR.attachForm('#myPaymentForm');
                     await KR.showForm(result.formId);
                 } catch (error) {
-                    setPaymentMessage('Error: ' + error.message);       
+                    setPaymentMessage('Error: ' + error.message);
                 }
             }
 
