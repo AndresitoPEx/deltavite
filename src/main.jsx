@@ -17,7 +17,7 @@ const clientId = import.meta.env.VITE_AUTH0_CLIENT_ID;
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <Auth0Provider domain={domain} clientId={clientId} redirectUri={window.location.origin}>
+      <Auth0Provider domain={domain} clientId={clientId} redirectUri={window.location.origin} cacheLocation='localstorage'>
         <App />
         <ReactQueryDevtools initialIsOpen={false} />
       </Auth0Provider>

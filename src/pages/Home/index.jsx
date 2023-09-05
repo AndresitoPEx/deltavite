@@ -4,7 +4,7 @@ import Layout from "../../Components/Layout";
 import LoadingPage from "../../Components/Loading";
 //materialUI
 import Container from '@mui/material/Container';
-import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+
 const Home = () => {
 
     const [dataLoading, setDataLoading] = useState(true);
@@ -42,13 +42,13 @@ const Home = () => {
                             <h2 className="text-3xl font-bold mb-6">Nuestra Filosofía</h2>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
-                                    <img src="https://i.postimg.cc/FKMfDJxq/96579.jpg" alt="Our Team" className="w-full object-cover mb-4" />
+                                    <img src="https://i.postimg.cc/ryG7VhcS/173201205-191960819436652-6854720412959685384-n.jpg" alt="Our Team" className="w-full h-96 object-cover mb-4" />
                                 </div>
                                 <div className="flex flex-col justify-center">
                                     <blockquote className="italic">
                                         "Nuestra misión es ofrecer productos de alta calidad que mejoran la vida de nuestros clientes."
                                     </blockquote>
-                                    
+
                                 </div>
                             </div>
                         </div>
@@ -110,11 +110,6 @@ const Home = () => {
                             </div>
                         </div>
                     </section>
-
-
-                    <a className='whatsapp-icon-container' href="https://wa.link/kptufa" target="_blank" rel="noopener noreferrer">
-                        <WhatsAppIcon className="whatsapp-icon" />
-                    </a>
                 </Container>
             </div>
         </Layout>

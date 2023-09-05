@@ -47,7 +47,7 @@ const AdminHome = () => {
 
                 {/* Clientes */}
                 <Grid item xs={12} md={4}>
-                    <Paper elevation={3}>
+                    <Paper elevation={3} className="p-5">
                         <Typography variant="h6">Total de Clientes</Typography>
                         <Typography variant="h3">{clientes.length}</Typography>
                         {/* Aquí puedes agregar más información relevante acerca de los clientes */}
@@ -56,7 +56,7 @@ const AdminHome = () => {
 
                 {/* Productos */}
                 <Grid item xs={12} md={4}>
-                    <Paper elevation={3}>
+                    <Paper elevation={3} className="p-5">
                         <Typography variant="h6">Total de Productos</Typography>
                         <Typography variant="h3">{productos.length}</Typography>
                         {/* Aquí puedes agregar más información relevante acerca de los productos */}
@@ -65,7 +65,7 @@ const AdminHome = () => {
 
                 {/* Usuarios */}
                 <Grid item xs={12} md={4}>
-                    <Paper elevation={3}>
+                    <Paper elevation={3} className="p-5">
                         <Typography variant="h6">Total de Usuarios</Typography>
                         <Typography variant="h3">{usuarios.length}</Typography>
                         {/* Aquí puedes agregar más información relevante acerca de los usuarios */}

@@ -4,7 +4,9 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import YouTubeIcon from '@mui/icons-material/YouTube';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import Container from '@mui/material/Container';
+
 
 const Footer = () => {
   return (
@@ -13,7 +15,7 @@ const Footer = () => {
         <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 text-center md:text-left">
           <div className="col-span-1">
             <h2 className="text-lg font-bold mb-4">Sobre Nosotros</h2>
-            <p className="text-sm">Breve descripción de la empresa y sus valores.</p>
+            <p className="text-sm">Somos fabricantes de mochilas, chalecos y demas accesorios tácticos.</p>
           </div>
           <div className="col-span-1">
             <h2 className="text-lg font-bold mb-4">Enlaces</h2>
@@ -43,17 +45,17 @@ const Footer = () => {
           <div className="col-span-1">
             <h2 className="text-lg font-bold mb-4">Redes Sociales</h2>
             <div className="flex justify-center md:justify-start space-x-4">
-              <a href="#" className="text-sm">
+              <a href="https://www.facebook.com/urbansurvivorstore" target="_blank" className="text-sm">
                 <FacebookIcon />
               </a>
-              <a href="#" className="text-sm">
-                <TwitterIcon />
-              </a>
-              <a href="#" className="text-sm">
+              <a href="https://www.instagram.com/deltatacticagear/" target="_blank" className="text-sm">
                 <InstagramIcon />
               </a>
-              <a href="#" className="text-sm">
+              <a href="https://www.youtube.com/@SRDELTA100" target="_blank" className="text-sm">
                 <YouTubeIcon />
+              </a>
+              <a className='whatsapp-icon-container text-sm' href="https://wa.link/kptufa" target="_blank" rel="noopener noreferrer">
+                <WhatsAppIcon />
               </a>
             </div>
           </div>
