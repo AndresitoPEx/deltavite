@@ -134,8 +134,8 @@ const DetalleProducto = () => {
 
   return (
     <Layout>
-      <div className="container mx-auto py-10">
-        <h1 className="text-3xl font-bold mb-6 item text-center">{producto.nombre}</h1>
+      <div className="container mx-auto py-20">
+        <h1 className="text-gray-500 text-3xl font-bold mb-6 item text-center">{producto.nombre}</h1>
         <div className="flex flex-wrap">
           <div className="w-full md:w-1/2 flex justify-end items-center">
             <div className="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden mb-6">
@@ -148,8 +148,8 @@ const DetalleProducto = () => {
           </div>
           <div className="w-full md:w-1/2 md:pl-6">
             <div className="flex-1 mb-10">
-              <h2 className="text-2xl font-bold mb-4">{producto.codigo}</h2>
-              <p className="text-lg mb-2">
+              <h4 className="text-gray-400  text-md font-bold mb-4">Codigo: {producto.codigo}</h4>
+              <p className="text-lg mb-2 py-10">
                 <span className="font-bold text-5xl">S/.{producto.precio.toFixed(2)}</span>
               </p>
               <p className="text-lg mb-2">Categoría: {producto.categoria}</p>

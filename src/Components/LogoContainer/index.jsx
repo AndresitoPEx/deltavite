@@ -26,9 +26,6 @@ const LogoContainer = () => {
             <div className="bg-[#f5821f] text-center justify-center p-1 ">
                 <h4 className="text-black text-opacity-50 font-mono text-sm animate-bounce tracking-wider">¡BIENVENIDO A TU TIENDA TÁCTICA!</h4>
             </div>
-
-
-
         </div>
     )
 }
