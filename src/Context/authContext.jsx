@@ -11,7 +11,7 @@ export const AuthProvider = ({ children }) => {
 
     const login = (username, password) => {
         // Aquí puedes poner tus credenciales estáticas
-        if (username === 'admin' && password === 'delta2023.dtg-2023') {
+        if (username === 'admin' && password === 'admin') {
             setIsAuthenticated(true);
             return true;
         }

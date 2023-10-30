@@ -38,34 +38,36 @@ const Tienda = () => {
     return () => clearTimeout(timer);
   }, []);
 
+
   if (isLoadingProductos || isLoadingImagenes || isLoadingCategorias || showLoading) return <LoadingPage />;
   if (isErrorProductos) return <h1>Hubo un error al obtener los datos de productos: {errorProductos.message}</h1>;
   if (isErrorImagenes) return <h1>Hubo un error al obtener los datos de imágenes: {errorImagenes.message}</h1>;
   if (isErrorCategorias) return <h1>Hubo un error al obtener los datos de categorías: {errorCategorias.message}</h1>;
 
+  console.log('Productos:', productos);
+  console.log('Imágenes:', imagenes);
+  console.log('Categorías:', categorias);
+
   const getProducts = () => {
     if (productos && imagenes && categorias) {
-
       const productosFiltrados = productos.filter((producto) =>
         producto.nombre.toLowerCase().includes(busqueda.toLowerCase())
       );
 
       return productosFiltrados.map((producto) => {
-        const imagen = imagenes.find((img) => img.id === producto.imagen);
-        const imagenURL = imagen ? imagen.nombre : "";
-
-        const categoria = categorias.find((cat) => cat.id === producto.categoria);
-        const categoriaNombre = categoria ? categoria.nombre : "";
+        const imagenesProducto = imagenes.filter((img) => img.productoId === producto.id);
+        const categoria = categorias.find((cat) => cat.id === producto.categoriaId);
 
         return {
           ...producto,
-          imagen: imagenURL,
-          categoria: categoriaNombre,
+          imagenes: imagenesProducto, // aquí asignamos todas las imágenes
+          categoria: categoria,
         };
       });
     }
     return [];
   };
+
 
   const productosCard = getProducts();
 
@@ -93,7 +95,7 @@ const Tienda = () => {
 
         <div>
 
-          <h1 className="text-3xl text-gray-400 font-bold mt-6 text-center">CATÁLOGO AGOSTO - SETIEMBRE 2023</h1>
+          <h1 className="text-3xl text-gray-400 font-bold mt-6 text-center">CATÁLOGO OCTUBRE - DICIEMBRE 2023</h1>
           <Divider
             className="bg-[#f5f5f5e0]"
           />
@@ -108,10 +110,10 @@ const Tienda = () => {
             {productosCard.map((producto) => (
               <div key={producto.id}>
                 <Card
-                  categoria={producto.categoriaNombre}
+                  categoria={producto.categoria}
                   nombre={producto.nombre}
                   precio={producto.precio}
-                  imagen={producto.imagenNombre}
+                  imagenes={producto.imagenes}
                   codigo={producto.codigo}
                   color={producto.color}
                 />

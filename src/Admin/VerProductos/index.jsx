@@ -109,7 +109,7 @@ const VerProductos = () => {
                             {productosTable.map((producto) => (
                                 <TableRow key={producto.id}>
                                     <TableCell>{producto.nombre}</TableCell>
-                                    <TableCell>S/. {producto.precio.toFixed(2)}</TableCell>
+                                    <TableCell>S/. {producto.precio}</TableCell>
                                     <TableCell>{producto.categoriaNombre}</TableCell>
                                     <TableCell>
                                         <img src={producto.imagenNombre} alt="Imagen del producto" className="w-20" />

@@ -18,10 +18,16 @@ const OrderCard = (props) => {
 
     // Actualizar el contexto con la nueva cantidad del producto
     const handleUpdateCantidad = (newCantidad) => {
-        const updatedProduct = { ...props, cantidad: newCantidad };
-        const updatedProducts = context.productosCarrito.map((producto) => (producto.codigo === codigo ? updatedProduct : producto));
+        const updatedProducts = context.productosCarrito.map((producto) => {
+            if (producto.codigo === codigo) {
+                // Actualiza la cantidad
+                producto.cantidad = newCantidad;
+            }
+            return producto;
+        });
         context.setProductosCarrito(updatedProducts);
     };
+    
 
     const handleAddUnit = () => {
         setCantidad((prevCantidad) => prevCantidad + 1);

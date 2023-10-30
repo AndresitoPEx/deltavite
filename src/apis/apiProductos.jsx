@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const apiProductos = axios.create({
-  baseURL: 'https://ihiz062-001-site1.dtempurl.com/api/',
+  baseURL: 'http://localhost:4000/api/',
 });
 
 export const GetProductos = async () => {

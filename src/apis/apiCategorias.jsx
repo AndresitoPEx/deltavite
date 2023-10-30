@@ -2,9 +2,7 @@
 import axios from 'axios';
 
 export const apiCategorias = axios.create({
-    baseURL: "https://ihiz062-001-site1.dtempurl.com/api/"
-    // baseURL: "https://tungsten-rustic-pewter.glitch.me/"
-
+  baseURL: "http://localhost:4000/api/"
 })
 
 
@@ -20,13 +18,26 @@ export const GetCategorias = async () => {
 
 
 export const GetCategoriaById = async (id) => {
-    const response = await apiCategorias.get(`/categorias/${id}`);
-    return response.data;
+  const response = await apiCategorias.get(`/categorias/${id}`);
+  return response.data;
 };
 
-export const PostCategoria = async (categoria) => apiCategorias.post('/categorias', categoria)
+export const PostCategoria = async (categoria) => {
+  try {
+    const response = await apiCategorias.post('/categorias', categoria);
+    return response.data;
+  } catch (error) {
+    console.error('Error al crear una categoría:', error);
+    return null;
+  }
+};
 
 export const PutCategoria = async (id, categoria) => {
+  try {
     const response = await apiCategorias.put(`/categorias/${id}`, categoria);
     return response.data;
-}
+  } catch (error) {
+    console.error('Error al actualizar una categoría:', error);
+    return null;
+  }
+};

@@ -41,7 +41,7 @@ const MisPedidos = () => {
                                 <div className="flex items-center gap-5">
                                     <figure className="w-24 h-w-24 rounded-md object-cover bg-gray-200 shadow-md">
                                         <Badge badgeContent={`${producto.cantidad}`} color="warning">
-                                            <img src={producto.imagen} alt={producto.nombre} className="w-full h-full object-cover" />
+                                            <img src={producto.imagenes} alt={producto.nombre} className="w-full h-full object-cover" />
                                         </Badge>
                                     </figure>
                                     <div className="flex-1 flex justify-between items-center border-b-2 pb-5">

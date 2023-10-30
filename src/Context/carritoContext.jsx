@@ -9,7 +9,6 @@ export const CarritoProvider = ({ children }) => {
     // 1. Inicializar el estado con localStorage (si hay datos)
     const initialCart = localStorage.getItem('productosCarrito') ? JSON.parse(localStorage.getItem('productosCarrito')) : [];
     const [productosCarrito, setProductosCarrito] = useState(initialCart);
-
     const handleUpdateCantidad = (codigo, newCantidad) => {
         const updatedProducts = productosCarrito.map((producto) => (producto.codigo === codigo ? { ...producto, cantidad: newCantidad } : producto));
         setProductosCarrito(updatedProducts);
@@ -54,7 +53,7 @@ export const CarritoProvider = ({ children }) => {
 
 
     console.log("Valor de total desde el contexto:", total);
-    console.log("Productos en el carrito desde el contexto:", productosCarrito);
+    console.log("Productos en el carrito desde el contexto😎:", productosCarrito);
 
     return (
         <CarritoDeCompras.Provider

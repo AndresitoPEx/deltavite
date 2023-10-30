@@ -9,13 +9,6 @@ import { Divider } from '@mui/material';
 
 const CheckOutMenu = () => {
     const context = useContext(CarritoDeCompras);
-
-
-    useEffect(() => {
-        console.log('Valor actual de total en el contexto desde CheckOutMenu:', context.total);
-        console.log('-----------------------');
-    }, [context.total]);
-
     // Calcular el precio total inicial cuando se carga el componente
     useEffect(() => {
         const totalInicial = parseFloat(PrecioTotal(context.productosCarrito));
@@ -77,7 +70,7 @@ const CheckOutMenu = () => {
                                 key={producto.codigo}
                                 codigo={producto.codigo}
                                 nombre={producto.nombre}
-                                imagen={producto.imagen}
+                                imagen={producto.imagenes}
                                 precio={parseFloat(producto.precio).toFixed(2)} // Este es el total de cada producto en el carrito
                                 cantidad={producto.cantidad}
                                 handleDelete={handleDelete}
