@@ -43,7 +43,7 @@ const DetalleProducto = () => {
 
   if (showLoading) return <LoadingPage />;
 
-  if (isLoading || isLoading2 || isLoading3) return <LoadingPage /> ;
+  if (isLoading || isLoading2 || isLoading3) return <LoadingPage />;
   if (isError) return <h1>Error al obtener los datos de productos: {error.message}</h1>;
   if (isError2) return <h1>Error al obtener los datos de imágenes: {error2.message}</h1>;
   if (isError3) return <h1>Error al obtener los datos de categorías: {error3.message}</h1>;
@@ -53,15 +53,15 @@ const DetalleProducto = () => {
       const producto = productos.find((producto) => producto.codigo === id);
 
       if (producto) {
-        const imagen = imagenes.find((img) => img.nombre === producto.imagenNombre);
-        const imagenURL = imagen ? imagen.nombre : "";
+        const imagenesProducto = imagenes.filter((img) => img.productoId === producto.id);
+        const imagenesProductoArray = imagenesProducto.map((img) => img.nombre);
 
-        const categoria = categorias.find((cat) => cat.nombre === producto.categoriaNombre);
+        const categoria = categorias.find((cat) => cat.id === producto.categoriaId);
         const categoriaNombre = categoria ? categoria.nombre : "";
 
         return {
           ...producto,
-          imagen: imagenURL,
+          imagenes: imagenesProductoArray,
           categoria: categoriaNombre,
         };
       }
@@ -69,12 +69,14 @@ const DetalleProducto = () => {
     return null;
   };
 
+
+
   const agregarProductoACarrito = (producto) => {
     setAddingToCart(true);
     setTimeout(() => {
       context.agregarProductoACarrito(producto); // Usamos la función del contexto para agregar el producto al carrito
       setAddingToCart(false);
-    }, 1000);
+    }, 500);
   };
 
   const renderIcon = (codigo, loading) => {
@@ -126,9 +128,6 @@ const DetalleProducto = () => {
   };
 
   const producto = getProductById(codigo);
-  console.log(producto);
-
-
 
   if (!producto) return <h1>No se encontró el producto</h1>;
 
@@ -140,7 +139,7 @@ const DetalleProducto = () => {
           <div className="w-full md:w-1/2 flex justify-end items-center">
             <div className="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden mb-6">
               <img
-                src={producto.imagen}
+                src={producto.imagenes}
                 alt={producto.nombre}
                 className="object-cover w-full h-full max-w-lg max-h-lg"
               />
@@ -150,7 +149,7 @@ const DetalleProducto = () => {
             <div className="flex-1 mb-10">
               <h4 className="text-gray-400  text-md font-bold mb-4">Codigo: {producto.codigo}</h4>
               <p className="text-lg mb-2 py-10">
-                <span className="font-bold text-5xl">S/.{producto.precio.toFixed(2)}</span>
+                <span className="font-bold text-5xl">S/.{producto.precio}</span>
               </p>
               <p className="text-lg mb-2">Categoría: {producto.categoria}</p>
               <p className="text-lg mb-2">Color: {producto.color}</p>
