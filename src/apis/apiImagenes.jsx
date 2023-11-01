@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 export const apiImagenes = axios.create({
-    baseURL: "http://localhost:4000/api/"
+    baseURL: "https://deltadb.onrender.com/api/"
 
 
 })

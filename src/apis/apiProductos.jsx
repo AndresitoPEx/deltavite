@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const apiProductos = axios.create({
-  baseURL: 'http://localhost:4000/api/',
+  baseURL: 'https://deltadb.onrender.com/api/',
 });
 
 export const GetProductos = async () => {
