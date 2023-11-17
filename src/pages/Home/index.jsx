@@ -15,33 +15,27 @@ const Home = () => {
             setDataLoading(false);
         }, 1000);
 
-        // Función para agregar el script del chatbot
-        const addChatbotScript = () => {
-            const script = document.createElement('script');
-            script.src = "https://www.chatbase.co/embed.min.js";
-            script.id = "R-_SwarTzCUZEB3KB1qIf";
-            script.defer = true;
-            document.body.appendChild(script);
+        // Agregar el script del chatbot al encabezado
+        const script = document.createElement('script');
+        script.src = "https://www.chatbase.co/embed.min.js";
+        script.id = "chatbaseScript";
+        script.defer = true;
 
-            // Configuración del chatbot
-            window.chatbaseConfig = {
-                chatbotId: "R-_SwarTzCUZEB3KB1qIf",
-            };
+        document.head.appendChild(script);
+
+        // Configuración del chatbot
+        window.embeddedChatbotConfig = {
+            chatbotId: "Lduwj-j2zD_dTYT73TWaS",
+            domain: "www.chatbase.co"
         };
-
-        // Función para eliminar el script del chatbot
-        const removeChatbotScript = () => {
-            const script = document.getElementById("R-_SwarTzCUZEB3KB1qIf");
-            if (script) {
-                document.body.removeChild(script);
-            }
-        };
-
-        addChatbotScript();
 
         return () => {
             clearTimeout(timer);
-            removeChatbotScript();
+            // Eliminar el script del chatbot al desmontar el componente
+            const chatbaseScript = document.getElementById("chatbaseScript");
+            if (chatbaseScript) {
+                document.head.removeChild(chatbaseScript);
+            }
         };
     }, []);
 
