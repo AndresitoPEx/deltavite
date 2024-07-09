@@ -11,11 +11,8 @@ import Swal from 'sweetalert2';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-
 const VerProductos = () => {
-
     const navigate = useNavigate();
-
     const queryClient = useQueryClient();
 
     const { data: productos, isLoading, error, isError } = useQuery({
@@ -24,12 +21,12 @@ const VerProductos = () => {
         select: productos => productos.sort((a, b) => b.id - a.id)
     });
 
-    const { data: imagenes, isLoading2, error2, isError2 } = useQuery({
+    const { data: imagenes, isLoading: isLoadingImagenes, error: errorImagenes, isError: isErrorImagenes } = useQuery({
         queryKey: ["imagenes"],
         queryFn: GetImagenes,
     });
 
-    const { data: categorias, isLoading3, error3, isError3 } = useQuery({
+    const { data: categorias, isLoading: isLoadingCategorias, error: errorCategorias, isError: isErrorCategorias } = useQuery({
         queryKey: ["categorias"],
         queryFn: GetCategorias,
     });
@@ -47,25 +44,22 @@ const VerProductos = () => {
         }
     });
 
-    if (isLoading || isLoading2 || isLoading3) return <h1>Cargando...</h1>;
+    if (isLoading || isLoadingImagenes || isLoadingCategorias) return <h1>Cargando...</h1>;
     if (isError) return <h1>Hubo un error al obtener los datos de productos: {error.message}</h1>;
-    if (isError2) return <h1>Hubo un error al obtener los datos de imágenes: {error2.message}</h1>;
-    if (isError3) return <h1>Hubo un error al obtener los datos de categorías: {error3.message}</h1>;
+    if (isErrorImagenes) return <h1>Hubo un error al obtener los datos de imágenes: {errorImagenes.message}</h1>;
+    if (isErrorCategorias) return <h1>Hubo un error al obtener los datos de categorías: {errorCategorias.message}</h1>;
 
     const getProducts = () => {
         if (productos && imagenes && categorias) {
             console.log("Lista de productos: ", productos);
             return productos.map((producto) => {
-                const imagen = imagenes.find((img) => img.id === producto.imagen);
-                const imagenURL = imagen ? imagen.nombre : '';
-
-                const categoria = categorias.find((cat) => cat.id === producto.categoria);
-                const categoriaNombre = categoria ? categoria.nombre : '';
+                const imagenesProducto = imagenes.filter((img) => img.productoId === producto.id);
+                const categoria = categorias.find((cat) => cat.id === producto.categoriaId);
 
                 return {
                     ...producto,
-                    imagen: imagenURL,
-                    categoria: categoriaNombre,
+                    imagenes: imagenesProducto,
+                    categoria: categoria ? categoria.nombre : '',
                 };
             });
         }
@@ -76,10 +70,8 @@ const VerProductos = () => {
 
     const handleEdit = (codigo) => {
         console.log("Editar producto con código: ", codigo);
-
         navigate(`/admin/editar-producto/${codigo}`);
     }
-
 
     return (
         <LayoutAdmin>
@@ -110,27 +102,19 @@ const VerProductos = () => {
                                 <TableRow key={producto.id}>
                                     <TableCell>{producto.nombre}</TableCell>
                                     <TableCell>S/. {producto.precio}</TableCell>
-                                    <TableCell>{producto.categoriaNombre}</TableCell>
+                                    <TableCell>{producto.categoria}</TableCell>
                                     <TableCell>
-                                        <img src={producto.imagenNombre} alt="Imagen del producto" className="w-20" />
+                                        {producto.imagenes.length > 0 && (
+                                            <img src={producto.imagenes[0].nombre} alt="Imagen del producto" className="w-20" />
+                                        )}
                                     </TableCell>
                                     <TableCell>{producto.codigo}</TableCell>
                                     <TableCell>{producto.color}</TableCell>
-                                    <TableCell
-                                        className="flex justify-center items-center space-x-2"
-                                        style={{ width: "240px" }}
-                                    >
-                                        <Button
-                                            variant="contained"
-                                            color="warning"
-                                            className="mx-10"
-                                            onClick={() => handleEdit(producto.codigo)}>
+                                    <TableCell className="flex justify-center items-center space-x-2" style={{ width: "240px" }}>
+                                        <Button variant="contained" color="warning" className="mx-10" onClick={() => handleEdit(producto.codigo)}>
                                             <EditIcon />
                                         </Button>
-                                        <Button
-                                            variant="contained"
-                                            color="error"
-                                            onClick={() => deleteMutation.mutate(producto.id)}>
+                                        <Button variant="contained" color="error" onClick={() => deleteMutation.mutate(producto.id)}>
                                             <DeleteIcon />
                                         </Button>
                                     </TableCell>
